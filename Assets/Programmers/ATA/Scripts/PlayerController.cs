@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private static PlayerController Instance;
+
     
     [SerializeField] private float speed = 10f;
 
