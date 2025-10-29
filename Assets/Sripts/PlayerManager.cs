@@ -18,22 +18,43 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        
         _runningVelocity = Vector3.right * playerSpeed;
     }
 
     private void Update()
     {
         //For the player to move continiously we need a speed and a direction
+       
+        if (!_obstacleHit)
+        {
+            transform.position += _runningVelocity * Time.deltaTime;
+            //DetectCollision();
+        }
         
-        transform.position += _runningVelocity * Time.deltaTime;
-
         if(_isJumping == false)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                _isJumping = true;
-                _jumpingVelocity.y = jumpingSpeed;
+                if (!this.GetComponent<Rigidbody>().useGravity)
+                {
+                    this.GetComponent<Rigidbody>().useGravity = true;
+                    this.GetComponent<Rigidbody>().AddForce(0, 50, 0);
+                }
+                else
+                {
+                    _isJumping = true;
+                    _jumpingVelocity.y = jumpingSpeed;
+                } 
             }
+        }
+    }
+
+    private void Gliding()
+    { 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            //Gliding code here
         }
     }
 
@@ -44,18 +65,21 @@ public class Player : MonoBehaviour
         {
             this.GetComponent<Rigidbody>().AddForce(_jumpingVelocity.x, _jumpingVelocity.y, 0);
             _jumpingVelocity.y += gravity * Time.fixedDeltaTime;
+            //if(_obstacleHit) { _obstacleHit = false; }
+                
             //DetectCollision();
         }
     }
 
     private void DetectCollision()
     {
+        RaycastHit hit;
         Vector3 rayOrigin = new Vector3(0, transform.position.y, 0);
         Vector3 rayfDirection = Vector3.up;
         float rayDistance = _jumpingVelocity.y * Time.fixedDeltaTime;
-        if(Physics.Raycast(rayOrigin, rayfDirection, rayDistance, LayerMask.GetMask("Ground")))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 10f))
         {
-            _isJumping = false;
+            //_isJumping = false;
             Debug.Log("down");
         }
     }
@@ -71,6 +95,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "obstacle")
         {
             this.gameObject.SetActive(false);
+            //_obstacleHit = true;
         }
     }
 }
