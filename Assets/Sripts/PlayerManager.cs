@@ -24,8 +24,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        //For the player to move continiously we need a speed and a direction
-       
         if (!_obstacleHit)
         {
             transform.position += _runningVelocity * Time.deltaTime;
@@ -38,8 +36,8 @@ public class Player : MonoBehaviour
             {
                 if (!this.GetComponent<Rigidbody>().useGravity)
                 {
+                    this.GetComponent<Rigidbody>().AddForce(0, -1000, 0);
                     this.GetComponent<Rigidbody>().useGravity = true;
-                    this.GetComponent<Rigidbody>().AddForce(0, 50, 0);
                 }
                 else
                 {
@@ -50,13 +48,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Gliding()
-    { 
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            //Gliding code here
-        }
-    }
+    //private void Gliding()
+    //{ 
+    //    if(Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        //Gliding code here
+    //    }
+    //}
 
     private void FixedUpdate()
     {
