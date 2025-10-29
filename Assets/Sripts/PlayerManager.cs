@@ -32,18 +32,10 @@ public class Player : MonoBehaviour
         
         if(_isJumping == false)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (!this.GetComponent<Rigidbody>().useGravity)
-                {
-                    this.GetComponent<Rigidbody>().AddForce(0, -1000, 0);
-                    this.GetComponent<Rigidbody>().useGravity = true;
-                }
-                else
-                {
-                    _isJumping = true;
-                    _jumpingVelocity.y = jumpingSpeed;
-                } 
+                _isJumping = true;
+                _jumpingVelocity.y = jumpingSpeed;
             }
         }
     }
@@ -65,31 +57,22 @@ public class Player : MonoBehaviour
             _jumpingVelocity.y += gravity * Time.fixedDeltaTime;
             //if(_obstacleHit) { _obstacleHit = false; }
                 
-            //DetectCollision();
+            DetectCollision();
         }
     }
 
     private void DetectCollision()
     {
         RaycastHit hit;
-        Vector3 rayOrigin = new Vector3(0, transform.position.y, 0);
-        Vector3 rayfDirection = Vector3.up;
-        float rayDistance = _jumpingVelocity.y * Time.fixedDeltaTime;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 10f))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, 5.0f))
         {
-            //_isJumping = false;
-            Debug.Log("down");
+            _isJumping = false;
         }
     }
 
     //Turn that into raycasts
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground")
-        {
-            _isJumping = false;
-        }
-
         if (collision.gameObject.tag == "obstacle")
         {
             this.gameObject.SetActive(false);
