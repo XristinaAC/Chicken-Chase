@@ -21,11 +21,32 @@ public class PlayerController : MonoBehaviour
         else 
             Destroy(gameObject);
     }
-    
+
+    private void Start()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnGameStateChanged += OnGameGoing;
+    }
+    private void Update()
+    {
+        transform.Translate(Vector3.right * (Time.deltaTime * speed));
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnGameStateChanged -= OnGameGoing;
+    }
+
     private void OnDestroy()
     {
       
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    
+    }
+
+    private void OnGameGoing(GameManager.GameState state)
+    {
+        enabled = (state == GameManager.GameState.Playing);
     }
 
 
@@ -39,10 +60,7 @@ public class PlayerController : MonoBehaviour
         else 
             transform.position = Vector3.zero; 
     }
-    private void Update()
-    {
-        transform.Translate(Vector3.right * (Time.deltaTime * speed));
-    }
+  
 
 
 }
