@@ -15,12 +15,16 @@ public class Player : MonoBehaviour
     private Vector3 _jumpingVelocity = Vector3.zero;
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
+    private float _rbDrag = 0;
+    private float _glidingDrag = 10;
+    private float _glidingTimer = 5;
+    private float _glidingTime = 0;
 
     private bool _isJumping = false;
 
     private void Start()
     {
-        
+        _rbDrag = this.GetComponent<Rigidbody>().drag;
         _runningVelocity = Vector3.right * playerSpeed;
     }
 
@@ -28,22 +32,24 @@ public class Player : MonoBehaviour
     {
         if (!_obstacleHit)
         {
-            transform.position += _runningVelocity * Time.deltaTime;
+            transform.position += new Vector3(_runningVelocity.x * Time.deltaTime,0,0);
         }
-        
-        if(_isJumping == false)
+
+        if (_isJumping == false)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 _isJumping = true;
                 _isHoldingSpace = true;
                 _jumpingVelocity.y = jumpingSpeed;
+                _glidingTime += Time.deltaTime;
             }
         }
 
-        if(Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             _isHoldingSpace = false;
+            this.GetComponent<Rigidbody>().drag = _rbDrag;
         }
     }
 
@@ -52,17 +58,14 @@ public class Player : MonoBehaviour
         if(_isJumping)
         {
             this.GetComponent<Rigidbody>().AddForce(0, _jumpingVelocity.y, 0);
-
-            if (_isHoldingSpace == false)
+            _jumpingVelocity.y += gravity * Time.fixedDeltaTime;
+            if(_isHoldingSpace && _glidingTime < _glidingTimer)
             {
-                _jumpingVelocity.y += gravity * Time.fixedDeltaTime;
+                this.GetComponent<Rigidbody>().drag = _glidingDrag;
+                //_glidingTime += Time.deltaTime;
             }
-            else
-            {
-                this.GetComponent<Rigidbody>().AddForce(20, 0, 0);
-            }
-            DetectCollision();
         }
+        DetectCollision();
     }
 
     private void DetectCollision()
@@ -80,6 +83,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            _glidingTime = 0;
             _isJumping = false;
         }
         if (collision.gameObject.tag == "obstacle")
