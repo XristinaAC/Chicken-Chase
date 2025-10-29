@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         //For the player to move continiously we need a speed and a direction
-        if (!_isJumping && !_obstacleHit)
+        if (!_obstacleHit)
         {
             transform.position += _runningVelocity * Time.deltaTime;
         }
@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
             {
                 _isJumping = true;
                 _jumpingVelocity.y = jumpingSpeed;
-                _jumpingVelocity.x = jumpingSpeed;
             }
         }
     }
@@ -45,9 +44,12 @@ public class Player : MonoBehaviour
         Vector3 pos = transform.position;
         if(_isJumping)
         {
+            if (_obstacleHit)
+            {
+                _obstacleHit = false;
+            }
             this.GetComponent<Rigidbody>().AddForce(_jumpingVelocity.x, _jumpingVelocity.y, 0);
             _jumpingVelocity.y += gravity * Time.fixedDeltaTime;
-            _jumpingVelocity.x += gravity * Time.fixedDeltaTime;
             //DetectCollision();
         }
     }
@@ -60,6 +62,7 @@ public class Player : MonoBehaviour
         if(Physics.Raycast(rayOrigin, rayfDirection, rayDistance, LayerMask.GetMask("Ground")))
         {
             _isJumping = false;
+            Debug.Log("down");
         }
     }
 
@@ -72,11 +75,8 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "obstacle")
         {
+            //transform.position = new Vector3(transform.position.x - 2.0f, transform.position.y, transform.position.z);
             _obstacleHit = true;
-        }
-        else
-        {
-            _obstacleHit = false;
         }
     }
 }
