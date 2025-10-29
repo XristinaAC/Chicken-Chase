@@ -44,12 +44,12 @@ public class Player : MonoBehaviour
         Vector3 pos = transform.position;
         if(_isJumping)
         {
+            this.GetComponent<Rigidbody>().AddForce(_jumpingVelocity.x, _jumpingVelocity.y, 0);
+            _jumpingVelocity.y += gravity * Time.fixedDeltaTime;
             if (_obstacleHit)
             {
                 _obstacleHit = false;
             }
-            this.GetComponent<Rigidbody>().AddForce(_jumpingVelocity.x, _jumpingVelocity.y, 0);
-            _jumpingVelocity.y += gravity * Time.fixedDeltaTime;
             //DetectCollision();
         }
     }
@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Turn that into raycasts
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Ground")
