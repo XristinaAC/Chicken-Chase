@@ -700,7 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 10
   jumpingSpeed: 50
-  gravity: -100
+  gravity: -200
 --- !u!135 &1273409422
 SphereCollider:
   m_ObjectHideFlags: 0
