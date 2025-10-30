@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpingSpeed = 50;
     [SerializeField] private float gravity = 0;
     [SerializeField] private LayerMask mask;
+    [SerializeField] private GameObject pNameTextParent;
+    [SerializeField] private TMP_Text pNameText;
+    [SerializeField] private string pName;
+    [SerializeField] private int score;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private Vector3 _jumpingVelocity = Vector3.zero;
@@ -22,10 +27,28 @@ public class Player : MonoBehaviour
 
     private bool _isJumping = false;
 
+    private void Awake()
+    {
+        SaveManager._saveInstance.Load_Data();
+      
+        if(SaveManager._saveInstance.Get_Player_Name() != null && SaveManager._saveInstance.Get_Score() != 0)
+        {
+            pNameTextParent.SetActive(false);
+            pName = SaveManager._saveInstance.Get_Player_Name();
+            score = SaveManager._saveInstance.Get_Score();
+        }
+    }
+
     private void Start()
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _runningVelocity = Vector3.right * playerSpeed;
+    }
+
+    public void SetName()
+    {
+        SaveManager._saveInstance.Set_Player_Name(pNameText.GetComponent<TMP_Text>().text);
+        pNameTextParent.SetActive(false);
     }
 
     private void Update()
