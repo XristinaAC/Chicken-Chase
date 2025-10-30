@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private TMP_Text pNameText;
     [SerializeField] private string pName;
     [SerializeField] private int score;
+    [SerializeField] private Transform basePosition;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private Vector3 _jumpingVelocity = Vector3.zero;
@@ -55,22 +56,24 @@ public class Player : MonoBehaviour
     {
         if (!_obstacleHit)
         {
-            transform.position += new Vector3(_runningVelocity.x * Time.deltaTime,0,0);
+           transform.position += new Vector3(_runningVelocity.x * Time.deltaTime,0,0);
         }
 
-        if (_isJumping == false)
-        {
+        //if (_isJumping == false)
+        //{
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 _isJumping = true;
                 _isHoldingSpace = true;
                 _jumpingVelocity.y = jumpingSpeed;
-                _glidingTime += Time.deltaTime;
+                //_glidingTime += Time.deltaTime;
             }
-        }
+           
+        //}
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            _isJumping = false;
             _isHoldingSpace = false;
             this.GetComponent<Rigidbody>().drag = _rbDrag;
         }
@@ -78,27 +81,46 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_isJumping)
+        if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            this.GetComponent<Rigidbody>().AddForce(0, _jumpingVelocity.y, 0);
-            _jumpingVelocity.y += gravity * Time.fixedDeltaTime;
-            if(_isHoldingSpace && _glidingTime < _glidingTimer)
+            if (_isJumping)
             {
-                this.GetComponent<Rigidbody>().drag = _glidingDrag;
-                //_glidingTime += Time.deltaTime;
+                this.GetComponent<Rigidbody>().AddForce(Vector3.up * jumpingSpeed, ForceMode.Impulse);
+                Debug.Log("hi");
+                if (_isHoldingSpace && _glidingTime < _glidingTimer)
+                {
+                    this.GetComponent<Rigidbody>().drag = _glidingDrag;
+                    _glidingTime += Time.deltaTime;
+                }
             }
+            else
+            {
+                if (_isHoldingSpace && _glidingTime < _glidingTimer)
+                {
+                    this.GetComponent<Rigidbody>().drag = _glidingDrag;
+                    _glidingTime += Time.deltaTime;
+                }
+                Debug.Log("hry");
+                this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
+            _isJumping = false;
         }
-        DetectCollision();
+      
     }
 
     private void DetectCollision()
     {
-        RaycastHit hi;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up),out hi, 10.0f))
+        if(Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
             Debug.Log("hi");
             _isJumping = false;
         }
+        RaycastHit hi;
+        //if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up),out hi, 0.1f))
+        //{
+        //    Debug.Log("hi");
+        //    _isJumping = false;
+        //}
     }
 
     //Turn that into raycasts
@@ -107,12 +129,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             _glidingTime = 0;
-            _isJumping = false;
-        }
-        if (collision.gameObject.tag == "obstacle")
-        {
-            this.gameObject.SetActive(false);
-            //_obstacleHit = true;
+            //_isJumping = false;
         }
     }
 }
