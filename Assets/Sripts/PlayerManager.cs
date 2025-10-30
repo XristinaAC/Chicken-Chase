@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private string pName;
     [SerializeField] private int score;
     [SerializeField] private Transform basePosition;
+    [SerializeField] private Camera mainCamera;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private Vector3 _jumpingVelocity = Vector3.zero;
@@ -27,6 +31,7 @@ public class Player : MonoBehaviour
     private float _glidingTime = 0;
 
     private bool _isJumping = false;
+    private Vector3 _direction;
 
     private void Awake()
     {
@@ -43,7 +48,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
-        _runningVelocity = Vector3.right * playerSpeed;
+        _runningVelocity = Vector3.right * playerSpeed * Time.deltaTime;
+        _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
     }
 
     public void SetName()
@@ -56,28 +62,36 @@ public class Player : MonoBehaviour
     {
         if (!_obstacleHit)
         {
-           transform.position += new Vector3(_runningVelocity.x * Time.deltaTime,0,0);
+            transform.position += _direction;// new Vector3(_runningVelocity.x * Time.deltaTime,0,0);
         }
 
-        //if (_isJumping == false)
-        //{
-            if (Input.GetKeyDown(KeyCode.Space))
+        if (midAir)
+        {
+            _glidingTime += Time.deltaTime;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if(!_isJumping)
             {
                 _isJumping = true;
-                _isHoldingSpace = true;
-                _jumpingVelocity.y = jumpingSpeed;
-                //_glidingTime += Time.deltaTime;
             }
            
-        //}
+            _isHoldingSpace = true;
+            _jumpingVelocity.y = jumpingSpeed;
+            _glidingTime = 0;
+        }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            _isJumping = false;
+            Debug.Log("drag");
             _isHoldingSpace = false;
+            _glidingTime = 0;
             this.GetComponent<Rigidbody>().drag = _rbDrag;
         }
     }
+
+    bool midAir = false;
 
     private void FixedUpdate()
     {
@@ -85,51 +99,57 @@ public class Player : MonoBehaviour
         {
             if (_isJumping)
             {
+                midAir = true;
                 this.GetComponent<Rigidbody>().AddForce(Vector3.up * jumpingSpeed, ForceMode.Impulse);
-                Debug.Log("hi");
-                if (_isHoldingSpace && _glidingTime < _glidingTimer)
+                if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
                 {
                     this.GetComponent<Rigidbody>().drag = _glidingDrag;
-                    _glidingTime += Time.deltaTime;
+
+                    //_glidingTime += Time.deltaTime;
                 }
             }
             else
             {
+                this.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 if (_isHoldingSpace && _glidingTime < _glidingTimer)
                 {
+                    Debug.Log("hi");
                     this.GetComponent<Rigidbody>().drag = _glidingDrag;
-                    _glidingTime += Time.deltaTime;
                 }
-                Debug.Log("hry");
-                this.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
-            _isJumping = false;
-        }
-      
-    }
+            if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
+            {
+                this.GetComponent<Rigidbody>().drag = _glidingDrag;
 
-    private void DetectCollision()
-    {
-        if(Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
+                //_glidingTime += Time.deltaTime;
+            }
+        }
+        else
         {
-            Debug.Log("hi");
+            midAir = false;
+            _glidingTime = 0;
             _isJumping = false;
         }
-        RaycastHit hi;
-        //if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up),out hi, 0.1f))
-        //{
-        //    Debug.Log("hi");
-        //    _isJumping = false;
-        //}
     }
 
-    //Turn that into raycasts
+    void ChangeDirection()
+    {
+        _direction = new Vector3(0, 0, _runningVelocity.x * Time.deltaTime);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
-            _glidingTime = 0;
-            //_isJumping = false;
+            midAir = false;
+        }
+
+        if (collision.gameObject.tag == "change scene")
+        {
+            Debug.Log("hi");
+            ChangeDirection();
+            transform.Rotate(0, -90, 0);
+            //mainCamera.transform.Rotate(0,-90, 0);
         }
     }
 }
