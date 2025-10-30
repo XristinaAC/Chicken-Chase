@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Xml.Serialization;
 using TMPro;
 using Unity.VisualScripting;
@@ -19,7 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private string pName;
     [SerializeField] private int score;
     [SerializeField] private Transform basePosition;
-    [SerializeField] private Camera mainCamera;
+    [SerializeField] private GameObject mainCamera;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private Vector3 _jumpingVelocity = Vector3.zero;
@@ -131,7 +132,16 @@ public class Player : MonoBehaviour
             _isJumping = false;
         }
     }
-
+    Quaternion rotation;
+    private void LateUpdate()
+    {
+        if(rotateCamera)
+        {
+            mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, rotation, 0.5f);
+        }
+    }
+    private float timeCount = 0.0f;
+    bool rotateCamera = false;
     void ChangeDirection()
     {
         _direction = new Vector3(0, 0, _runningVelocity.x * Time.deltaTime);
@@ -147,9 +157,14 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "change scene")
         {
             Debug.Log("hi");
+            transform.Rotate(0, -45, 0);
             ChangeDirection();
-            transform.Rotate(0, -90, 0);
-            //mainCamera.transform.Rotate(0,-90, 0);
+            rotateCamera = true;
+            rotation = new Quaternion();
+            //rotation.y = -45;
+            //mainCamera.transform.Rotate(0, -45, 0);
+            var targetRotation = Quaternion.LookRotation(mainCamera.transform.position - this.transform.position);
+            Quaternion.RotateTowards(mainCamera.transform.rotation, targetRotation, -45);
         }
     }
 }

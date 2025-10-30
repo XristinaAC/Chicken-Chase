@@ -18,14 +18,14 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
         transform.position = player.transform.position + offset;
-    
-        transform.LookAt(player.transform);
+        //Vector3 newPos = new Vector3(0,0, player.transform.position.y);
+        //transform.LookAt(player.transform.right);
         //transform.forward = player.transform.position - transform.position;
-        //transform.position.
+        
     }
+    Vector3 _currentRotation;
 
     void LateUpdate()
     {
-
     }
 }
