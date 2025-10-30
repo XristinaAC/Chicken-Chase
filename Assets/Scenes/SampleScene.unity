@@ -724,7 +724,10 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 64
+  pNameTextParent: {fileID: 2039195295}
   pNameText: {fileID: 100021048}
+  pName: 
+  score: 0
 --- !u!135 &480706509
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -939,7 +942,7 @@ GameObject:
   - component: {fileID: 1222878933}
   - component: {fileID: 1222878934}
   m_Layer: 0
-  m_Name: BranchSaveManager
+  m_Name: SaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1108,7 +1111,10 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 0
+  pNameTextParent: {fileID: 0}
   pNameText: {fileID: 0}
+  pName: 
+  score: 0
 --- !u!135 &1273409422
 SphereCollider:
   m_ObjectHideFlags: 0

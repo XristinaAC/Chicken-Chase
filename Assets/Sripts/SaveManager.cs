@@ -34,7 +34,7 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-        //Save_Data();
+        Save_Data();
     }
 
     public void Save_Data()
@@ -51,10 +51,8 @@ public class SaveManager : MonoBehaviour
             return;
         }
         string jason_file = File.ReadAllText(Get_Path());
-        //for(int i = 0; i < PlayerData2.Count; i++)
-        //{
-            PlayerData = JsonUtility.FromJson<Data_To_Save>(jason_file);
-        //}
+        
+        PlayerData = JsonUtility.FromJson<Data_To_Save>(jason_file);
     }
 
     public void Set_Score(int score)
