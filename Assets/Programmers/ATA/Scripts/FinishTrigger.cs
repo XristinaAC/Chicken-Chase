@@ -16,7 +16,8 @@ public class FinishTrigger : MonoBehaviour
 
         if (LevelManager.Instance != null)
         {
-            await Task.Yield(); 
+            await Task.Delay(800); 
+            Time.timeScale = 1f;
             LevelManager.Instance.LoadNextLevelAsync();
         }
     }

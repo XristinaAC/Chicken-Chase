@@ -13,8 +13,8 @@
             GameOver,
         }
 
-        private GameState _gameState;
-        
+        public GameState CurrentState { get; private set; }
+
         public event Action<GameState> OnGameStateChanged;
 
         private void Awake()
@@ -31,18 +31,17 @@
 
         public void ChangeState(GameState state)
         {
-            if (_gameState == state) return;
-            
-            _gameState = state;
+            if (CurrentState == state) return;
+            CurrentState = state;
 
-            OnGameStateChanged?.Invoke(_gameState);
+            OnGameStateChanged?.Invoke(CurrentState);
         }
-        
+    
         public void TogglePause()
         {
-            if(_gameState == GameState.Playing)
+            if(CurrentState == GameState.Playing)
                 ChangeState(GameState.Paused);
-            else if (_gameState == GameState.Paused)
+            else if (CurrentState == GameState.Paused)
                 ChangeState(GameState.Playing);
         }
         
