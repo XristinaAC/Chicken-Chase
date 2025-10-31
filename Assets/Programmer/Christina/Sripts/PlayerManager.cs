@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Xml.Serialization;
 using TMPro;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Player : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 0;
     [SerializeField] private float jumpingSpeed = 50;
@@ -36,18 +37,6 @@ public class Player : MonoBehaviour
     private bool _isJumping = false;
     private Vector3 _direction;
    
-    private void Awake()
-    {
-        //SaveManager._saveInstance.Load_Data();
-      
-        //if(SaveManager._saveInstance.Get_Player_Name() != null && SaveManager._saveInstance.Get_Score() != 0)
-        //{
-        //    pNameTextParent.SetActive(false);
-        //    pName = SaveManager._saveInstance.Get_Player_Name();
-        //    score = SaveManager._saveInstance.Get_Score();
-        //}
-    }
-
     private void Start()
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
@@ -56,10 +45,16 @@ public class Player : MonoBehaviour
         _jumpHeightV = new Vector3(0, _jumpHeight, 0);
     }
 
-    public void SetName()
+    public void SetDirection(int direction)
     {
-        SaveManager._saveInstance.Set_Player_Name(pNameText.GetComponent<TMP_Text>().text);
-        pNameTextParent.SetActive(false);
+        if(direction == 0)
+        {
+            _direction = new Vector3(_runningVelocity.x * Time.time, 0, 0);
+        }
+        else if(direction == 1)
+        {
+            _direction = new Vector3(0, 0, _runningVelocity.x * Time.time);
+        }
     }
 
     private void Update()
@@ -69,31 +64,32 @@ public class Player : MonoBehaviour
             transform.position += _direction;// new Vector3(_runningVelocity.x * Time.deltaTime,0,0);
         }
 
-        //if(_isJumping == false)
-        //{
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                 Debug.Log("ready to jump");
-                 _isJumping = true;
-                _isHoldingSpace = true;
-                _glidingTime = 0;
-            //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _isHoldingSpace = true;
+            _isJumping = true;
+            _glidingTime = 0;
         }
 
-        if (transform.position.y <= _jumpHeight && _isHoldingSpace && _glidingTime < _glidingTimer)
+        RaycastHit hit;
+        Physics.Raycast(transform.position, Vector3.down, out hit,mask);
+        Debug.Log(Vector3.Distance(hit.point, transform.position));
+
+        if (Vector3.Distance(hit.point, transform.position) > 2)//transform.position.y > 1)//   transform.position.y == _jumpHeightV.y * jumpingSpeed)
+        {
+            canGlide = true;
+        }
+
+        if (canGlide && this.GetComponent<Rigidbody>().velocity.y > 0.5 && _glidingTime < _glidingTimer && _isHoldingSpace)
         {
             Debug.Log("glide");
-            if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
-            {
-                //this.GetComponent<Rigidbody>().drag = _glidingDrag;
-
-                _glidingTime += Time.deltaTime;
-            }
+            this.GetComponent<Rigidbody>().drag = _glidingDrag;
+            this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
+            _glidingTime += Time.fixedDeltaTime;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            //Debug.Log("drag");
             _isHoldingSpace = false;
             _glidingTime = 0;
             canGlide = false;
@@ -103,18 +99,14 @@ public class Player : MonoBehaviour
 
     bool midAir = false;
     bool canGlide = false;
-   
 
     private void FixedUpdate()
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            if (_isJumping)/* && midAir == false)*/
+            if (_isJumping && !_isHoldingSpace)
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
-                //Debug.Log("jump");
-                midAir = true;
-                canGlide = true;
             }
         }
         else
@@ -155,9 +147,8 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "change scene")
         {
-            Debug.Log("hi");
             transform.Rotate(0, -45, 0);
-            ChangeDirection();
+            //ChangeDirection();
             //rotateCamera = true;
             //rotation = new Quaternion();
             ////rotation.y = -45;
