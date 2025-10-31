@@ -34,14 +34,13 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        _runningVelocity = Vector3.right * playerSpeed * Time.deltaTime;
+        _runningVelocity = new Vector3(playerSpeed * Time.deltaTime, 0, 0);
+        _runningVelocity = _runningVelocity.normalized;
     }
 
     private void Start()
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
-        //_runningVelocity = Vector3.right * playerSpeed * Time.deltaTime;
-        //_direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
         SetDirection(0);
         _jumpHeightV = new Vector3(0, _jumpHeight, 0);
     }
@@ -51,13 +50,11 @@ public class PlayerManager : MonoBehaviour
         if(direction == 0)
         {
             Debug.Log("hey");
-            _runningVelocity = _runningVelocity.normalized;
             _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
         }
         else if(direction == 1)
         {
-            _runningVelocity = _runningVelocity.normalized;
-            _direction = new Vector3(0, 0, _runningVelocity.x * Time.deltaTime);
+            _direction = new Vector3(0, 0, _runningVelocity.x * Time.deltaTime * playerSpeed);
         }
     }
 
