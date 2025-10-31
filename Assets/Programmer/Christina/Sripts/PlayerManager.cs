@@ -16,16 +16,11 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float jumpingSpeed = 50;
     [SerializeField] private float gravity = 0;
     [SerializeField] private LayerMask mask;
-    [SerializeField] private GameObject pNameTextParent;
-    [SerializeField] private TMP_Text pNameText;
-    [SerializeField] private string pName;
-    [SerializeField] private int score;
     [SerializeField] private Transform basePosition;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private float _jumpHeight = 1;
 
     private Vector3 _runningVelocity = Vector3.zero;
-    private Vector3 _jumpingVelocity = Vector3.zero;
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
     private float _rbDrag = 0;
@@ -36,12 +31,18 @@ public class PlayerManager : MonoBehaviour
 
     private bool _isJumping = false;
     private Vector3 _direction;
-   
+
+    private void Awake()
+    {
+        _runningVelocity = Vector3.right * playerSpeed * Time.deltaTime;
+    }
+
     private void Start()
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
-        _runningVelocity = Vector3.right * playerSpeed * Time.deltaTime;
-        _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
+        //_runningVelocity = Vector3.right * playerSpeed * Time.deltaTime;
+        //_direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
+        SetDirection(0);
         _jumpHeightV = new Vector3(0, _jumpHeight, 0);
     }
 
@@ -49,11 +50,14 @@ public class PlayerManager : MonoBehaviour
     {
         if(direction == 0)
         {
-            _direction = new Vector3(_runningVelocity.x * Time.time, 0, 0);
+            Debug.Log("hey");
+            _runningVelocity = _runningVelocity.normalized;
+            _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
         }
         else if(direction == 1)
         {
-            _direction = new Vector3(0, 0, _runningVelocity.x * Time.time);
+            _runningVelocity = _runningVelocity.normalized;
+            _direction = new Vector3(0, 0, _runningVelocity.x * Time.deltaTime);
         }
     }
 
@@ -61,7 +65,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (!_obstacleHit)
         {
-            transform.position += _direction;// new Vector3(_runningVelocity.x * Time.deltaTime,0,0);
+            transform.position += _direction;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -75,7 +79,7 @@ public class PlayerManager : MonoBehaviour
         Physics.Raycast(transform.position, Vector3.down, out hit,mask);
         Debug.Log(Vector3.Distance(hit.point, transform.position));
 
-        if (Vector3.Distance(hit.point, transform.position) > 2)//transform.position.y > 1)//   transform.position.y == _jumpHeightV.y * jumpingSpeed)
+        if (Vector3.Distance(hit.point, transform.position) > 2)
         {
             canGlide = true;
         }
