@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int score;
     [SerializeField] private Transform basePosition;
     [SerializeField] private GameObject mainCamera;
+    [SerializeField] private float _jumpHeight = 1;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private Vector3 _jumpingVelocity = Vector3.zero;
@@ -30,10 +31,11 @@ public class Player : MonoBehaviour
     private float _glidingDrag = 30;
     private float _glidingTimer = 5;
     private float _glidingTime = 0;
+    private Vector3 _jumpHeightV;
 
     private bool _isJumping = false;
     private Vector3 _direction;
-
+   
     private void Awake()
     {
         //SaveManager._saveInstance.Load_Data();
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _runningVelocity = Vector3.right * playerSpeed * Time.deltaTime;
         _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
+        _jumpHeightV = new Vector3(0, _jumpHeight, 0);
     }
 
     public void SetName()
@@ -68,7 +71,7 @@ public class Player : MonoBehaviour
 
         if (midAir)
         {
-            _glidingTime += Time.deltaTime;
+            //_glidingTime += Time.deltaTime;
         }
 
         if(_isJumping == false)
@@ -97,6 +100,8 @@ public class Player : MonoBehaviour
     }
 
     bool midAir = false;
+    bool canGlide = false;
+   
 
     private void FixedUpdate()
     {
@@ -104,44 +109,46 @@ public class Player : MonoBehaviour
         {
             if (_isJumping && midAir == false)
             {
-                this.GetComponent<Rigidbody>().AddForce(Vector3.up * jumpingSpeed, ForceMode.Impulse);
+                this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
                 //if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
                 //{
                 //    this.GetComponent<Rigidbody>().drag = _glidingDrag;
 
                 //    //_glidingTime += Time.deltaTime;
                 //}
+                Debug.Log("jump");
                 midAir = true;
+                canGlide = true;
             }
-            else if(_isJumping && _isHoldingSpace && this.GetComponent<Rigidbody>().velocity.y < 0 && _glidingTime < _glidingTimer)
+            else
+            {
+                //canGlide = false;
+                this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                if (_isHoldingSpace && _glidingTime < _glidingTimer)
+                {
+                    this.GetComponent<Rigidbody>().drag = _glidingDrag;
+                }
+            }
+            if (!_isJumping && _isHoldingSpace && _glidingTime < _glidingTimer)
             {
                 Debug.Log("glide");
                 if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
                 {
                     this.GetComponent<Rigidbody>().drag = _glidingDrag;
 
-                    //_glidingTime += Time.deltaTime;
+                    _glidingTime += Time.deltaTime;
                 }
             }
-            else
-            {
-                this.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                if (_isHoldingSpace && _glidingTime < _glidingTimer)
-                {
-                    Debug.Log("hi");
-                    this.GetComponent<Rigidbody>().drag = _glidingDrag;
-                }
-            }
-            //if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
-            //{
-            //    this.GetComponent<Rigidbody>().drag = _glidingDrag;
+                //if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
+                //{
+                //    this.GetComponent<Rigidbody>().drag = _glidingDrag;
 
-            //    //_glidingTime += Time.deltaTime;
-            //}
-        }
+                //    //_glidingTime += Time.deltaTime;
+                //}
+
+            }
         else
         {
-            //_isJumping = false;
             midAir = false;
             _glidingTime = 0;
         }
