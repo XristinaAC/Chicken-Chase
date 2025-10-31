@@ -1,45 +1,70 @@
-using System.Collections;
 using System.Collections.Generic;
+using Programmers.ATA.Scripts;
 using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> obstaclesPrefabs = new List<GameObject>();
+    [Header("References")]
+    [SerializeField] private ObstacleSet obstacleSet;
     [SerializeField] private List<Transform> spawnPositions = new List<Transform>();
-    [SerializeField] private int maxObstacles;
+    [SerializeField] private int maxObstacles = 5;
 
-    void OnEnable()
+    private void OnEnable()
     {
-        if(LevelManager.Instance != null)
-            LevelManager.Instance.OnLevelLoadComplete +=  ObstacleSpawn;
-        
+        if (LevelManager.Instance != null)
+            LevelManager.Instance.OnLevelLoadComplete += ObstacleSpawn;
+
         ObstacleSpawn();
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
-        if(LevelManager.Instance != null)
-            LevelManager.Instance.OnLevelLoadComplete -=  ObstacleSpawn;
+        if (LevelManager.Instance != null)
+            LevelManager.Instance.OnLevelLoadComplete -= ObstacleSpawn;
     }
-   
 
-    void ObstacleSpawn()
+    private void ObstacleSpawn()
     {
-        if (obstaclesPrefabs.Count == 0 || spawnPositions.Count == 0) return;
-        int count = Mathf.Min(maxObstacles, spawnPositions.Count);
+        if (obstacleSet == null || obstacleSet.obstacles.Count == 0 || spawnPositions.Count == 0)
+            return;
 
-     
-        List<Transform> spawnPos = new List<Transform>(spawnPositions);
-        
+        int count = Mathf.Min(maxObstacles, spawnPositions.Count);
+        List<Transform> availableSpawns = new List<Transform>(spawnPositions);
+
         for (int i = 0; i < count; i++)
         {
-            int randomPrefabs = Random.Range(0, obstaclesPrefabs.Count);
-            int randomIndex = Random.Range(0,spawnPos.Count);
-            Transform newPos = spawnPos[randomIndex];
-            spawnPos.RemoveAt(randomIndex);
-            
-            Instantiate(obstaclesPrefabs[randomPrefabs], newPos.position, Quaternion.identity);
+            // Random obstacles
+            ObstacleData selected = GetRandomObstacle();
+            if (selected == null || selected.prefab == null) continue;
+
+            // Random Spawn points
+            int randomIndex = Random.Range(0, availableSpawns.Count);
+            Transform spawnPoint = availableSpawns[randomIndex];
+            availableSpawns.RemoveAt(randomIndex);
+
+            Instantiate(selected.prefab, spawnPoint.position, Quaternion.identity);
         }
     }
-    
+
+    private ObstacleData GetRandomObstacle()
+    {
+        if (obstacleSet == null || obstacleSet.obstacles.Count == 0)
+            return null;
+
+        float totalWeight = 0f;
+        foreach (var obstacle in obstacleSet.obstacles)
+            totalWeight += obstacle.spawnChance;
+
+        float randomPoint = Random.Range(0f, totalWeight);
+        float current = 0f;
+
+        foreach (var obstacle in obstacleSet.obstacles)
+        {
+            current += obstacle.spawnChance;
+            if (randomPoint <= current)
+                return obstacle;
+        }
+
+        return obstacleSet.obstacles[obstacleSet.obstacles.Count - 1];
+    }
 }

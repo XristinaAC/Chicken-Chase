@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
     public async Task LoadLevelAsync(string sceneName)
     {
         OnLevelLoadStart?.Invoke();
+
         
         var asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         asyncLoad.allowSceneActivation = false;

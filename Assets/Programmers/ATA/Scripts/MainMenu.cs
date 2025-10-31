@@ -8,8 +8,10 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        if (GameManager.Instance != null)
+            GameManager.Instance.ChangeState(GameManager.GameState.Playing);
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        GameManager.Instance.ChangeState(GameManager.GameState.Playing);
     }
 
     public void QuitGame()

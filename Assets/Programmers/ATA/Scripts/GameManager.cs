@@ -36,14 +36,6 @@
 
             OnGameStateChanged?.Invoke(CurrentState);
         }
-    
-        public void TogglePause()
-        {
-            if(CurrentState == GameState.Playing)
-                ChangeState(GameState.Paused);
-            else if (CurrentState == GameState.Paused)
-                ChangeState(GameState.Playing);
-        }
         
         
     }
