@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int score;
     [SerializeField] private Transform basePosition;
     [SerializeField] private GameObject mainCamera;
-    [SerializeField] private float _jumpHeight = 0.5f;
+    [SerializeField] private float _jumpHeight = 1;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private Vector3 _jumpingVelocity = Vector3.zero;
@@ -80,12 +80,12 @@ public class Player : MonoBehaviour
             //}
         }
 
-        if (!_isJumping && canGlide && _isHoldingSpace && _glidingTime < _glidingTimer)
+        if (transform.position.y <= _jumpHeight && _isHoldingSpace && _glidingTime < _glidingTimer)
         {
             Debug.Log("glide");
             if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
             {
-                this.GetComponent<Rigidbody>().drag = _glidingDrag;
+                //this.GetComponent<Rigidbody>().drag = _glidingDrag;
 
                 _glidingTime += Time.deltaTime;
             }
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Debug.Log("drag");
+            //Debug.Log("drag");
             _isHoldingSpace = false;
             _glidingTime = 0;
             canGlide = false;
@@ -112,26 +112,16 @@ public class Player : MonoBehaviour
             if (_isJumping)/* && midAir == false)*/
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
-                Debug.Log("jump");
+                //Debug.Log("jump");
                 midAir = true;
                 canGlide = true;
             }
-            else
-            {
-                //canGlide = false;
-                Debug.Log("not jump");
-                this.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                //if (_isHoldingSpace && _glidingTime < _glidingTimer)
-                //{
-                //    this.GetComponent<Rigidbody>().drag = _glidingDrag;
-                //}
-            }
-            _isJumping = false;
         }
         else
         {
             midAir = false;
             _glidingTime = 0;
+            _isJumping = false;
         }
     }
 
@@ -155,7 +145,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            midAir = false;
+            //midAir = false;
         }
 
         if (collision.gameObject.tag == "obstacle")
