@@ -19,7 +19,7 @@ public class CameraManager : MonoBehaviour
     {
         transform.position = player.transform.position + offset;
         //Vector3 newPos = new Vector3(0,0, player.transform.position.y);
-        //transform.LookAt(player.transform.right);
+     
         //transform.forward = player.transform.position - transform.position;
         
     }

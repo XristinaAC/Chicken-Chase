@@ -21,14 +21,14 @@ public class Player : MonoBehaviour
     [SerializeField] private int score;
     [SerializeField] private Transform basePosition;
     [SerializeField] private GameObject mainCamera;
-    [SerializeField] private float _jumpHeight = 1;
+    [SerializeField] private float _jumpHeight = 0.5f;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private Vector3 _jumpingVelocity = Vector3.zero;
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
     private float _rbDrag = 0;
-    private float _glidingDrag = 30;
+    private float _glidingDrag = 15;
     private float _glidingTimer = 5;
     private float _glidingTime = 0;
     private Vector3 _jumpHeightV;
@@ -69,32 +69,34 @@ public class Player : MonoBehaviour
             transform.position += _direction;// new Vector3(_runningVelocity.x * Time.deltaTime,0,0);
         }
 
-        if (midAir)
-        {
-            //_glidingTime += Time.deltaTime;
-        }
-
-        if(_isJumping == false)
-        {
+        //if(_isJumping == false)
+        //{
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 
             _isJumping = true;
-                
-
             _isHoldingSpace = true;
-            _jumpingVelocity.y = jumpingSpeed;
             _glidingTime = 0;
+            //}
+        }
+
+        if (!_isJumping && canGlide && _isHoldingSpace && _glidingTime < _glidingTimer)
+        {
+            Debug.Log("glide");
+            if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
+            {
+                this.GetComponent<Rigidbody>().drag = _glidingDrag;
+
+                _glidingTime += Time.deltaTime;
             }
         }
-        
-       
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Debug.Log("drag");
             _isHoldingSpace = false;
             _glidingTime = 0;
+            canGlide = false;
             this.GetComponent<Rigidbody>().drag = _rbDrag;
         }
     }
@@ -110,12 +112,6 @@ public class Player : MonoBehaviour
             if (_isJumping && midAir == false)
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
-                //if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
-                //{
-                //    this.GetComponent<Rigidbody>().drag = _glidingDrag;
-
-                //    //_glidingTime += Time.deltaTime;
-                //}
                 Debug.Log("jump");
                 midAir = true;
                 canGlide = true;
@@ -124,36 +120,24 @@ public class Player : MonoBehaviour
             {
                 //canGlide = false;
                 this.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                if (_isHoldingSpace && _glidingTime < _glidingTimer)
-                {
-                    this.GetComponent<Rigidbody>().drag = _glidingDrag;
-                }
-            }
-            if (!_isJumping && _isHoldingSpace && _glidingTime < _glidingTimer)
-            {
-                Debug.Log("glide");
-                if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
-                {
-                    this.GetComponent<Rigidbody>().drag = _glidingDrag;
-
-                    _glidingTime += Time.deltaTime;
-                }
-            }
-                //if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
+                //if (_isHoldingSpace && _glidingTime < _glidingTimer)
                 //{
                 //    this.GetComponent<Rigidbody>().drag = _glidingDrag;
-
-                //    //_glidingTime += Time.deltaTime;
                 //}
-
             }
+            _isJumping = false;
+        }
         else
         {
             midAir = false;
             _glidingTime = 0;
         }
-        _isJumping = false;
     }
+
+
+
+
+
     Quaternion rotation;
     private void LateUpdate()
     {
@@ -162,6 +146,7 @@ public class Player : MonoBehaviour
             mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, rotation, 0.5f);
         }
     }
+
     private float timeCount = 0.0f;
     bool rotateCamera = false;
     void ChangeDirection()
@@ -189,9 +174,9 @@ public class Player : MonoBehaviour
             rotateCamera = true;
             rotation = new Quaternion();
             //rotation.y = -45;
-            //mainCamera.transform.Rotate(0, -45, 0);
-            var targetRotation = Quaternion.LookRotation(mainCamera.transform.position - this.transform.position);
-            Quaternion.RotateTowards(mainCamera.transform.rotation, targetRotation, -45);
+            mainCamera.transform.Rotate(0, -45, 0);
+            //var targetRotation = Quaternion.LookRotation(mainCamera.transform.position - this.transform.position);
+            //Quaternion.RotateTowards(mainCamera.transform.rotation, targetRotation, -45);
         }
     }
 }
