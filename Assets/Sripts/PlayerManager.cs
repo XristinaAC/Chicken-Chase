@@ -73,10 +73,10 @@ public class Player : MonoBehaviour
         //{
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                
-            _isJumping = true;
-            _isHoldingSpace = true;
-            _glidingTime = 0;
+                 Debug.Log("ready to jump");
+                 _isJumping = true;
+                _isHoldingSpace = true;
+                _glidingTime = 0;
             //}
         }
 
@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            if (_isJumping && midAir == false)
+            if (_isJumping)/* && midAir == false)*/
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
                 Debug.Log("jump");
@@ -119,6 +119,7 @@ public class Player : MonoBehaviour
             else
             {
                 //canGlide = false;
+                Debug.Log("not jump");
                 this.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 //if (_isHoldingSpace && _glidingTime < _glidingTimer)
                 //{
@@ -133,10 +134,6 @@ public class Player : MonoBehaviour
             _glidingTime = 0;
         }
     }
-
-
-
-
 
     Quaternion rotation;
     private void LateUpdate()
@@ -171,12 +168,12 @@ public class Player : MonoBehaviour
             Debug.Log("hi");
             transform.Rotate(0, -45, 0);
             ChangeDirection();
-            rotateCamera = true;
-            rotation = new Quaternion();
-            //rotation.y = -45;
-            mainCamera.transform.Rotate(0, -45, 0);
-            //var targetRotation = Quaternion.LookRotation(mainCamera.transform.position - this.transform.position);
-            //Quaternion.RotateTowards(mainCamera.transform.rotation, targetRotation, -45);
+            //rotateCamera = true;
+            //rotation = new Quaternion();
+            ////rotation.y = -45;
+            //mainCamera.transform.Rotate(0, -45, 0);
+            ////var targetRotation = Quaternion.LookRotation(mainCamera.transform.position - this.transform.position);
+            ////Quaternion.RotateTowards(mainCamera.transform.rotation, targetRotation, -45);
         }
     }
 }
