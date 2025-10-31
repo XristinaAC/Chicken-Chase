@@ -869,8 +869,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0925f590b820e2143bb524d00e3664b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 50
-  jumpingSpeed: 30
+  playerSpeed: 10
+  jumpingSpeed: 20
   gravity: -200
   mask:
     serializedVersion: 2

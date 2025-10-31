@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
     private float _rbDrag = 0;
-    private float _glidingDrag = 10;
+    private float _glidingDrag = 30;
     private float _glidingTimer = 5;
     private float _glidingTime = 0;
 
@@ -36,14 +36,14 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        SaveManager._saveInstance.Load_Data();
+        //SaveManager._saveInstance.Load_Data();
       
-        if(SaveManager._saveInstance.Get_Player_Name() != null && SaveManager._saveInstance.Get_Score() != 0)
-        {
-            pNameTextParent.SetActive(false);
-            pName = SaveManager._saveInstance.Get_Player_Name();
-            score = SaveManager._saveInstance.Get_Score();
-        }
+        //if(SaveManager._saveInstance.Get_Player_Name() != null && SaveManager._saveInstance.Get_Score() != 0)
+        //{
+        //    pNameTextParent.SetActive(false);
+        //    pName = SaveManager._saveInstance.Get_Player_Name();
+        //    score = SaveManager._saveInstance.Get_Score();
+        //}
     }
 
     private void Start()
@@ -70,18 +70,22 @@ public class Player : MonoBehaviour
         {
             _glidingTime += Time.deltaTime;
         }
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if(_isJumping == false)
         {
-            if(!_isJumping)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                _isJumping = true;
-            }
-           
+                
+            _isJumping = true;
+                
+
             _isHoldingSpace = true;
             _jumpingVelocity.y = jumpingSpeed;
             _glidingTime = 0;
+            }
         }
+        
+       
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -98,10 +102,20 @@ public class Player : MonoBehaviour
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            if (_isJumping)
+            if (_isJumping && midAir == false)
             {
-                midAir = true;
                 this.GetComponent<Rigidbody>().AddForce(Vector3.up * jumpingSpeed, ForceMode.Impulse);
+                //if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
+                //{
+                //    this.GetComponent<Rigidbody>().drag = _glidingDrag;
+
+                //    //_glidingTime += Time.deltaTime;
+                //}
+                midAir = true;
+            }
+            else if(_isJumping && _isHoldingSpace && this.GetComponent<Rigidbody>().velocity.y < 0 && _glidingTime < _glidingTimer)
+            {
+                Debug.Log("glide");
                 if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
                 {
                     this.GetComponent<Rigidbody>().drag = _glidingDrag;
@@ -118,19 +132,20 @@ public class Player : MonoBehaviour
                     this.GetComponent<Rigidbody>().drag = _glidingDrag;
                 }
             }
-            if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
-            {
-                this.GetComponent<Rigidbody>().drag = _glidingDrag;
+            //if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
+            //{
+            //    this.GetComponent<Rigidbody>().drag = _glidingDrag;
 
-                //_glidingTime += Time.deltaTime;
-            }
+            //    //_glidingTime += Time.deltaTime;
+            //}
         }
         else
         {
+            //_isJumping = false;
             midAir = false;
             _glidingTime = 0;
-            _isJumping = false;
         }
+        _isJumping = false;
     }
     Quaternion rotation;
     private void LateUpdate()
