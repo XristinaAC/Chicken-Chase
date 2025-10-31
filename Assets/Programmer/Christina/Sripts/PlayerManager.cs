@@ -41,8 +41,8 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
-        SetDirection(0);
         _jumpHeightV = new Vector3(0, _jumpHeight, 0);
+        SetDirection(0);
     }
 
     public void SetDirection(int direction)
@@ -78,14 +78,15 @@ public class PlayerManager : MonoBehaviour
 
         if (Vector3.Distance(hit.point, transform.position) > 2)
         {
+            midAir = true;
             canGlide = true;
         }
 
-        if (canGlide && this.GetComponent<Rigidbody>().velocity.y > 0.5 && _glidingTime < _glidingTimer && _isHoldingSpace)
+        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < 0.5) && _glidingTime < _glidingTimer && _isHoldingSpace)
         {
             Debug.Log("glide");
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
-            this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
+            //this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
             _glidingTime += Time.fixedDeltaTime;
         }
 
@@ -108,6 +109,7 @@ public class PlayerManager : MonoBehaviour
             if (_isJumping && !_isHoldingSpace)
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
+                //midAir = true;
             }
         }
         else
