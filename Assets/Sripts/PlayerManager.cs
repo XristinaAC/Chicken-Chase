@@ -169,6 +169,11 @@ public class Player : MonoBehaviour
             midAir = false;
         }
 
+        if (collision.gameObject.tag == "obstacle")
+        {
+            this.gameObject.SetActive(false);
+        }
+
         if (collision.gameObject.tag == "change scene")
         {
             Debug.Log("hi");
