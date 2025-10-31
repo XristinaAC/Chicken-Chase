@@ -28,7 +28,6 @@ public class ChangeSceneScriptableObjects : ScriptableObject
     
     public void DictatePlayerDirection()
     {
-        Debug.Log("hi");
         for(int i = 0; i < cso.Count; i++)
         {
             Collider[] col = Physics.OverlapSphere(cso[i].changeSceneArea.transform.position, 0.3f, player);
