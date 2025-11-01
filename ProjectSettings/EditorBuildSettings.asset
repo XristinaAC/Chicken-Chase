@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Programmers/ATA/Scenes/MainMenu.unity
+    path: Assets/Programmer/ATA/Scenes/MainMenu.unity
     guid: 189d221ba2ac08246bbb063fd5b30d4b
   - enabled: 1
-    path: Assets/Programmers/ATA/Scenes/Level_1.unity
+    path: Assets/Programmer/ATA/Scenes/Level_1.unity
     guid: 4126267102cb8664a87387d9ef924e04
   - enabled: 1
-    path: Assets/Programmers/ATA/Scenes/Level_2.unity
+    path: Assets/Programmer/ATA/Scenes/Level_2.unity
     guid: 86a0eb3ba6eb15f4597cc14872daa047
   - enabled: 1
-    path: Assets/Programmers/ATA/Scenes/Level_3.unity
+    path: Assets/Programmer/ATA/Scenes/Level_3.unity
     guid: 053029ef12a3b9840a437587c2400438
   - enabled: 1
-    path: Assets/Programmers/ATA/Scenes/Boss.unity
+    path: Assets/Programmer/ATA/Scenes/Boss.unity
     guid: 1c0cde5a72b9a82429519a4ddd6a83d6
   - enabled: 1
-    path: Assets/Programmers/ATA/Scenes/Endless.unity
+    path: Assets/Programmer/ATA/Scenes/Endless.unity
     guid: ae866bafa35a4414d8f5ed5509e6b6d8
   m_configObjects: {}

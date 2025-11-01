@@ -19,6 +19,3 @@ MonoBehaviour:
   - changeSceneArea: {fileID: 6807547719071589975, guid: bae4f5984f57d7344b09c995b9cbfb5b,
       type: 3}
     playerDirection: 1
-  - changeSceneArea: {fileID: 7131864442785554418, guid: 79617f98bf0b6a046a59a0f3abf14c1e,
-      type: 3}
-    playerDirection: 0
