@@ -141,7 +141,6 @@ public class PlayerManager : MonoBehaviour
         else
         {
             _isJumping = false;
-            _holidingSpaceTimer = 0;
         }
     }
 
