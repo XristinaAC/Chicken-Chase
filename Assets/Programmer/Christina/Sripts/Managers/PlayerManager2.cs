@@ -49,7 +49,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if(direction == 0)
         {
-            _direction = new Vector3(_runningVelocity.x * Time.deltaTime * playerSpeed, 0, 0);
+            _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
         }
         else if(direction == 1)
         {
