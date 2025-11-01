@@ -8,6 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] private GameObject player = null;
+    [SerializeField] private GameObject col = null;
 
     Vector3 offset = new();
     Vector3 refPos;
@@ -18,6 +19,7 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         offset = transform.position - player.transform.position;
+        offset = new Vector3(offset.x - 5 , 0, 0);
         pDirection = transform.position;
         transform.rotation = player.transform.rotation;
         Quaternion rotation = Quaternion.Euler(0, -45, 0);
@@ -38,17 +40,25 @@ public class CameraManager : MonoBehaviour
         {
             return;
         }
-      
+
+        Vector3 startingDirection = player.transform.position;
+        Quaternion rotation = Quaternion.Euler(0, -22, 0);
+        direction3D = rotation * startingDirection;
+  
         //transform.position = player.transform.position + offset;
-        Vector3 pos = new Vector3(player.transform.position.x + offset.x - 2, player.transform.position.y + offset.y, player.transform.position.z + offset.z - 5);
-        transform.position = Vector3.SmoothDamp(pos + offset, player.transform.position, ref refPos, 1);
-        if(canRotate)
+        Vector3 pos = new Vector3(player.transform.position.x + offset.x, player.transform.position.y + offset.y, player.transform.position.z + offset.z - 10);
+        transform.position = Vector3.SmoothDamp(pos, player.transform.position, ref refPos, 1);
+
+        if (canRotate)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.FromToRotation(Vector3.right, direction3D), 2f * Time.deltaTime);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.FromToRotation(Vector3.right, direction3D), 0.5f * Time.deltaTime);
+            //transform.rotation = Quaternion.FromToRotation(Vector3.right, direction3D);
+            
+            transform.position = new Vector3(player.transform.position.x + 10, player.transform.position.y, player.transform.position.z - 10);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.FromToRotation(Vector3.right, direction3D2), 2f * Time.deltaTime);
         }
-        
-        transform.LookAt(player.transform);
+
+        //transform.LookAt(player.transform);
         //Vector3 newPos = new Vector3(0,0, player.transform.position.y);
         //transform.forward = player.transform.position - transform.position;
         //Vector3 pos = new Vector3(player.transform.position.x + offset.x - 2, player.transform.position.y + offset.y, player.transform.position.z + offset.z - 5);
@@ -75,5 +85,13 @@ public class CameraManager : MonoBehaviour
     public void SetCanRotate(bool can)
     {
         canRotate = can;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "change scene")
+        {
+            Debug.Log("Hey");
+        }
     }
 }
