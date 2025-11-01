@@ -546,6 +546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ae4c704a50b654198b701c5b48e04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endlessLevelNames:
+  - Endless_1
+  - Endless_2
 --- !u!4 &806754603
 Transform:
   m_ObjectHideFlags: 0
@@ -860,7 +863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b755ac0097444cb0f28582746a7a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStateRef: {fileID: 11400000, guid: 12857597bb496824586f046c281e8f5c, type: 2}
 --- !u!4 &1298087137
 Transform:
   m_ObjectHideFlags: 0

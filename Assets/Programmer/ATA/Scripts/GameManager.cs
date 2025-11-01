@@ -11,6 +11,8 @@
             Playing,
             Paused,
             GameOver,
+            Endless
+
         }
 
         public GameState CurrentState { get; private set; }

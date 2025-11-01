@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,12 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
+    
+    [Header("Level Settings")]
+    [SerializeField] private List<string> endlessLevelNames = new List<string>();
+    
+    private string _lastLoadedScene; // Prevent to loading same scene
+    
     
     public event Action OnLevelLoadStart;
     public event Action OnLevelLoadComplete;
@@ -37,7 +44,7 @@ public class LevelManager : MonoBehaviour
         await Task.Delay(500);
     }
 
-    public async void LoadNextLevelAsync()
+    public async Task LoadNextLevelAsync()
     {
 
         int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
@@ -51,5 +58,27 @@ public class LevelManager : MonoBehaviour
 
             await LoadLevelAsync(sceneName);
         }
+    }
+
+    public async Task LoadRandomLevelAsync()
+    {
+
+        if (endlessLevelNames == null || endlessLevelNames.Count == 0) return;
+        
+        
+        string nextScene;
+        string currentScene = SceneManager.GetActiveScene().name;
+        do
+        {
+            nextScene = endlessLevelNames[UnityEngine.Random.Range(0, endlessLevelNames.Count)];
+        }
+        while ((nextScene == _lastLoadedScene || nextScene == currentScene) && endlessLevelNames.Count > 1);
+
+
+        _lastLoadedScene = nextScene;
+
+        await LoadLevelAsync(nextScene);
+        
+        
     }
 }
