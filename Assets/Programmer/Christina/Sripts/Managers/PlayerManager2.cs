@@ -92,7 +92,7 @@ public class PlayerManager2 : MonoBehaviour
     void CheckingGroundDistance()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.down, out hit, mask);
+        Physics.Raycast(transform.position, Vector3.down, out hit,20, mask);
         if (Vector3.Distance(hit.point, transform.position) > 3)
         {
             canGlide = true;
