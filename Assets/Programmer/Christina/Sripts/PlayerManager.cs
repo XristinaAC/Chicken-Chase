@@ -25,10 +25,10 @@ public class PlayerManager : MonoBehaviour
     private bool _isHoldingSpace = false;
     private float _rbDrag = 0;
     private float _glidingDrag = 15;
-    private float _glidingTimer = 5;
+    private float _glidingTimer = 0.5f;
     private float _glidingTime = 0;
     private Vector3 _jumpHeightV;
-
+    bool canGlide = false;
     private bool _isJumping = false;
     private Vector3 _direction;
 
@@ -49,7 +49,6 @@ public class PlayerManager : MonoBehaviour
     {
         if(direction == 0)
         {
-            Debug.Log("hey");
             _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
         }
         else if(direction == 1)
@@ -60,36 +59,67 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        PlayerMovement();
+        PressingJumpButton();
+        GlidingActions();
+        EndingGliding();
+    }
+
+    void PlayerMovement()
+    {
         if (!_obstacleHit)
         {
             transform.position += _direction;
         }
+    }
 
+    void PressingJumpButton()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _isHoldingSpace = true;
             _isJumping = true;
+            _isHoldingSpace = true;
             _glidingTime = 0;
         }
+    }
 
+    void GlidingActions()
+    {
+        CheckingGroundDistance();
+        Gliding();
+    }
+
+    void CheckingGroundDistance()
+    {
         RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.down, out hit,mask);
-        Debug.Log(Vector3.Distance(hit.point, transform.position));
-
-        if (Vector3.Distance(hit.point, transform.position) > 2)
+        Physics.Raycast(transform.position, Vector3.down, out hit, mask);
+        if (Vector3.Distance(hit.point, transform.position) > 3)
         {
-            midAir = true;
             canGlide = true;
         }
-
-        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < 0.5) && _glidingTime < _glidingTimer && _isHoldingSpace)
+        else if (_glidingTime > 0.091 && Vector3.Distance(hit.point, transform.position) < 1.5)
         {
-            Debug.Log("glide");
+            canGlide = false;
+            this.GetComponent<Rigidbody>().drag = _rbDrag;
+        }
+    }
+
+    void Gliding()
+    {
+        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < _glidingTimer) && _glidingTime < 1 && _isHoldingSpace)
+        {
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
             //this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
-            _glidingTime += Time.fixedDeltaTime;
+            _glidingTime += Time.deltaTime;
+            Debug.Log("in");
         }
+        Debug.Log(_glidingTime);
+    }
+    
 
+    void EndingGliding()
+    {
+        //When the player stops pressing the space button
         if (Input.GetKeyUp(KeyCode.Space))
         {
             _isHoldingSpace = false;
@@ -99,9 +129,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    bool midAir = false;
-    bool canGlide = false;
-
     private void FixedUpdate()
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
@@ -109,40 +136,17 @@ public class PlayerManager : MonoBehaviour
             if (_isJumping && !_isHoldingSpace)
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
-                //midAir = true;
             }
         }
         else
         {
-            midAir = false;
-            _glidingTime = 0;
             _isJumping = false;
+            _holidingSpaceTimer = 0;
         }
-    }
-
-    Quaternion rotation;
-    private void LateUpdate()
-    {
-        if(rotateCamera)
-        {
-            mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, rotation, 0.5f);
-        }
-    }
-
-    private float timeCount = 0.0f;
-    bool rotateCamera = false;
-    void ChangeDirection()
-    {
-        _direction = new Vector3(0, 0, _runningVelocity.x * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            //midAir = false;
-        }
-
         if (collision.gameObject.tag == "obstacle")
         {
             this.gameObject.SetActive(false);
@@ -151,13 +155,6 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.tag == "change scene")
         {
             transform.Rotate(0, -45, 0);
-            //ChangeDirection();
-            //rotateCamera = true;
-            //rotation = new Quaternion();
-            ////rotation.y = -45;
-            //mainCamera.transform.Rotate(0, -45, 0);
-            ////var targetRotation = Quaternion.LookRotation(mainCamera.transform.position - this.transform.position);
-            ////Quaternion.RotateTowards(mainCamera.transform.rotation, targetRotation, -45);
         }
     }
 }
