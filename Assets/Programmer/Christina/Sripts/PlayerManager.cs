@@ -154,7 +154,11 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.tag == "change scene")
         {
             transform.Rotate(0, -22, 0);
-            mainCamera.GetComponent<CameraManager>().SetCanRotate();
+            mainCamera.GetComponent<CameraManager>().SetCanRotate(true);
+        }
+        else
+        {
+            mainCamera.GetComponent<CameraManager>().SetCanRotate(false);
         }
     }
 }
