@@ -3,97 +3,125 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Xml.Serialization;
 using TMPro;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Player : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 0;
     [SerializeField] private float jumpingSpeed = 50;
     [SerializeField] private float gravity = 0;
     [SerializeField] private LayerMask mask;
-    [SerializeField] private GameObject pNameTextParent;
-    [SerializeField] private TMP_Text pNameText;
-    [SerializeField] private string pName;
-    [SerializeField] private int score;
     [SerializeField] private Transform basePosition;
     [SerializeField] private GameObject mainCamera;
-    [SerializeField] private float _jumpHeight = 0.5f;
+    [SerializeField] private float _jumpHeight = 1;
 
     private Vector3 _runningVelocity = Vector3.zero;
-    private Vector3 _jumpingVelocity = Vector3.zero;
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
     private float _rbDrag = 0;
     private float _glidingDrag = 15;
-    private float _glidingTimer = 5;
+    private float _glidingTimer = 0.5f;
     private float _glidingTime = 0;
     private Vector3 _jumpHeightV;
-
+    bool canGlide = false;
     private bool _isJumping = false;
     private Vector3 _direction;
-   
+
     private void Awake()
     {
-        //SaveManager._saveInstance.Load_Data();
-      
-        //if(SaveManager._saveInstance.Get_Player_Name() != null && SaveManager._saveInstance.Get_Score() != 0)
-        //{
-        //    pNameTextParent.SetActive(false);
-        //    pName = SaveManager._saveInstance.Get_Player_Name();
-        //    score = SaveManager._saveInstance.Get_Score();
-        //}
+        _runningVelocity = new Vector3(playerSpeed * Time.deltaTime, 0, 0);
+        _runningVelocity = _runningVelocity.normalized;
     }
 
     private void Start()
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
-        _runningVelocity = Vector3.right * playerSpeed * Time.deltaTime;
-        _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
         _jumpHeightV = new Vector3(0, _jumpHeight, 0);
+        SetDirection(0);
     }
 
-    public void SetName()
+    public void SetDirection(int direction)
     {
-        SaveManager._saveInstance.Set_Player_Name(pNameText.GetComponent<TMP_Text>().text);
-        pNameTextParent.SetActive(false);
+        if(direction == 0)
+        {
+            _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
+        }
+        else if(direction == 1)
+        {
+            _direction = new Vector3(0, 0, _runningVelocity.x * Time.deltaTime * playerSpeed);
+        }
     }
 
     private void Update()
     {
+        PlayerMovement();
+        PressingJumpButton();
+        GlidingActions();
+        EndingGliding();
+    }
+
+    void PlayerMovement()
+    {
         if (!_obstacleHit)
         {
-            transform.position += _direction;// new Vector3(_runningVelocity.x * Time.deltaTime,0,0);
+            transform.position += _direction;
         }
+    }
 
-        //if(_isJumping == false)
-        //{
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                 Debug.Log("ready to jump");
-                 _isJumping = true;
-                _isHoldingSpace = true;
-                _glidingTime = 0;
-            //}
-        }
-
-        if (!_isJumping && canGlide && _isHoldingSpace && _glidingTime < _glidingTimer)
+    void PressingJumpButton()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("glide");
-            if (_isHoldingSpace && midAir && _glidingTime < _glidingTimer)
-            {
-                this.GetComponent<Rigidbody>().drag = _glidingDrag;
-
-                _glidingTime += Time.deltaTime;
-            }
+            _isJumping = true;
+            _isHoldingSpace = true;
+            _glidingTime = 0;
         }
+    }
 
+    void GlidingActions()
+    {
+        CheckingGroundDistance();
+        Gliding();
+    }
+
+    void CheckingGroundDistance()
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, Vector3.down, out hit, mask);
+        if (Vector3.Distance(hit.point, transform.position) > 3)
+        {
+            canGlide = true;
+        }
+        else if (_glidingTime > 0.091 && Vector3.Distance(hit.point, transform.position) < 1.5)
+        {
+            canGlide = false;
+            this.GetComponent<Rigidbody>().drag = _rbDrag;
+        }
+    }
+
+    void Gliding()
+    {
+        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < _glidingTimer) && _glidingTime < 1 && _isHoldingSpace)
+        {
+            this.GetComponent<Rigidbody>().drag = _glidingDrag;
+            //this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
+            _glidingTime += Time.deltaTime;
+            Debug.Log("in");
+        }
+        Debug.Log(_glidingTime);
+    }
+    
+
+    void EndingGliding()
+    {
+        //When the player stops pressing the space button
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Debug.Log("drag");
             _isHoldingSpace = false;
             _glidingTime = 0;
             canGlide = false;
@@ -101,63 +129,23 @@ public class Player : MonoBehaviour
         }
     }
 
-    bool midAir = false;
-    bool canGlide = false;
-   
-
     private void FixedUpdate()
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            if (_isJumping)/* && midAir == false)*/
+            if (_isJumping && !_isHoldingSpace)
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
-                Debug.Log("jump");
-                midAir = true;
-                canGlide = true;
             }
-            else
-            {
-                //canGlide = false;
-                Debug.Log("not jump");
-                this.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                //if (_isHoldingSpace && _glidingTime < _glidingTimer)
-                //{
-                //    this.GetComponent<Rigidbody>().drag = _glidingDrag;
-                //}
-            }
-            _isJumping = false;
         }
         else
         {
-            midAir = false;
-            _glidingTime = 0;
+            _isJumping = false;
         }
-    }
-
-    Quaternion rotation;
-    private void LateUpdate()
-    {
-        if(rotateCamera)
-        {
-            mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, rotation, 0.5f);
-        }
-    }
-
-    private float timeCount = 0.0f;
-    bool rotateCamera = false;
-    void ChangeDirection()
-    {
-        _direction = new Vector3(0, 0, _runningVelocity.x * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            midAir = false;
-        }
-
         if (collision.gameObject.tag == "obstacle")
         {
             this.gameObject.SetActive(false);
@@ -165,15 +153,12 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "change scene")
         {
-            Debug.Log("hi");
             transform.Rotate(0, -45, 0);
-            ChangeDirection();
-            //rotateCamera = true;
-            //rotation = new Quaternion();
-            ////rotation.y = -45;
-            //mainCamera.transform.Rotate(0, -45, 0);
-            ////var targetRotation = Quaternion.LookRotation(mainCamera.transform.position - this.transform.position);
-            ////Quaternion.RotateTowards(mainCamera.transform.rotation, targetRotation, -45);
+            mainCamera.GetComponent<CameraManager>().SetCanRotate(true);
+        }
+        else
+        {
+            mainCamera.GetComponent<CameraManager>().SetCanRotate(false);
         }
     }
 }
