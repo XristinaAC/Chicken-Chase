@@ -18,7 +18,4 @@ MonoBehaviour:
   cso:
   - changeSceneArea: {fileID: 3289842841742551216, guid: 8b14bdf02c51c2249bd541040d187250,
       type: 3}
-    playerDirection: 1
-  - changeSceneArea: {fileID: 4596724480795276384, guid: 6c8bdf51a534f57478684af696a36340,
-      type: 3}
     playerDirection: 0
