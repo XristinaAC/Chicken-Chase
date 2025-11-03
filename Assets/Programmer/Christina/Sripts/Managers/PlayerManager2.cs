@@ -35,7 +35,7 @@ public class PlayerManager2 : MonoBehaviour
     private void Awake()
     {
         _runningVelocity = new Vector3(playerSpeed * Time.deltaTime, 0, 0);
-        _runningVelocity = _runningVelocity.normalized;
+        //_runningVelocity = _runningVelocity.normalized;
     }
 
     private void Start()
@@ -49,7 +49,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if(direction == 0)
         {
-            _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
+            _direction = new Vector3(_runningVelocity.x, 0, 0);
         }
         else if(direction == 1)
         {
@@ -57,6 +57,17 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
+    /*
+     if (Input.GetKeyDown (KeyCode.W)) {
+	float downTimeRight = Time.time;
+}
+if (Input.GetKey (KeyCode.W)){
+	if (Time.time - downTimeRight > 4) {print("run Right");}
+	else {print("Right");}
+}
+    */
+
+    float counter = 0;
     private void Update()
     {
         PlayerMovement();
@@ -77,10 +88,13 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            heldSpaceDuration = 0;
+           counter = Time.time;
+            //counter = 0;
             _isJumping = true;
             _isHoldingSpace = true;
             _glidingTime = 0;
-        }
+        }    
     }
 
     void GlidingActions()
@@ -113,15 +127,20 @@ public class PlayerManager2 : MonoBehaviour
             _glidingTime += Time.deltaTime;
             Debug.Log("in");
         }
-        Debug.Log(_glidingTime);
+        //Debug.Log(_glidingTime);
     }
-    
 
+    float heldSpaceDuration = 0;
     void EndingGliding()
     {
         //When the player stops pressing the space button
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            if(_isHoldingSpace)
+            {
+                heldSpaceDuration = Time.time - counter;
+                Debug.Log(heldSpaceDuration);
+            }
             _isHoldingSpace = false;
             _glidingTime = 0;
             canGlide = false;
@@ -133,7 +152,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            if (_isJumping && !_isHoldingSpace)
+            if (_isJumping && !_isHoldingSpace && heldSpaceDuration < 0.1)
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
             }

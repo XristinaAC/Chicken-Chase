@@ -22870,7 +22870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &493865515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41252,7 +41252,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -179.20001, y: 1, z: -10.330999}
+  m_LocalPosition: {x: -189.59, y: 1, z: -10.330999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -85894,7 +85894,7 @@ Transform:
   m_GameObject: {fileID: 2113908500}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -180.6, y: 0, z: -6.331}
+  m_LocalPosition: {x: -191.92, y: 0, z: -6.331}
   m_LocalScale: {x: 0.49618, y: 0.49618, z: 0.49618}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85936,7 +85936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c961fd7c43a44aa499ec9a02a1e55f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0.5
+  playerSpeed: 1
   jumpingSpeed: 5
   gravity: 0
   mask:
