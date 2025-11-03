@@ -106,8 +106,9 @@ if (Input.GetKey (KeyCode.W)){
     void CheckingGroundDistance()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.down, out hit,20, mask);
-        if (Vector3.Distance(hit.point, transform.position) > 3)
+        Physics.Raycast(transform.position, Vector3.down, out hit, 100, mask);
+        Debug.Log(Vector3.Distance(hit.point, transform.position));
+        if (Vector3.Distance(hit.point, transform.position) > _jumpHeight/1.5)
         {
             canGlide = true;
         }
@@ -120,7 +121,7 @@ if (Input.GetKey (KeyCode.W)){
 
     void Gliding()
     {
-        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < _glidingTimer) && _glidingTime < 1 && _isHoldingSpace)
+        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < 0.5) && _glidingTime < 1 && _isHoldingSpace)
         {
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
             //this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
