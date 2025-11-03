@@ -16,7 +16,7 @@
             if (LevelManager.Instance != null)
             {
                 await Task.Delay(800);
-                LevelManager.Instance.LoadRandomLevelAsync();
+                await LevelManager.Instance.LoadRandomLevelAsync();
             }
         }
     }

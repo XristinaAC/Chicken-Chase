@@ -8,8 +8,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button mainMenuButton;
-    
-    private float targetTimeScale = 1f;
+
     private void Awake()
     {
         pauseMenuUI.SetActive(false);
@@ -30,35 +29,31 @@ public class PauseManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
             TogglePause();
-           
-        }
     }
 
     private void TogglePause()
     {
         bool isPaused = GameManager.Instance.CurrentState == GameManager.GameState.Paused;
+        SetPausedState(!isPaused);
+    }
 
-        if (isPaused)
-        {
-            GameManager.Instance.ChangeState(GameManager.GameState.Playing);
-            pauseMenuUI.SetActive(false);
-            Time.timeScale = 1f;
-        }
-        else
+    private void ResumeGame() => SetPausedState(false);
+
+    private void SetPausedState(bool pause)
+    {
+        if (pause)
         {
             GameManager.Instance.ChangeState(GameManager.GameState.Paused);
             pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
         }
-    }
-
-    private void ResumeGame()
-    {
-        GameManager.Instance.ChangeState(GameManager.GameState.Playing);
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        else
+        {
+            GameManager.Instance.ChangeState(GameManager.GameState.Playing);
+            pauseMenuUI.SetActive(false);
+            Time.timeScale = 1f;
+        }
     }
 
     private void ReturnToMainMenu()

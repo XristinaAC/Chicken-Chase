@@ -30,7 +30,6 @@ public class LevelManager : MonoBehaviour
     public async Task LoadLevelAsync(string sceneName)
     {
         OnLevelLoadStart?.Invoke();
-
         
         var asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         asyncLoad.allowSceneActivation = false;
@@ -41,7 +40,7 @@ public class LevelManager : MonoBehaviour
         asyncLoad.allowSceneActivation = true;
 
         OnLevelLoadComplete?.Invoke();
-        await Task.Delay(500);
+        await Task.Yield();
     }
 
     public async Task LoadNextLevelAsync()
