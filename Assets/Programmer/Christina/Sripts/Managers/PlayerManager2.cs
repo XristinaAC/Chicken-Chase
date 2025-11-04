@@ -98,7 +98,6 @@ public class PlayerManager2 : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(transform.position, Vector3.down, out hit, 100, mask);
         distance = Vector3.Distance(hit.point, transform.position);
-        //Debug.Log(Vector3.Distance(hit.point, transform.position));
         if (Vector3.Distance(hit.point, transform.position) > _jumpHeight/1.5 && heldSpaceDuration < 9 && _isHoldingSpace)
         {
             canGlide = true;
@@ -166,6 +165,8 @@ public class PlayerManager2 : MonoBehaviour
             transform.Rotate(0, -45, 0);
         }
     }
+
+   
 
     public void Replay()
     {
