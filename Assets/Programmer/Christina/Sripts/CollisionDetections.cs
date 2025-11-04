@@ -11,7 +11,8 @@ public class CollisionDetections : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            //player.transform.position = Vector3.zero;
+            player.transform.position = new Vector3(player.transform.position.x - 2, 0, 0);
+            player.transform.position = Vector3.zero;
         }
     }
 }
