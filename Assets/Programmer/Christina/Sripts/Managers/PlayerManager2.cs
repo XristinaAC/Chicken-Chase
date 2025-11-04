@@ -8,24 +8,24 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerManager2 : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 0;
     [SerializeField] private float jumpingSpeed = 0;
-    [SerializeField] private float gravity = 0;
+    [SerializeField] private float _glidingDrag = 10;
     [SerializeField] private LayerMask mask;
     [SerializeField] private Transform basePosition;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private float _jumpHeight = 1;
+    [SerializeField] GameObject replayButton;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
-    private float _rbDrag = 0;
-    private float _glidingDrag = 15;
-    private float _glidingTimer = 0.5f;
+    private float _rbDrag = 1;
     private float _glidingTime = 0;
     private Vector3 _jumpHeightV;
     bool canGlide = false;
@@ -34,12 +34,14 @@ public class PlayerManager2 : MonoBehaviour
 
     private void Awake()
     {
-        _runningVelocity = new Vector3(playerSpeed * Time.deltaTime, 0, 0);
+        //_runningVelocity = new Vector3(playerSpeed * Time.deltaTime, 0, 0);
+        replayButton.SetActive(false);
         //_runningVelocity = _runningVelocity.normalized;
     }
 
     private void Start()
     {
+        _runningVelocity = new Vector3(playerSpeed * 0.016f, 0, 0);
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _jumpHeightV = new Vector3(0, _jumpHeight, 0);
         SetDirection(0);
@@ -53,19 +55,9 @@ public class PlayerManager2 : MonoBehaviour
         }
         else if(direction == 1)
         {
-            _direction = new Vector3(0, 0, _runningVelocity.x * Time.deltaTime * playerSpeed);
+            _direction = new Vector3(0, 0, _runningVelocity.x);
         }
     }
-
-    /*
-     if (Input.GetKeyDown (KeyCode.W)) {
-	float downTimeRight = Time.time;
-}
-if (Input.GetKey (KeyCode.W)){
-	if (Time.time - downTimeRight > 4) {print("run Right");}
-	else {print("Right");}
-}
-    */
 
     float counter = 0;
     private void Update()
@@ -112,7 +104,7 @@ if (Input.GetKey (KeyCode.W)){
         {
             canGlide = true;
         }
-        else if (_glidingTime > 0.091 && Vector3.Distance(hit.point, transform.position) < 1.5)
+        else if (_glidingTime > 0.091 && Vector3.Distance(hit.point, transform.position) < 2)
         {
             canGlide = false;
             this.GetComponent<Rigidbody>().drag = _rbDrag;
@@ -126,7 +118,6 @@ if (Input.GetKey (KeyCode.W)){
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
             //this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
             _glidingTime += Time.deltaTime;
-            Debug.Log("in");
         }
         //Debug.Log(_glidingTime);
     }
@@ -169,11 +160,17 @@ if (Input.GetKey (KeyCode.W)){
         if (collision.gameObject.tag == "obstacle")
         {
             this.gameObject.SetActive(false);
+            replayButton.SetActive(true);
         }
 
         if (collision.gameObject.tag == "change scene")
         {
             transform.Rotate(0, -45, 0);
         }
+    }
+
+    public void Replay()
+    {
+        SceneManager.LoadScene("Garg_lvl");
     }
 }
