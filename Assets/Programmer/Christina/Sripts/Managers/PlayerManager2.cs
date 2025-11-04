@@ -26,7 +26,6 @@ public class PlayerManager2 : MonoBehaviour
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
     private float _rbDrag = 1;
-    private float _glidingTime = 0;
     private Vector3 _jumpHeightV;
     bool canGlide = false;
     private bool _isJumping = false;
@@ -57,9 +56,11 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
+    float height;
     float counter = 0;
     private void Update()
     {
+        height = Mathf.Min(distance, _jumpHeight);
         PlayerMovement();
         PressingJumpButton();
         GlidingActions();
@@ -78,13 +79,13 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            heldSpaceDuration = 0;
-           counter = Time.time;
-            //counter = 0;
+            if(!_isJumping && !_isHoldingSpace)
+            {
+                _isHoldingSpace = true;
+            }
             _isJumping = true;
-            _isHoldingSpace = true;
-            _glidingTime = 0;
-        }    
+            counter = Time.time;
+        }
     }
 
     void GlidingActions()
@@ -96,27 +97,25 @@ public class PlayerManager2 : MonoBehaviour
     void CheckingGroundDistance()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.down, out hit, 100, mask);
+        Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
         distance = Vector3.Distance(hit.point, transform.position);
-        Debug.Log(Vector3.Distance(hit.point, transform.position));
-        if (Vector3.Distance(hit.point, transform.position) > 3 && _isHoldingSpace)
+
+        if (distance >= height && !isGrounded && _isHoldingSpace)
         {
+            Debug.Log(true);
             canGlide = true;
         }
-        else if (_glidingTime > 0.091 && Vector3.Distance(hit.point, transform.position) < 2)
+        else
         {
             canGlide = false;
-            this.GetComponent<Rigidbody>().drag = _rbDrag;
         }
     }
 
     void Gliding()
     {
-        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < 0.5) && _glidingTime < 1)
+        if (canGlide)
         {
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
-            //this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
-            _glidingTime += Time.deltaTime;
         }
     }
 
@@ -126,36 +125,40 @@ public class PlayerManager2 : MonoBehaviour
         //When the player stops pressing the space button
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if(_isHoldingSpace)
-            {
-                heldSpaceDuration = Time.time - counter;
-                //Debug.Log(heldSpaceDuration);
-            }
             _isHoldingSpace = false;
-            _glidingTime = 0;
             canGlide = false;
             this.GetComponent<Rigidbody>().drag = _rbDrag;
         }
     }
 
+    bool isGrounded = false;
+
     private void FixedUpdate()
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            if (_isJumping && distance <= 0.5f && heldSpaceDuration < 9)
+            if (_isJumping && distance <= 0.03 && isGrounded == true)
             {
-                this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
+                  this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
+                  _isHoldingSpace = false;
             }
             _isJumping = false;
         }
         else
         {
-            //_isJumping = false;
+            isGrounded = false;
+            _isJumping = false;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+            canGlide = false;
+        }
+
         if (collision.gameObject.tag == "obstacle")
         {
             this.gameObject.SetActive(false);
