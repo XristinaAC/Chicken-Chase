@@ -56,11 +56,12 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
-    float height;
+    double height;
     float counter = 0;
     private void Update()
     {
-        height = Mathf.Min(distance, _jumpHeight);
+        //height = Mathf.Min(distance, jumpingSpeed);
+        //Debug.Log(distance);
         PlayerMovement();
         PressingJumpButton();
         GlidingActions();
@@ -79,10 +80,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(!_isJumping && !_isHoldingSpace)
-            {
-                _isHoldingSpace = true;
-            }
+            _isHoldingSpace = true;
             _isJumping = true;
             counter = Time.time;
         }
@@ -100,9 +98,9 @@ public class PlayerManager2 : MonoBehaviour
         Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
         distance = Vector3.Distance(hit.point, transform.position);
 
+        height = (jumpingSpeed / _jumpHeight) - 0.6;
         if (distance >= height && !isGrounded && _isHoldingSpace)
         {
-            Debug.Log(true);
             canGlide = true;
         }
         else
@@ -140,7 +138,6 @@ public class PlayerManager2 : MonoBehaviour
             if (_isJumping && distance <= 0.03 && isGrounded == true)
             {
                   this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
-                  _isHoldingSpace = false;
             }
             _isJumping = false;
         }
