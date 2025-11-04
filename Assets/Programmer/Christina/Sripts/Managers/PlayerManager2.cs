@@ -34,9 +34,7 @@ public class PlayerManager2 : MonoBehaviour
 
     private void Awake()
     {
-        //_runningVelocity = new Vector3(playerSpeed * Time.deltaTime, 0, 0);
         replayButton.SetActive(false);
-        //_runningVelocity = _runningVelocity.normalized;
     }
 
     private void Start()
@@ -94,12 +92,13 @@ public class PlayerManager2 : MonoBehaviour
         CheckingGroundDistance();
         Gliding();
     }
-
+    float distance;
     void CheckingGroundDistance()
     {
         RaycastHit hit;
         Physics.Raycast(transform.position, Vector3.down, out hit, 100, mask);
-        Debug.Log(Vector3.Distance(hit.point, transform.position));
+        distance = Vector3.Distance(hit.point, transform.position);
+        //Debug.Log(Vector3.Distance(hit.point, transform.position));
         if (Vector3.Distance(hit.point, transform.position) > _jumpHeight/1.5)
         {
             canGlide = true;
@@ -119,7 +118,6 @@ public class PlayerManager2 : MonoBehaviour
             //this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
             _glidingTime += Time.deltaTime;
         }
-        //Debug.Log(_glidingTime);
     }
 
     float heldSpaceDuration = 0;
@@ -131,7 +129,7 @@ public class PlayerManager2 : MonoBehaviour
             if(_isHoldingSpace)
             {
                 heldSpaceDuration = Time.time - counter;
-                Debug.Log(heldSpaceDuration);
+                //Debug.Log(heldSpaceDuration);
             }
             _isHoldingSpace = false;
             _glidingTime = 0;
@@ -144,7 +142,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            if (_isJumping && !_isHoldingSpace && heldSpaceDuration < 0.1)
+            if (_isJumping && distance <= 0.5f && heldSpaceDuration < 9 && !_isHoldingSpace)
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
             }
