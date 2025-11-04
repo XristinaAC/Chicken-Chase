@@ -11,21 +11,20 @@ public class CameraManager : MonoBehaviour
 
     void Start()
     {
-        offset = transform.position - player.transform.position;
-
+        offset = new Vector3(transform.position.x - player.transform.position.x, transform.position.y - player.transform.position.y, transform.position.z - player.transform.position.z) ;
+        transform.position = new Vector3(player.transform.position.x + offset.x, transform.position.y, player.transform.position.z + offset.z);
     }
 
     void Update()
     {
-        transform.position = player.transform.position + offset;
+        transform.position = new Vector3(player.transform.position.x + offset.x,transform.position.y, player.transform.position.z + offset.z);
         //Vector3 newPos = new Vector3(0,0, player.transform.position.y);
      
         //transform.forward = player.transform.position - transform.position;
-        
-    }
-    Vector3 _currentRotation;
 
-    void LateUpdate()
-    {
+        if(player.transform.position.y > transform.position.y)
+        {
+            transform.position = new Vector3(player.transform.position.x + offset.x, transform.position.y, player.transform.position.z + offset.z);
+        } 
     }
 }
