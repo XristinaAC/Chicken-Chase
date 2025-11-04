@@ -99,7 +99,7 @@ public class PlayerManager2 : MonoBehaviour
         Physics.Raycast(transform.position, Vector3.down, out hit, 100, mask);
         distance = Vector3.Distance(hit.point, transform.position);
         Debug.Log(Vector3.Distance(hit.point, transform.position));
-        if (Vector3.Distance(hit.point, transform.position) > _jumpHeight/1.5 && _isHoldingSpace)
+        if (Vector3.Distance(hit.point, transform.position) > 3 && _isHoldingSpace)
         {
             canGlide = true;
         }
