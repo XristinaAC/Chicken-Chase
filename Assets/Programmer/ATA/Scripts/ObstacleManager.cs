@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Programmers.ATA.Scripts;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class ObstacleManager : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField] private ObstacleSet obstacleSet;
     [SerializeField] private List<Transform> spawnPositions = new List<Transform>();
     [SerializeField] private int maxObstacles = 5;
-
+    private List<GameObject> activeObstacles = new List<GameObject>();
+    
     private void OnEnable()
     {
         if (LevelManager.Instance != null)
@@ -22,6 +24,41 @@ public class ObstacleManager : MonoBehaviour
         if (LevelManager.Instance != null)
             LevelManager.Instance.OnLevelLoadComplete -= ObstacleSpawn;
     }
+    
+    [TitleGroup("Test Spawn")]
+    [Button(ButtonSizes.Large)]
+    private void SpawnObstacles()
+    {
+   
+        ClearObstacles();
+        ObstacleSpawn();
+    }
+    
+    [GUIColor(1f, 0.4f, 0.4f)]
+    [TitleGroup("Clear Spawn")]
+    [Button(ButtonSizes.Large)]
+    private void ClearObstacles()
+    {
+
+        foreach (var obstacle in activeObstacles)
+        {
+            if (obstacle != null)
+            {
+                if (Application.isEditor)
+                {
+                    DestroyImmediate(obstacle.gameObject);
+                }
+                else
+                {
+                    Destroy(obstacle.gameObject);
+                }
+            }
+        }
+        activeObstacles.Clear();
+
+    }
+    
+    
 
     private void ObstacleSpawn()
     {
@@ -42,7 +79,9 @@ public class ObstacleManager : MonoBehaviour
             Transform spawnPoint = availableSpawns[randomIndex];
             availableSpawns.RemoveAt(randomIndex);
 
-            Instantiate(selected.prefab, spawnPoint.position, Quaternion.identity);
+            GameObject newObstacle = Instantiate(selected.prefab, spawnPoint.position, Quaternion.identity);
+            activeObstacles.Add(newObstacle);
+            
         }
     }
 
@@ -66,5 +105,20 @@ public class ObstacleManager : MonoBehaviour
         }
 
         return obstacleSet.obstacles[obstacleSet.obstacles.Count - 1];
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+
+        foreach (var point in spawnPositions)
+        {
+            if (point != null)
+            {
+                Gizmos.DrawWireCube(point.position, Vector3.one * 0.5f);
+                Gizmos.DrawLine(transform.position, point.position);
+            }
+        }
+        
     }
 }
