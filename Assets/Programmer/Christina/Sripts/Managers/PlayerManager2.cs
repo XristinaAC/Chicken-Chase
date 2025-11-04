@@ -32,14 +32,9 @@ public class PlayerManager2 : MonoBehaviour
     private bool _isJumping = false;
     private Vector3 _direction;
 
-    private void Awake()
-    {
-        _runningVelocity = new Vector3(playerSpeed * Time.deltaTime, 0, 0);
-        _runningVelocity = _runningVelocity.normalized;
-    }
-
     private void Start()
     {
+        _runningVelocity = new Vector3(playerSpeed * 0.016f, 0, 0);
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _jumpHeightV = new Vector3(0, _jumpHeight, 0);
         SetDirection(0);
@@ -49,11 +44,11 @@ public class PlayerManager2 : MonoBehaviour
     {
         if(direction == 0)
         {
-            _direction = new Vector3(_runningVelocity.x * Time.deltaTime, 0, 0);
+            _direction = _runningVelocity;
         }
         else if(direction == 1)
         {
-            _direction = new Vector3(0, 0, _runningVelocity.x * Time.deltaTime * playerSpeed);
+            _direction = new Vector3(0, 0, _runningVelocity.x );
         }
     }
 

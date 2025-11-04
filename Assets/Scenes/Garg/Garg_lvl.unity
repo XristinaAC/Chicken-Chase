@@ -31409,7 +31409,7 @@ GameObject:
   - component: {fileID: 702220962}
   - component: {fileID: 702220961}
   - component: {fileID: 702220960}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: yable (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85936,7 +85936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c961fd7c43a44aa499ec9a02a1e55f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0.5
+  playerSpeed: 1
   jumpingSpeed: 5
   gravity: 0
   mask:
