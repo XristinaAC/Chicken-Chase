@@ -99,7 +99,7 @@ public class PlayerManager2 : MonoBehaviour
         Physics.Raycast(transform.position, Vector3.down, out hit, 100, mask);
         distance = Vector3.Distance(hit.point, transform.position);
         //Debug.Log(Vector3.Distance(hit.point, transform.position));
-        if (Vector3.Distance(hit.point, transform.position) > _jumpHeight/1.5)
+        if (Vector3.Distance(hit.point, transform.position) > _jumpHeight/1.5 && heldSpaceDuration < 9 && _isHoldingSpace)
         {
             canGlide = true;
         }
@@ -112,7 +112,7 @@ public class PlayerManager2 : MonoBehaviour
 
     void Gliding()
     {
-        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < 0.5) && _glidingTime < 1 && _isHoldingSpace)
+        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < 0.5) && _glidingTime < 1)
         {
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
             //this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
@@ -142,7 +142,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            if (_isJumping && distance <= 0.5f && heldSpaceDuration < 9 && !_isHoldingSpace)
+            if (_isJumping && distance <= 0.5f && heldSpaceDuration < 9)
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
             }
