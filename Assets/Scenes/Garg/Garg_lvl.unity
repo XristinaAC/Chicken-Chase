@@ -13620,7 +13620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 223615839}
   m_Layer: 7
-  m_Name: GameObject
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13760,7 +13760,7 @@ GameObject:
   - component: {fileID: 240472251}
   m_Layer: 0
   m_Name: Grill
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40804,7 +40804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c961fd7c43a44aa499ec9a02a1e55f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 2
+  playerSpeed: 1
   jumpingSpeed: 5
   _glidingDrag: 10
   mask:

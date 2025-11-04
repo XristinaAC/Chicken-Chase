@@ -26,7 +26,6 @@ public class PlayerManager2 : MonoBehaviour
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
     private float _rbDrag = 1;
-    private float _glidingTime = 0;
     private Vector3 _jumpHeightV;
     bool canGlide = false;
     private bool _isJumping = false;
@@ -57,9 +56,11 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
+    float height;
     float counter = 0;
     private void Update()
     {
+        height = Mathf.Min(distance, _jumpHeight);
         PlayerMovement();
         PressingJumpButton();
         GlidingActions();
@@ -82,11 +83,8 @@ public class PlayerManager2 : MonoBehaviour
             {
                 _isHoldingSpace = true;
             }
-            heldSpaceDuration = 0;
-            counter = Time.time;
-            //counter = 0;
             _isJumping = true;
-            _glidingTime = 0;
+            counter = Time.time;
         }
     }
 
@@ -101,9 +99,8 @@ public class PlayerManager2 : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
         distance = Vector3.Distance(hit.point, transform.position);
-        Debug.Log(transform.position.y);
 
-        if (distance >= 3 && !isGrounded && _isHoldingSpace && heldSpaceDuration < 1)
+        if (distance >= height && !isGrounded && _isHoldingSpace)
         {
             Debug.Log(true);
             canGlide = true;
@@ -119,7 +116,6 @@ public class PlayerManager2 : MonoBehaviour
         if (canGlide)
         {
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
-            _glidingTime += Time.deltaTime;
         }
     }
 
@@ -129,13 +125,7 @@ public class PlayerManager2 : MonoBehaviour
         //When the player stops pressing the space button
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if(_isHoldingSpace)
-            {
-                heldSpaceDuration = Time.time - counter;
-                Debug.Log(heldSpaceDuration);
-            }
             _isHoldingSpace = false;
-            _glidingTime = 0;
             canGlide = false;
             this.GetComponent<Rigidbody>().drag = _rbDrag;
         }
@@ -147,8 +137,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            //isGrounded = true;
-            if (_isJumping && distance <= 0.03 && isGrounded == true)// && heldSpaceDuration < 9)
+            if (_isJumping && distance <= 0.03 && isGrounded == true)
             {
                   this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
                   _isHoldingSpace = false;
