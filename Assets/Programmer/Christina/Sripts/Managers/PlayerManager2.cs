@@ -78,13 +78,16 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if(!_isJumping && !_isHoldingSpace)
+            {
+                _isHoldingSpace = true;
+            }
             heldSpaceDuration = 0;
-           counter = Time.time;
+            counter = Time.time;
             //counter = 0;
             _isJumping = true;
-            _isHoldingSpace = true;
             _glidingTime = 0;
-        }    
+        }
     }
 
     void GlidingActions()
@@ -96,26 +99,26 @@ public class PlayerManager2 : MonoBehaviour
     void CheckingGroundDistance()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.down, out hit, 100, mask);
+        Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
         distance = Vector3.Distance(hit.point, transform.position);
-        Debug.Log(Vector3.Distance(hit.point, transform.position));
-        if (Vector3.Distance(hit.point, transform.position) > _jumpHeight/1.5 && _isHoldingSpace)
+        Debug.Log(transform.position.y);
+
+        if (distance >= 3 && !isGrounded && _isHoldingSpace && heldSpaceDuration < 1)
         {
+            Debug.Log(true);
             canGlide = true;
         }
-        else if (_glidingTime > 0.091 && Vector3.Distance(hit.point, transform.position) < 2)
+        else
         {
             canGlide = false;
-            this.GetComponent<Rigidbody>().drag = _rbDrag;
         }
     }
 
     void Gliding()
     {
-        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < 0.5) && _glidingTime < 1)
+        if (canGlide)
         {
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
-            //this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
             _glidingTime += Time.deltaTime;
         }
     }
@@ -129,7 +132,7 @@ public class PlayerManager2 : MonoBehaviour
             if(_isHoldingSpace)
             {
                 heldSpaceDuration = Time.time - counter;
-                //Debug.Log(heldSpaceDuration);
+                Debug.Log(heldSpaceDuration);
             }
             _isHoldingSpace = false;
             _glidingTime = 0;
@@ -138,24 +141,35 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
+    bool isGrounded = false;
+
     private void FixedUpdate()
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            if (_isJumping && distance <= 0.5f && heldSpaceDuration < 9)
+            //isGrounded = true;
+            if (_isJumping && distance <= 0.03 && isGrounded == true)// && heldSpaceDuration < 9)
             {
-                this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
+                  this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
+                  _isHoldingSpace = false;
             }
             _isJumping = false;
         }
         else
         {
-            //_isJumping = false;
+            isGrounded = false;
+            _isJumping = false;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+            canGlide = false;
+        }
+
         if (collision.gameObject.tag == "obstacle")
         {
             this.gameObject.SetActive(false);
