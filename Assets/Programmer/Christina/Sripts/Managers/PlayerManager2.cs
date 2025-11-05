@@ -8,33 +8,37 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerManager2 : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 0;
     [SerializeField] private float jumpingSpeed = 0;
-    [SerializeField] private float gravity = 0;
+    [SerializeField] private float _glidingDrag = 10;
     [SerializeField] private LayerMask mask;
     [SerializeField] private Transform basePosition;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private float _jumpHeight = 1;
+    [SerializeField] GameObject replayButton;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
-    private float _rbDrag = 0;
-    private float _glidingDrag = 15;
-    private float _glidingTimer = 0.5f;
-    private float _glidingTime = 0;
+    private float _rbDrag = 1;
     private Vector3 _jumpHeightV;
     bool canGlide = false;
     private bool _isJumping = false;
     private Vector3 _direction;
 
+    private void Awake()
+    {
+        replayButton.SetActive(false);
+    }
+
     private void Start()
     {
-        _runningVelocity = new Vector3(playerSpeed * 0.016f, 0, 0);
+        _runningVelocity = new Vector3(playerSpeed * 0.009f, 0, 0);
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _jumpHeightV = new Vector3(0, _jumpHeight, 0);
         SetDirection(0);
@@ -44,16 +48,20 @@ public class PlayerManager2 : MonoBehaviour
     {
         if(direction == 0)
         {
-            _direction = _runningVelocity;
+            _direction = new Vector3(_runningVelocity.x, 0, 0);
         }
         else if(direction == 1)
         {
-            _direction = new Vector3(0, 0, _runningVelocity.x );
+            _direction = new Vector3(0, 0, _runningVelocity.x);
         }
     }
 
+    double height;
+    float counter = 0;
     private void Update()
     {
+        //height = Mathf.Min(distance, jumpingSpeed);
+        //Debug.Log(distance);
         PlayerMovement();
         PressingJumpButton();
         GlidingActions();
@@ -64,7 +72,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (!_obstacleHit)
         {
-            transform.position += _direction;
+            transform.position += new Vector3(playerSpeed * 0.009f, 0, 0); ;
         }
     }
 
@@ -72,9 +80,9 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _isJumping = true;
             _isHoldingSpace = true;
-            _glidingTime = 0;
+            _isJumping = true;
+            counter = Time.time;
         }
     }
 
@@ -83,72 +91,101 @@ public class PlayerManager2 : MonoBehaviour
         CheckingGroundDistance();
         Gliding();
     }
-
+    float distance;
     void CheckingGroundDistance()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.down, out hit,20, mask);
-        if (Vector3.Distance(hit.point, transform.position) > 3)
+        Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
+        distance = Vector3.Distance(hit.point, transform.position);
+
+        height = (jumpingSpeed / _jumpHeight) - 0.6;
+        if (distance >= height && !isGrounded && _isHoldingSpace)
         {
             canGlide = true;
         }
-        else if (_glidingTime > 0.091 && Vector3.Distance(hit.point, transform.position) < 1.5)
+        else
         {
             canGlide = false;
-            this.GetComponent<Rigidbody>().drag = _rbDrag;
         }
     }
 
     void Gliding()
     {
-        if (canGlide && (this.GetComponent<Rigidbody>().velocity.y > 0.5 || this.GetComponent<Rigidbody>().velocity.y < _glidingTimer) && _glidingTime < 1 && _isHoldingSpace)
+        if (canGlide)
         {
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
-            //this.GetComponent<Rigidbody>().velocity += new Vector3(0, gravity, 0);
-            _glidingTime += Time.deltaTime;
-            Debug.Log("in");
         }
-        Debug.Log(_glidingTime);
     }
-    
 
+    float heldSpaceDuration = 0;
     void EndingGliding()
     {
         //When the player stops pressing the space button
         if (Input.GetKeyUp(KeyCode.Space))
         {
             _isHoldingSpace = false;
-            _glidingTime = 0;
             canGlide = false;
             this.GetComponent<Rigidbody>().drag = _rbDrag;
         }
     }
 
+    bool isGrounded = false;
+
     private void FixedUpdate()
     {
         if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
         {
-            if (_isJumping && !_isHoldingSpace)
+            if (_isJumping && distance <= 0.03 && isGrounded == true)
             {
                 this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
+                isGrounded = false;
             }
+            _isJumping = false;
         }
         else
         {
+            isGrounded = false;
             _isJumping = false;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+            canGlide = false;
+        }
+
         if (collision.gameObject.tag == "obstacle")
         {
             this.gameObject.SetActive(false);
+            replayButton.SetActive(true);
         }
 
         if (collision.gameObject.tag == "change scene")
         {
             transform.Rotate(0, -45, 0);
         }
+    }
+
+    public bool CanGlide()
+    {
+        return canGlide;
+    }
+
+    public bool IsGrounded()
+    {
+        return isGrounded;
+    }
+
+    public bool CanJump()
+    {
+        return _isJumping;
+    }
+
+    public void Replay()
+    {
+        SceneManager.LoadScene("Garg_lvl");
     }
 }
