@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameOverManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private string firstLevelName = "Level_1";
 
     private void OnEnable()
     {
@@ -24,7 +25,17 @@ public class GameOverManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(0);
         GameManager.Instance.ChangeState(GameManager.GameState.MainMenu);
+    }
+    public async void RestartLevel()
+    {
+        if (LevelManager.Instance != null)
+            await LevelManager.Instance.LoadLevelAsync(firstLevelName);
+        else
+            SceneManager.LoadScene(firstLevelName); // fallback
+
+        TimerManager.Instance?.ResetTimer();
+        GameManager.Instance?.ChangeState(GameManager.GameState.Playing);
     }
 }
