@@ -170,6 +170,6 @@ public class PlayerManager2 : MonoBehaviour
 
     public void Replay()
     {
-        SceneManager.LoadScene("Garg_lvl");
+        SceneManager.LoadScene("Garg_lvl(Kitchen)");
     }
 }
