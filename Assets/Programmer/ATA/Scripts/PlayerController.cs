@@ -7,20 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Speed")]
     [SerializeField] private float speed = 10f;
-    
-    public enum Direction
-    {
-        Right,
-        Forward,
-        Left
-    }
 
-
-    
-    
-    
     private void Update()
     {
+
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
 
         transform.Translate(Vector3.right * (Time.deltaTime * speed));
 
@@ -30,6 +21,12 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.Instance != null)
             GameManager.Instance.ChangeState(GameManager.GameState.GameOver);
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("obstacle"))
+            Die();
     }
 
   
