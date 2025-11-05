@@ -26,13 +26,13 @@ public class CameraManager : MonoBehaviour
 
     void Update()
     {
-        if (player.transform.position.y > transform.position.y)
+        if (player.transform.position.y > transform.position.y + 4)
         {
             Vector3 newPos = new Vector3(0, player.transform.position.y + offset.y, 0);
             transform.position = Vector3.Lerp(transform.position, newPos, 0.5f * Time.deltaTime);
             height = transform.position.y;
         }
-        else if (player.transform.position.y < height - 2)
+        else if (player.transform.position.y < height)
         {
             Vector3 newPos = new Vector3(0, player.transform.position.y + offset.y, 0);
             transform.position = Vector3.Lerp(transform.position, newPos, 0.5f * Time.deltaTime);
