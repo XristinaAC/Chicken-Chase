@@ -38,7 +38,7 @@ public class PlayerManager2 : MonoBehaviour
 
     private void Start()
     {
-        _runningVelocity = new Vector3(playerSpeed * 0.009f, 0, 0);
+       
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _jumpHeightV = new Vector3(0, _jumpHeight, 0);
         SetDirection(0);
@@ -72,7 +72,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (!_obstacleHit)
         {
-            transform.position += new Vector3(playerSpeed * 0.009f, 0, 0); ;
+            transform.position += new Vector3(playerSpeed * Time.deltaTime, 0, 0); ;
         }
     }
 
