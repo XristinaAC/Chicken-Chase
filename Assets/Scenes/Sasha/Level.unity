@@ -1894,7 +1894,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 549f0dd4bfbdbef4b849d75f13437e7b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.0745
+      value: 3.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 549f0dd4bfbdbef4b849d75f13437e7b,
         type: 3}
@@ -2608,17 +2608,17 @@ PrefabInstance:
     - target: {fileID: 177659808695690639, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -263.44333
+      value: -150.563
       objectReference: {fileID: 0}
     - target: {fileID: 177659808695690639, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.9545
+      value: 30.714
       objectReference: {fileID: 0}
     - target: {fileID: 177659808695690639, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.832778
+      value: 3.43
       objectReference: {fileID: 0}
     - target: {fileID: 177659808695690639, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
@@ -2665,6 +2665,11 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1498221924}
+    - target: {fileID: 8055440935873650591, guid: 63703530d0d89b5438c9e7e0cc6da257,
+        type: 3}
+      propertyPath: playerSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8055440935873650591, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
       propertyPath: replayButton
@@ -4107,7 +4112,7 @@ Transform:
   m_GameObject: {fileID: 1498221924}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -258.1, y: 31.79, z: -9.6}
+  m_LocalPosition: {x: -145.07, y: 31.79, z: -9.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5182,8 +5187,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.00077437307, y: 0.0010519119, z: 0.0008790849}
-  m_Center: {x: 0.000043035885, y: 2.718946e-10, z: 0.00042655767}
+  m_Size: {x: 0.00068364356, y: 0.0007702858, z: 0.0008790849}
+  m_Center: {x: -0.000011179918, y: 0.0000047621565, z: 0.0004265581}
 --- !u!1001 &1889104025
 PrefabInstance:
   m_ObjectHideFlags: 0
