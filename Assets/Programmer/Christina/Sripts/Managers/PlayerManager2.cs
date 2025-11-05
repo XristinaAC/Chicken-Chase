@@ -137,7 +137,8 @@ public class PlayerManager2 : MonoBehaviour
         {
             if (_isJumping && distance <= 0.03 && isGrounded == true)
             {
-                  this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
+                this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
+                isGrounded = false;
             }
             _isJumping = false;
         }
@@ -166,6 +167,21 @@ public class PlayerManager2 : MonoBehaviour
         {
             transform.Rotate(0, -45, 0);
         }
+    }
+
+    public bool CanGlide()
+    {
+        return canGlide;
+    }
+
+    public bool IsGrounded()
+    {
+        return isGrounded;
+    }
+
+    public bool CanJump()
+    {
+        return _isJumping;
     }
 
     public void Replay()
