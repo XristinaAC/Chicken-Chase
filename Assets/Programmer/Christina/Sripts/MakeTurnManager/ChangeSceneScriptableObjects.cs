@@ -33,7 +33,7 @@ public class ChangeSceneScriptableObjects : ScriptableObject
             Collider[] col = Physics.OverlapSphere(cso[i].changeSceneArea.transform.position, 0.3f, player);
             if (col.Length > 0)
             {
-                col[0].GetComponent<PlayerManager>().SetDirection((int)cso[i].playerDirection);
+                col[0].GetComponent<PlayerManager2>().SetDirection((int)cso[i].playerDirection);
             }
         }
         
