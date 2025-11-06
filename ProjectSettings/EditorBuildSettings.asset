@@ -16,10 +16,7 @@ EditorBuildSettings:
     guid: 311eee81e47c0de4bbb51286595ce912
   - enabled: 1
     path: Assets/Programmer/ATA/Scenes/Level_3.unity
-    guid: 053029ef12a3b9840a437587c2400438
-  - enabled: 1
-    path: Assets/Programmer/ATA/Scenes/Level_3.unity
-    guid: 053029ef12a3b9840a437587c2400438
+    guid: 86a0eb3ba6eb15f4597cc14872daa047
   - enabled: 1
     path: Assets/Programmer/ATA/Scenes/Boss.unity
     guid: 1c0cde5a72b9a82429519a4ddd6a83d6

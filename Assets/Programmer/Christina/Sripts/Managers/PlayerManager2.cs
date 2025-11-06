@@ -1,15 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using System.Xml.Serialization;
-using TMPro;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class PlayerManager2 : MonoBehaviour
 {

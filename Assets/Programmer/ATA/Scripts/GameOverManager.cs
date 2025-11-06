@@ -32,11 +32,12 @@ public class GameOverManager : MonoBehaviour
     {
         if (LevelManager.Instance != null)
         {
-           SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+            await LevelManager.Instance.LoadLevelAsync(SceneManager.GetActiveScene().name);
         }
-            //await LevelManager.Instance.LoadLevelAsync(firstLevelName);
         else
-            SceneManager.LoadScene(firstLevelName); // fallback
+        {
+            SceneManager.LoadScene(firstLevelName); 
+        }
 
         TimerManager.Instance?.ResetTimer();
         GameManager.Instance?.ChangeState(GameManager.GameState.Playing);
