@@ -20,7 +20,7 @@ public class PlayerManager2 : MonoBehaviour
     [SerializeField] private Transform basePosition;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private float _jumpHeight = 1;
-    [SerializeField] GameObject replayButton;
+   
 
     private Vector3 _runningVelocity = Vector3.zero;
     private bool _obstacleHit = false;
@@ -33,7 +33,7 @@ public class PlayerManager2 : MonoBehaviour
 
     private void Awake()
     {
-        replayButton.SetActive(false);
+        
     }
 
     private void Start()
@@ -59,6 +59,7 @@ public class PlayerManager2 : MonoBehaviour
     float counter = 0;
     private void Update()
     {
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         //height = Mathf.Min(distance, jumpingSpeed);
         //Debug.Log(distance);
         PlayerMovement();
@@ -158,8 +159,7 @@ public class PlayerManager2 : MonoBehaviour
 
         if (collision.gameObject.tag == "obstacle")
         {
-            this.gameObject.SetActive(false);
-            replayButton.SetActive(true);
+            Die();
         }
 
         if (collision.gameObject.tag == "change scene")
@@ -168,6 +168,11 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
+    private void Die()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.ChangeState(GameManager.GameState.GameOver);
+    }
     public bool CanGlide()
     {
         return canGlide;
@@ -181,10 +186,5 @@ public class PlayerManager2 : MonoBehaviour
     public bool CanJump()
     {
         return _isJumping;
-    }
-
-    public void Replay()
-    {
-        SceneManager.LoadScene("Level");
     }
 }
