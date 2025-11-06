@@ -22,17 +22,18 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         offset = transform.position - player.transform.position;
+        //height = transform.position.y;
     }
 
     void Update()
     {
-        if (player.transform.position.y > transform.position.y + 4)
+        if(player.transform.position.y > transform.position.y + 2)
         {
             Vector3 newPos = new Vector3(0, player.transform.position.y + offset.y, 0);
             transform.position = Vector3.Lerp(transform.position, newPos, 0.5f * Time.deltaTime);
             height = transform.position.y;
         }
-        else if (player.transform.position.y < height)
+        else if(player.transform.position.y < transform.position.y - 5)
         {
             Vector3 newPos = new Vector3(0, player.transform.position.y + offset.y, 0);
             transform.position = Vector3.Lerp(transform.position, newPos, 0.5f * Time.deltaTime);

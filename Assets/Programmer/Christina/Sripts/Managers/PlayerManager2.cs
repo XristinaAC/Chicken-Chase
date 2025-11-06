@@ -97,6 +97,15 @@ public class PlayerManager2 : MonoBehaviour
         Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
         distance = Vector3.Distance(hit.point, transform.position);
 
+        if (Physics.CheckSphere(basePosition.transform.position, 0.5f, mask))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
         height = (jumpingSpeed / _jumpHeight) - 0.6;
         if (distance >= height && !isGrounded && _isHoldingSpace)
         {
@@ -132,27 +141,18 @@ public class PlayerManager2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Physics.CheckSphere(basePosition.transform.position, 0.1f, mask))
-        {
-            if (_isJumping && distance <= 0.03 && isGrounded == true)
-            {
-                this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
-                isGrounded = false;
-            }
-            _isJumping = false;
-        }
-        else
-        {
-            isGrounded = false;
-            _isJumping = false;
-        }
+          if (_isJumping && isGrounded == true)
+          {
+               this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
+               isGrounded = false;
+          }
+          _isJumping = false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
-            isGrounded = true;
             canGlide = false;
         }
 
@@ -185,6 +185,6 @@ public class PlayerManager2 : MonoBehaviour
 
     public void Replay()
     {
-        SceneManager.LoadScene("Garg_lvl(Kitchen)");
+        SceneManager.LoadScene("Level");
     }
 }
