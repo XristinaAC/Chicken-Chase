@@ -55,6 +55,8 @@ public class PlayerManager2 : MonoBehaviour
         PressingJumpButton();
         GlidingActions();
         EndingGliding();
+
+        
     }
 
     void PlayerMovement()

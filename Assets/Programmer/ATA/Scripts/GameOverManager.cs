@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
@@ -16,6 +17,15 @@ public class GameOverManager : MonoBehaviour
     {
         if (GameManager.Instance != null)
             GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void Update()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+                RestartLevel();
+        }
     }
 
     private void OnGameStateChanged(GameManager.GameState state)
@@ -39,7 +49,7 @@ public class GameOverManager : MonoBehaviour
             SceneManager.LoadScene(firstLevelName); 
         }
 
-        TimerManager.Instance?.ResetTimer();
+        //TimerManager.Instance?.ResetTimer();
         GameManager.Instance?.ChangeState(GameManager.GameState.Playing);
     }
 }

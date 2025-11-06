@@ -1625,7 +1625,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ae4c704a50b654198b701c5b48e04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endlessLevelNames: []
+  endlessLevelNames:
+  - Endless_1
+  - Endless_2
 --- !u!4 &806754603
 Transform:
   m_ObjectHideFlags: 0

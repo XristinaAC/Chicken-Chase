@@ -26,7 +26,15 @@ public class LevelManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            LoadNextLevelAsync();
+        }
+    }
+
     public async Task LoadLevelAsync(string sceneName)
     {
         OnLevelLoadStart?.Invoke();
