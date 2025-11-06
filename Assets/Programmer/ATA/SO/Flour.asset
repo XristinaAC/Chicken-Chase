@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6afb6745b2494b0a9386b2c3a79de1de, type: 3}
-  m_Name: ObjectData
+  m_Name: Flour
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6234534231433998801, guid: c363bc736b1f22949b4a333d506e0350, type: 3}
+  prefab: {fileID: 7780312116162410905, guid: d0c25bca31f75694f97200fabe146a80, type: 3}
   spawnChance: 0.5

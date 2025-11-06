@@ -170,8 +170,10 @@ public class PlayerManager2 : MonoBehaviour
 
     private void Die()
     {
+        
         if (GameManager.Instance != null)
             GameManager.Instance.ChangeState(GameManager.GameState.GameOver);
+            
     }
     public bool CanGlide()
     {
