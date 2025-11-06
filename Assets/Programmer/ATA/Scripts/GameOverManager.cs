@@ -31,7 +31,10 @@ public class GameOverManager : MonoBehaviour
     public async void RestartLevel()
     {
         if (LevelManager.Instance != null)
-            await LevelManager.Instance.LoadLevelAsync(firstLevelName);
+        {
+           SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        }
+            //await LevelManager.Instance.LoadLevelAsync(firstLevelName);
         else
             SceneManager.LoadScene(firstLevelName); // fallback
 

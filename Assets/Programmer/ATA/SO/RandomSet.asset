@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70be350813ca46a2b144971167f0080b, type: 3}
-  m_Name: BossObstacleSet
+  m_Name: RandomSet
   m_EditorClassIdentifier: 
   obstacles:
-  - {fileID: 11400000, guid: e62dcfc8c5c47ac42bad95f8bb483914, type: 2}
+  - {fileID: 11400000, guid: 947ed09ae23a6a84780566bcdaa5eede, type: 2}
+  - {fileID: 11400000, guid: cf3d9d64505a9294c82bc062bd94df92, type: 2}
+  - {fileID: 11400000, guid: 6463729b0c8c0a342abc5e7b5bc3a2e7, type: 2}
