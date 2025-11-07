@@ -8,6 +8,7 @@ public class SettingsManager : MonoBehaviour
 {
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Slider masterSlider;
 
     private void Start()
     {
@@ -19,7 +20,14 @@ public class SettingsManager : MonoBehaviour
         {
             SoundManager.Instance.SetMusicVolume(musicSlider.value);
             SoundManager.Instance.SetSFXVolume(sfxSlider.value);
+            SoundManager.Instance.SetMasterVolume(masterSlider.value);
         } 
+    }
+
+    public void MasterSlider()
+    {
+        SoundManager.Instance.SetMasterVolume(masterSlider.value);
+        PlayerPrefs.SetFloat("MasterVolume", masterSlider.value);
     }
 
     public void MusicSlider()
@@ -38,8 +46,10 @@ public class SettingsManager : MonoBehaviour
     {
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
 
         SoundManager.Instance.SetMusicVolume(musicSlider.value);
         SoundManager.Instance.SetSFXVolume(sfxSlider.value);
+        SoundManager.Instance.SetMasterVolume(masterSlider.value);
     }
 }
