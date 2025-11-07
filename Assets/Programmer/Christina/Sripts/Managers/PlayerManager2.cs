@@ -12,6 +12,7 @@ public class PlayerManager2 : MonoBehaviour
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private float _jumpHeight = 1;
     [SerializeField] private Transform spawnPosition;
+    [SerializeField] private float chickenHeight;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private bool _obstacleHit = false;
@@ -40,6 +41,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _jumpHeightV = new Vector3(0, Mathf.Sqrt(1 * -2 * (Physics.gravity.y * 1)), 0);
+        chickenHeight = transform.position.y;
         SetDirection(0);
     }
 
@@ -55,13 +57,14 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
-    double height;
+    float height;
     float counter = 0;
     private void Update()
     {
         if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         //height = Mathf.Min(distance, jumpingSpeed);
-        Debug.Log(distance);
+       
+        //Debug.Log(distance);
         PlayerMovement();
         PressingJumpButton();
         GlidingActions();
@@ -101,6 +104,8 @@ public class PlayerManager2 : MonoBehaviour
         if (Physics.CheckSphere(basePosition.transform.position, 0.5f, mask))
         {
             isGrounded = true;
+            chickenHeight = transform.position.y;
+            canGlide = false;
         }
         else
         {
@@ -108,15 +113,16 @@ public class PlayerManager2 : MonoBehaviour
             this.GetComponent<Rigidbody>().AddForce(new Vector3(0, -2, 0), ForceMode.Acceleration);
         }
 
-        //height = (jumpingSpeed / _jumpHeight) - 0.6;
-        if (distance >= 3  && !isGrounded && _isHoldingSpace)
+        height = Mathf.Pow(jumpingSpeed, 2f) / (2f * 2f);
+        Debug.Log(transform.position.y);
+        if (transform.position.y >= chickenHeight + 3   && !isGrounded && _isHoldingSpace)
         {
             canGlide = true;
         }
         else if(distance <= 0.9f)
         {
-            this.GetComponent<Rigidbody>().drag = _rbDrag;
-            canGlide = false;
+            //this.GetComponent<Rigidbody>().drag = _rbDrag;
+            //canGlide = false;
         }
     }
 
@@ -146,14 +152,11 @@ public class PlayerManager2 : MonoBehaviour
     {
           if (_isJumping && isGrounded == true)
           {
-            //Physics.gravity = -50f;
-           
             this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
 
             isGrounded = false;
           }
           _isJumping = false;
-        //Physics.gravity = -15;
     }
 
     private void OnCollisionEnter(Collision collision)
