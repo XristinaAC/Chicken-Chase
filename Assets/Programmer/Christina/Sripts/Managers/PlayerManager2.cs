@@ -20,7 +20,7 @@ public class PlayerManager2 : MonoBehaviour
     [SerializeField] private Transform basePosition;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private float _jumpHeight = 1;
-    [SerializeField] GameObject replayButton;
+ 
 
     private Vector3 _runningVelocity = Vector3.zero;
     private bool _obstacleHit = false;
@@ -33,12 +33,12 @@ public class PlayerManager2 : MonoBehaviour
 
     private void Awake()
     {
-        replayButton.SetActive(false);
+       
     }
 
     private void Start()
     {
-        _runningVelocity = new Vector3(playerSpeed * 0.009f, 0, 0);
+        
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _jumpHeightV = new Vector3(0, _jumpHeight, 0);
         SetDirection(0);
@@ -72,7 +72,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (!_obstacleHit)
         {
-            transform.position += new Vector3(playerSpeed * 0.009f, 0, 0); ;
+            transform.position += new Vector3(playerSpeed * Time.deltaTime, 0, 0); ;
         }
     }
 
@@ -160,7 +160,7 @@ public class PlayerManager2 : MonoBehaviour
         if (collision.gameObject.tag == "obstacle")
         {
             this.gameObject.SetActive(false);
-            replayButton.SetActive(true);
+          
         }
 
         if (collision.gameObject.tag == "change scene")
@@ -184,8 +184,5 @@ public class PlayerManager2 : MonoBehaviour
         return _isJumping;
     }
 
-    public void Replay()
-    {
-        SceneManager.LoadScene("Level");
-    }
+    
 }

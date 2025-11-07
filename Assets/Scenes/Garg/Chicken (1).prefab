@@ -323,8 +323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c961fd7c43a44aa499ec9a02a1e55f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 2
-  jumpingSpeed: 5
+  playerSpeed: 1.5
+  jumpingSpeed: 4
   _glidingDrag: 10
   mask:
     serializedVersion: 2
