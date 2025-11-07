@@ -4676,17 +4676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdf6c616326c4aaeb610b335fbb67fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundColor:
-    serializedVersion: 2
-    rgba: 4278190080
-  font: {fileID: 0}
-  textColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  fontSize: 17
-  fontStyle: 3
-  alignment: 4
-  textDropShadow: 0
 --- !u!114 &1655666762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5351,12 +5340,12 @@ PrefabInstance:
     - target: {fileID: 214200913762874913, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
       propertyPath: m_Drag
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 214200913762874913, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
       propertyPath: m_Constraints
-      value: 88
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 665683969229717301, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
@@ -5390,8 +5379,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8055440935873650591, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
+      propertyPath: _glidingDrag
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055440935873650591, guid: 63703530d0d89b5438c9e7e0cc6da257,
+        type: 3}
       propertyPath: jumpingSpeed
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8055440935873650591, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
