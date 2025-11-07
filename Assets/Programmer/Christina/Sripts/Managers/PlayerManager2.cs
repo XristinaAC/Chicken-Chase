@@ -30,10 +30,10 @@ public class PlayerManager2 : MonoBehaviour
         }
         else if (Instance != this)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
