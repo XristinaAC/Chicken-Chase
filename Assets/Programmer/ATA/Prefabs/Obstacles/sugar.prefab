@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3141673953930532477}
   - component: {fileID: 900016896004367031}
   - component: {fileID: 6765519101224143657}
+  - component: {fileID: -3927051853942115926}
   m_Layer: 0
   m_Name: sugar
   m_TagString: obstacle
@@ -105,3 +106,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04028908, y: 0.07383062, z: 0.018897153}
   m_Center: {x: -0.0000069404755, y: 0.0358909, z: -0.0005212857}
+--- !u!54 &-3927051853942115926
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692646375207928674}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0

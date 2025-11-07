@@ -11,6 +11,7 @@
             Playing,
             Paused,
             GameOver,
+            MiniGame
         }
 
         public GameState CurrentState { get; private set; }
@@ -48,6 +49,7 @@
                     break;
 
                 case GameState.Playing:
+                case GameState.MiniGame:
                     TimerManager.Instance.StartTimer();
                     break;
 
