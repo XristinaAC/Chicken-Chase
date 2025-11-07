@@ -20,11 +20,6 @@ public class PlayerManager2 : MonoBehaviour
     private bool _isJumping = false;
     private Vector3 _direction;
 
-    private void Awake()
-    {
-        
-    }
-
     private void Start()
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
@@ -48,7 +43,7 @@ public class PlayerManager2 : MonoBehaviour
     float counter = 0;
     private void Update()
     {
-        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
+        //if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         //height = Mathf.Min(distance, jumpingSpeed);
         //Debug.Log(distance);
         PlayerMovement();
@@ -103,8 +98,9 @@ public class PlayerManager2 : MonoBehaviour
         {
             canGlide = true;
         }
-        else
+        else if(distance <= 0.9f)
         {
+            this.GetComponent<Rigidbody>().drag = _rbDrag;
             canGlide = false;
         }
     }
@@ -135,8 +131,9 @@ public class PlayerManager2 : MonoBehaviour
     {
           if (_isJumping && isGrounded == true)
           {
-               this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
-               isGrounded = false;
+            //this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
+            transform.position = new Vector3(0, jumpingSpeed,0);
+            isGrounded = false;
           }
           _isJumping = false;
     }
