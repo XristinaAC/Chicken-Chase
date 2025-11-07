@@ -163,7 +163,7 @@ public class PlayerManager2 : MonoBehaviour
         {
             this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
 
-            isGrounded = false;
+            //isGrounded = false;
             _isJumping = false;
         }
     }
