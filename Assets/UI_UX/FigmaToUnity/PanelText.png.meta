@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d690e969f4f35a4390806ed5523dd3d
+guid: b1ee167853aa5f94a9f2612722c1f3f4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scroller_0
+      name: PanelText_0
       rect:
         serializedVersion: 2
-        x: 68
-        y: 7562
-        width: 5447
-        height: 366
+        x: 276
+        y: 3650
+        width: 2634
+        height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efc714d79defafa48a55b241700f3de4
-      internalID: 1641339608
+      spriteID: 94475e20482334640ae94ac4661fd2f7
+      internalID: -1132856097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scroller_1
+      name: PanelText_1
       rect:
         serializedVersion: 2
-        x: 207
-        y: 6420
-        width: 5428
-        height: 366
+        x: 178
+        y: 2963
+        width: 2817
+        height: 596
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3eda845e80f458740a805da9623ef05a
-      internalID: 1019456033
+      spriteID: f47211c43f2e56641a168d7b40bc2c48
+      internalID: 262321241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChickScroller
+      name: PanelText_2
       rect:
         serializedVersion: 2
-        x: 660
-        y: 4666
-        width: 1154
-        height: 1315
+        x: 11
+        y: 2247
+        width: 3157
+        height: 588
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01a62369560dcd548995af013613a71d
-      internalID: -1349355530
+      spriteID: e6bb5e3db33f473478c9baabc96d17e0
+      internalID: -987656214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PanelText_3
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 1554
+        width: 2281
+        height: 591
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96b0f461eaf26824dac2e068678dc88b
+      internalID: 1963473820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PanelText_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 752
+        width: 3152
+        height: 529
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c8d906c9257f04c953dda05225fc15
+      internalID: -819256058
       vertices: []
       indices: 
       edges: []
@@ -175,7 +217,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1e1dce416b8eea54796cfdd0fe9edb0f
+    spriteID: 0b1971f833ae4054e9408eac36bafe64
     internalID: 0
     vertices: []
     indices: 
@@ -183,9 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ChickScroller: -1349355530
-      Scroller_0: 1641339608
-      Scroller_1: 1019456033
+      PanelText_0: -1132856097
+      PanelText_1: 262321241
+      PanelText_2: -987656214
+      PanelText_3: 1963473820
+      PanelText_4: -819256058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
