@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerManager2 : MonoBehaviour
 {
+    public static PlayerManager2 Instance = null;
+
     [SerializeField] private float playerSpeed = 0;
     [SerializeField] private float jumpingSpeed = 0;
     [SerializeField] private float _glidingDrag = 10;
@@ -9,7 +11,7 @@ public class PlayerManager2 : MonoBehaviour
     [SerializeField] private Transform basePosition;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private float _jumpHeight = 1;
-   
+    [SerializeField] private Transform spawnPosition;
 
     private Vector3 _runningVelocity = Vector3.zero;
     private bool _obstacleHit = false;
@@ -19,6 +21,20 @@ public class PlayerManager2 : MonoBehaviour
     bool canGlide = false;
     private bool _isJumping = false;
     private Vector3 _direction;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     private void Start()
     {
@@ -43,15 +59,13 @@ public class PlayerManager2 : MonoBehaviour
     float counter = 0;
     private void Update()
     {
-        //if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         //height = Mathf.Min(distance, jumpingSpeed);
         Debug.Log(distance);
         PlayerMovement();
         PressingJumpButton();
         GlidingActions();
         EndingGliding();
-       
-
     }
 
     void PlayerMovement()
