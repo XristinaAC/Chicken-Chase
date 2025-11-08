@@ -8,7 +8,7 @@
         [SerializeField] private Transform player;
         [SerializeField] private float maxHealth = 4;
         [SerializeField] private float currentHealth;
-        
+        public bool IsDead => currentHealth <= 0;
         private void Awake()
         {
             currentHealth = maxHealth;
@@ -30,8 +30,8 @@
                 Die();
         }
 
-        void Die()
+        async void Die()
         {
-            
+            await LevelManager.Instance.LoadNextLevelAsync();
         }
     }

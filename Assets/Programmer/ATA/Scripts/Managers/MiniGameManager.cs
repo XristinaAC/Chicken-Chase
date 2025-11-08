@@ -32,7 +32,6 @@ public class MiniGameManager : MonoBehaviour
         movementArea.gameObject.SetActive(false);
         miniGameUI.gameObject.SetActive(false);
         hitText.gameObject.SetActive(false);
-        currentTime = maxTime;
     }
 
 
@@ -58,6 +57,7 @@ public class MiniGameManager : MonoBehaviour
         movementArea.gameObject.SetActive(true);
         miniGameUI.gameObject.SetActive(true);
         
+        currentTime = maxTime;
         if (timerText != null)
             timerText.gameObject.SetActive(true);
     }
