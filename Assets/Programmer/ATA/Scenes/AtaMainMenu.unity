@@ -593,6 +593,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91056530}
   m_CullTransparentMesh: 1
+--- !u!1 &98552285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 98552287}
+  - component: {fileID: 98552286}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &98552286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98552285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75cde9b652d0c9e4bb0d472a1dde9c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSlider: {fileID: 358702641}
+  sfxSlider: {fileID: 339442388}
+  masterSlider: {fileID: 2052810147}
+--- !u!4 &98552287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98552285}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -200.38905, y: 28.96647, z: 4.35676}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &155305534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1290,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1042896159}
+      - m_Target: {fileID: 98552286}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: SFXSlider
         m_Mode: 1
@@ -1479,7 +1526,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1042896159}
+      - m_Target: {fileID: 98552286}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: MusicSlider
         m_Mode: 1
@@ -2714,7 +2761,6 @@ GameObject:
   - component: {fileID: 1042896158}
   - component: {fileID: 1042896157}
   - component: {fileID: 1042896156}
-  - component: {fileID: 1042896159}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -2805,21 +2851,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042896154}
   m_CullTransparentMesh: 1
---- !u!114 &1042896159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042896154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75cde9b652d0c9e4bb0d472a1dde9c74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSlider: {fileID: 358702641}
-  sfxSlider: {fileID: 339442388}
-  masterSlider: {fileID: 2052810147}
 --- !u!1 &1044658345
 GameObject:
   m_ObjectHideFlags: 0
@@ -4614,7 +4645,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1042896159}
+      - m_Target: {fileID: 98552286}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: MasterSlider
         m_Mode: 1
@@ -4638,3 +4669,4 @@ SceneRoots:
   - {fileID: 806754603}
   - {fileID: 1630072224}
   - {fileID: 1184344664}
+  - {fileID: 98552287}

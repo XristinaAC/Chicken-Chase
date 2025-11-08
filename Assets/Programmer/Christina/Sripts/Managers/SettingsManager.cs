@@ -12,16 +12,7 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
-        if(PlayerPrefs.HasKey("MusicVolume"))
-        {
-            LoadVolumes();
-        }
-        else
-        {
-            SoundManager.Instance.SetMusicVolume(musicSlider.value);
-            SoundManager.Instance.SetSFXVolume(sfxSlider.value);
-            SoundManager.Instance.SetMasterVolume(masterSlider.value);
-        } 
+        SetVolumes();
     }
 
     public void MasterSlider()
@@ -40,6 +31,20 @@ public class SettingsManager : MonoBehaviour
     {
         SoundManager.Instance.SetSFXVolume(sfxSlider.value);
         PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
+    }
+
+    void SetVolumes()
+    {
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            LoadVolumes();
+        }
+        else
+        {
+            SoundManager.Instance.SetMusicVolume(musicSlider.value);
+            SoundManager.Instance.SetSFXVolume(sfxSlider.value);
+            SoundManager.Instance.SetMasterVolume(masterSlider.value);
+        }
     }
 
     void LoadVolumes()
