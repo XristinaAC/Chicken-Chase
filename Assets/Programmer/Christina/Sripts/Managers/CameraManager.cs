@@ -31,7 +31,7 @@ public class CameraManager : MonoBehaviour
         }
         else if(player.transform.position.y < transform.position.y - 5)
         {
-            Vector3 newPos = new Vector3(0, player.transform.position.y + offset.y, 0);
+            Vector3 newPos = new Vector3(0, player.transform.position.y - offset.y, 0);
             transform.position = Vector3.Lerp(transform.position, newPos, 10 * Time.deltaTime);
             height = 0;
         }

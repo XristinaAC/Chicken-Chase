@@ -64,9 +64,7 @@ public class PlayerManager2 : MonoBehaviour
     float counter = 0;
     private void Update()
     {
-        //if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
-        //height = Mathf.Min(distance, jumpingSpeed);
-       
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         //Debug.Log(distance);
         PlayerMovement();
         PressingJumpButton();
@@ -106,7 +104,7 @@ public class PlayerManager2 : MonoBehaviour
         Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
         distance = Vector3.Distance(hit.point, basePosition.position);
 
-        if (Physics.CheckSphere(transform.position, 0.5f, mask))
+        if (Physics.CheckSphere(transform.position, 0.2f, mask))
         {
             isGrounded = true;
             chickenHeight = transform.position.y;
@@ -114,22 +112,20 @@ public class PlayerManager2 : MonoBehaviour
         }
         else
         {
-            _isJumping = false;
             isGrounded = false;
             this.GetComponent<Rigidbody>().AddForce(new Vector3(0, -2, 0), ForceMode.Acceleration);
         }
 
         height = Mathf.Pow(jumpingSpeed, 2f) / (2f * 2);
         Debug.Log(transform.position.y);
-        
-        if (transform.position.y >= chickenHeight + height + (jumpingSpeed - 1.40f)  && !isGrounded && _isHoldingSpace)
+        if (transform.position.y >= chickenHeight + height + (jumpingSpeed - 1.20) && !isGrounded && _isHoldingSpace)
         {
             Debug.Log("Glide" + transform.position.y);
             canGlide = true;
         }
         else if(distance <= 0.9f)
         {
-            this.GetComponent<Rigidbody>().drag = _rbDrag;
+            //this.GetComponent<Rigidbody>().drag = _rbDrag;
             //canGlide = false;
         }
     }
@@ -163,9 +159,9 @@ public class PlayerManager2 : MonoBehaviour
         {
             this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
 
-            //isGrounded = false;
-            _isJumping = false;
+            isGrounded = false;
         }
+        _isJumping = false;
     }
     private void FixedUpdate()
     {
