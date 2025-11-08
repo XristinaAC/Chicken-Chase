@@ -4549,13 +4549,23 @@ PrefabInstance:
       objectReference: {fileID: 678329195}
     - target: {fileID: 8055440935873650591, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
+      propertyPath: _jumpHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055440935873650591, guid: 63703530d0d89b5438c9e7e0cc6da257,
+        type: 3}
       propertyPath: playerSpeed
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8055440935873650591, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}
+      propertyPath: _glidingDrag
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055440935873650591, guid: 63703530d0d89b5438c9e7e0cc6da257,
+        type: 3}
       propertyPath: jumpingSpeed
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8055440935873650591, guid: 63703530d0d89b5438c9e7e0cc6da257,
         type: 3}

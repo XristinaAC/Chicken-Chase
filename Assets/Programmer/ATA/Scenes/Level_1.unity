@@ -4733,7 +4733,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 0.5
-  jumpingSpeed: 5
   _glidingDrag: 10
   mask:
     serializedVersion: 2
@@ -4743,7 +4742,7 @@ MonoBehaviour:
   _jumpHeight: 1
   spawnPosition: {fileID: 0}
   chickenHeight: 0
-  Velocity: {x: 0, y: 0, z: 0}
+  _gravity: -2
 --- !u!114 &1655666761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5445,7 +5444,7 @@ PrefabInstance:
     - target: {fileID: 1637094615182374659, guid: 33ea67321f030494693accf3d702ac1b,
         type: 3}
       propertyPath: _jumpHeight
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1637094615182374659, guid: 33ea67321f030494693accf3d702ac1b,
         type: 3}
