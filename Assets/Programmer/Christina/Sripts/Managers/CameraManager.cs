@@ -23,7 +23,7 @@ public class CameraManager : MonoBehaviour
 
     void Update()
     {
-        if(player.transform.position.y > transform.position.y + 2)
+        if(player.transform.position.y > transform.position.y + 3)
         {
             Vector3 newPos = new Vector3(0, player.transform.position.y + offset.y, 0);
             transform.position = Vector3.Lerp(transform.position, newPos, 0.5f * Time.deltaTime);
