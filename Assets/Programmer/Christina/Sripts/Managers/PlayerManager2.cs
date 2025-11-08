@@ -65,10 +65,8 @@ public class PlayerManager2 : MonoBehaviour
     private void Update()
     {
         if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
-        //Debug.Log(distance);
         PlayerMovement();
         PressingJumpButton();
-        Jumping();
         GlidingActions();
         EndingGliding();
     }
@@ -77,7 +75,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (!_obstacleHit)
         {
-            transform.position += new Vector3(playerSpeed * Time.deltaTime, 0, 0); ;
+            transform.position -= transform.forward * (playerSpeed * Time.deltaTime) ;
         }
     }
 
@@ -101,10 +99,9 @@ public class PlayerManager2 : MonoBehaviour
     void CheckingGroundDistance()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
-        distance = Vector3.Distance(hit.point, basePosition.position);
+        
 
-        if (Physics.CheckSphere(transform.position, 0.2f, mask))
+        if (Physics.CheckSphere(transform.position, 0.5f, mask))
         {
             isGrounded = true;
             chickenHeight = transform.position.y;
@@ -112,13 +109,16 @@ public class PlayerManager2 : MonoBehaviour
         }
         else
         {
+            Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
+        distance = Vector3.Distance(hit.point, transform.position);
             isGrounded = false;
             this.GetComponent<Rigidbody>().AddForce(new Vector3(0, -2, 0), ForceMode.Acceleration);
         }
 
         height = Mathf.Pow(jumpingSpeed, 2f) / (2f * 2);
         Debug.Log(transform.position.y);
-        if (transform.position.y >= chickenHeight + height + (jumpingSpeed - 1.20) && !isGrounded && _isHoldingSpace)
+        
+        if (transform.position.y >= chickenHeight + height + (jumpingSpeed - 2) && !isGrounded && _isHoldingSpace)
         {
             Debug.Log("Glide" + transform.position.y);
             canGlide = true;
@@ -165,6 +165,7 @@ public class PlayerManager2 : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        Jumping();
     }
 
     private void OnCollisionEnter(Collision collision)
