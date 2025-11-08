@@ -130,7 +130,7 @@ public class PlayerManager2 : MonoBehaviour
         else if(distance <= 0.9f)
         {
             this.GetComponent<Rigidbody>().drag = _rbDrag;
-            canGlide = false;
+            //canGlide = false;
         }
     }
 
