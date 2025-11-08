@@ -64,7 +64,7 @@ public class PlayerManager2 : MonoBehaviour
     float counter = 0;
     private void Update()
     {
-        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
+        //if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         PlayerMovement();
         PressingJumpButton();
         GlidingActions();
@@ -110,7 +110,7 @@ public class PlayerManager2 : MonoBehaviour
         else
         {
             Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
-        distance = Vector3.Distance(hit.point, transform.position);
+            distance = Vector3.Distance(hit.point, transform.position);
             isGrounded = false;
             this.GetComponent<Rigidbody>().AddForce(new Vector3(0, -2, 0), ForceMode.Acceleration);
         }
