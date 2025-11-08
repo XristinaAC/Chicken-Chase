@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
@@ -18,6 +19,15 @@ public class GameOverManager : MonoBehaviour
             GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
     }
 
+    private void Update()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+                RestartLevel();
+        }
+    }
+
     private void OnGameStateChanged(GameManager.GameState state)
     {
         gameOverPanel.SetActive(state == GameManager.GameState.GameOver);
@@ -32,13 +42,14 @@ public class GameOverManager : MonoBehaviour
     {
         if (LevelManager.Instance != null)
         {
-           SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+            await LevelManager.Instance.LoadLevelAsync(SceneManager.GetActiveScene().name);
         }
-            //await LevelManager.Instance.LoadLevelAsync(firstLevelName);
         else
-            SceneManager.LoadScene(firstLevelName); // fallback
+        {
+            SceneManager.LoadScene(firstLevelName); 
+        }
 
-        TimerManager.Instance?.ResetTimer();
+        //TimerManager.Instance?.ResetTimer();
         GameManager.Instance?.ChangeState(GameManager.GameState.Playing);
     }
 }

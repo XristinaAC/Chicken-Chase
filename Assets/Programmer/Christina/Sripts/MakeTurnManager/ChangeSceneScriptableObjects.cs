@@ -10,7 +10,7 @@ public class ChangeSceneScriptableObjects : ScriptableObject
     [SerializeField]
     public enum Direction
     {
-        right = 0,
+        rigth = 0,
         left = 2,
         forward = 1,
         back = 3

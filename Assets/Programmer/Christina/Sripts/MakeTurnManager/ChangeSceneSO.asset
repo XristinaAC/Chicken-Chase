@@ -16,6 +16,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   cso:
-  - changeSceneArea: {fileID: 3289842841742551216, guid: 8b14bdf02c51c2249bd541040d187250,
+  - changeSceneArea: {fileID: 6807547719071589975, guid: bae4f5984f57d7344b09c995b9cbfb5b,
       type: 3}
-    playerDirection: 0
+    playerDirection: 1
