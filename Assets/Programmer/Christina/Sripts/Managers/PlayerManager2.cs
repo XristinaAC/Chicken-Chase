@@ -63,7 +63,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (!_obstacleHit)
         {
-            transform.position += new Vector3(playerSpeed * Time.deltaTime, 0, 0); ;
+            transform.position -= transform.forward * (playerSpeed * Time.deltaTime);
         }
     }
 
