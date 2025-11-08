@@ -6,7 +6,7 @@ public class PlayerManager2 : MonoBehaviour
     public static PlayerManager2 Instance = null;
 
     [SerializeField] private float playerSpeed = 0;
-    [SerializeField] private float jumpingSpeed = 0;
+    private float jumpingSpeed = 0;
     [SerializeField] private float _glidingDrag = 10;
     [SerializeField] private LayerMask mask;
     [SerializeField] private Transform basePosition;
@@ -14,9 +14,9 @@ public class PlayerManager2 : MonoBehaviour
     [SerializeField] private float _jumpHeight = 1;
     [SerializeField] private Transform spawnPosition;
     [SerializeField] private float chickenHeight;
+    [SerializeField] private float _gravity = -2;
 
-    [SerializeField] private Vector3 Velocity;
-
+    private bool _jumpHighPeak = false;
     private Vector3 _runningVelocity = Vector3.zero;
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
@@ -64,7 +64,7 @@ public class PlayerManager2 : MonoBehaviour
     float counter = 0;
     private void Update()
     {
-        //if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         PlayerMovement();
         PressingJumpButton();
         GlidingActions();
@@ -83,7 +83,6 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Velocity.y = jumpingSpeed;
             _isHoldingSpace = true;
             _isJumping = true;
             counter = Time.time;
@@ -106,27 +105,21 @@ public class PlayerManager2 : MonoBehaviour
             isGrounded = true;
             chickenHeight = transform.position.y;
             canGlide = false;
+            _jumpHighPeak = false;
         }
         else
         {
             Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
             distance = Vector3.Distance(hit.point, transform.position);
             isGrounded = false;
-            this.GetComponent<Rigidbody>().AddForce(new Vector3(0, -2, 0), ForceMode.Acceleration);
+            this.GetComponent<Rigidbody>().AddForce(new Vector3(0, _gravity, 0), ForceMode.Acceleration);
         }
 
-        height = Mathf.Pow(jumpingSpeed, 2f) / (2f * 2);
-        Debug.Log(transform.position.y);
-        
-        if (transform.position.y >= chickenHeight + height + (jumpingSpeed - 2) && !isGrounded && _isHoldingSpace)
+        if (this.GetComponent<Rigidbody>().velocity.y < 0 && !_jumpHighPeak && !isGrounded && _isHoldingSpace)
         {
             Debug.Log("Glide" + transform.position.y);
             canGlide = true;
-        }
-        else if(distance <= 0.9f)
-        {
-            //this.GetComponent<Rigidbody>().drag = _rbDrag;
-            //canGlide = false;
+            _jumpHighPeak = true;
         }
     }
 
@@ -138,7 +131,6 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
-    float heldSpaceDuration = 0;
     void EndingGliding()
     {
         //When the player stops pressing the space button
@@ -151,12 +143,11 @@ public class PlayerManager2 : MonoBehaviour
     }
 
     bool isGrounded = false;
-    float jumpVelocity;
-
     void Jumping()
     {
         if (_isJumping && isGrounded == true)// && distance <= 1.0f)
         {
+            jumpingSpeed = Mathf.Sqrt(2 * _jumpHeight * Mathf.Abs(_gravity));
             this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
 
             isGrounded = false;
