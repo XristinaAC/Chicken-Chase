@@ -10,7 +10,8 @@ public class Loader : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        ////Instantiate(player, levelPosition);
+        GameObject pre = Instantiate(player);
+        Instantiate(pre, levelPosition);
         ////if (PlayerManager2.Instance == null)
         ////{
         //    Instantiate(player, levelPosition);

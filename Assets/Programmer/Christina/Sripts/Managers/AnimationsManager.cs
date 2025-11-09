@@ -10,7 +10,7 @@ public class AnimationsManager : MonoBehaviour
     void Update()
     {
         
-        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
+        //if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         
         if(_player.GetComponent<PlayerManager2>().IsGrounded())
         {
