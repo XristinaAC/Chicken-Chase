@@ -4,18 +4,8 @@
     {
         [SerializeField] private TeleportManager manager;
         [SerializeField] private Camera mainCamera;
-        [SerializeField] private Camera secondCamera;
-        [SerializeField] private Camera thirdCamera;
-        [SerializeField] private Camera fourthCamera;
-    [SerializeField] private Transform ChangeCameraPosition;
-
-    private void Awake()
-    {
-        //mainCamera.enabled = true;
-        secondCamera.enabled = false;
-        thirdCamera.enabled = false;
-        fourthCamera.enabled = false;
-    }
+        [SerializeField] private int zMove = 0;
+        [SerializeField] private int xMove = 0;
 
     private void OnTriggerEnter(Collider other)
         {
@@ -24,10 +14,8 @@
             {
                 if (manager != null)
                 {
-                // mainCamera.enabled = false;
-
-                //secondCamera.enabled = true;
-                   //mainCamera.GetComponent<CameraManager>().TurnCamera();
+                
+                    mainCamera.GetComponent<CameraManager>().TurnCamera(xMove, zMove);
                     manager.TeleportToNextPoint();
 
                 }

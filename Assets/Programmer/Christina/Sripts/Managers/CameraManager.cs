@@ -9,6 +9,8 @@ public class CameraManager : MonoBehaviour
 
     Vector3 offset = new();
     private Vector3 refPos;
+    int zMove;
+    int xMove;
 
     private void Awake()
     {
@@ -20,7 +22,8 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         offset = transform.position - player.transform.position;
-        move = 0;
+        zMove = 0;
+        xMove = 4;
         //height = transform.position.y;
     }
 
@@ -41,31 +44,30 @@ public class CameraManager : MonoBehaviour
         }
         if(player.GetComponent<PlayerManager2>().GetTurn())
         {
-            //transform.position = new Vector3(player.transform.position.x + 20, transform.position.y, player.transform.position.z + offset.z);
-
-            //transform.RotateAround(player.transform.position, Vector3.up, -90);
-            //Vector3 rotPos = new Vector3(0, player.transform.position.y - transform.position.y, 0);
-            //transform.rotation = Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up);
-            
-            //transform.rotation = new Quaternion(0, -transform.rotation.y, 0,0);
+            //zMove 
+            //xMove
             transform.Rotate(0, -90, 0);
-            move = 15;
+            //move = 15;
             //transform.Rotate(0, -30, 0);
 
             player.GetComponent<PlayerManager2>().SetTurn();
         }
-        else
-        {
-            transform.position = new Vector3(player.transform.position.x + offset.x + 4, transform.position.y, player.transform.position.z + offset.z + move);
-        }
-            
+        
+           transform.position = new Vector3(player.transform.position.x + offset.x + xMove, transform.position.y, player.transform.position.z + offset.z + zMove);  
     }
 
     bool turn;
-    int move;
-    public void TurnCamera()
+
+    //public void TurnCameraZ(int xM, int zM)
+    //{
+
+    //}
+    public void TurnCamera(int xM,int zM)
     {
-        turn = true;
-        transform.Rotate(0, -90, 0);
+        
+            xMove = xM;
+            zMove = zM;
+            
+       
     }
 }
