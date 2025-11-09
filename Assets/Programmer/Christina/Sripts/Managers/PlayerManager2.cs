@@ -156,6 +156,7 @@ public class PlayerManager2 : MonoBehaviour
         Jumping();
     }
 
+    bool turn;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -170,7 +171,7 @@ public class PlayerManager2 : MonoBehaviour
 
         if (collision.gameObject.tag == "change scene")
         {
-            transform.Rotate(0, -45, 0);
+            turn = true;
         }
     }
 
@@ -194,5 +195,15 @@ public class PlayerManager2 : MonoBehaviour
     public bool CanJump()
     {
         return _isJumping;
+    }
+
+    public void SetTurn()
+    {
+        turn = false;
+    }
+
+    public bool GetTurn()
+    {
+        return turn;
     }
 }
