@@ -58,10 +58,6 @@ public class CameraManager : MonoBehaviour
 
     bool turn;
 
-    //public void TurnCameraZ(int xM, int zM)
-    //{
-
-    //}
     public void TurnCamera(int xM,int zM)
     {
         

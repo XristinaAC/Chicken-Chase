@@ -62,7 +62,7 @@ public class PlayerManager2 : MonoBehaviour
 
     private void Update()
     {
-        //if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         PlayerMovement();
         PressingJumpButton();
         GlidingActions();
