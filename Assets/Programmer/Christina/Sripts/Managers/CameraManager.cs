@@ -1,10 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField] private GameObject player = null;
+     private Transform player = null;
     [SerializeField] private Transform turnPosition;
 
     Vector3 offset = new();
@@ -12,25 +13,28 @@ public class CameraManager : MonoBehaviour
     int zMove;
     int xMove;
 
-    private void Awake()
-    {
-        transform.position = new Vector3(player.transform.position.x + 5, transform.position.y + 0.5f, player.transform.position.z - 10);
-    }
-
     float height;
 
     void Start()
     {
+        if (!player)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        transform.position = new Vector3(player.transform.position.x + 5, transform.position.y + 0.5f, player.transform.position.z - 10);
         offset = transform.position - player.transform.position;
         zMove = 0;
         xMove = 4;
-        
     }
 
     void Update()
     {
-       
-        if(player.transform.position.y > transform.position.y + 3)
+        if (!player)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+
+        if (player.transform.position.y > transform.position.y + 3)
         {
             Vector3 newPos = new Vector3(0, player.transform.position.y + offset.y, 0);
             transform.position = Vector3.Lerp(transform.position, newPos, 0.5f * Time.deltaTime);

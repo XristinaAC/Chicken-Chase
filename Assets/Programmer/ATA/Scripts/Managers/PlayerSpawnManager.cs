@@ -3,11 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSpawnManager : MonoBehaviour
 {
+    public static PlayerSpawnManager Instance = null;
+    
     [SerializeField] private GameObject playerPrefab; // 💡 Chicken prefab
     private GameObject currentPlayer;
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
         DontDestroyOnLoad(gameObject); // Kalıcı olsun, her sahnede çalışsın
     }
 
@@ -47,5 +58,10 @@ public class PlayerSpawnManager : MonoBehaviour
 
         // Yeni player oluştur
         currentPlayer = Instantiate(playerPrefab, spawnPos, spawnRot);
+    }
+
+    public GameObject GetCurrentPlayer()
+    {
+        return playerPrefab;
     }
 }
