@@ -8,6 +8,7 @@ TagManager:
   - obstacle
   - change scene
   - Boss
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

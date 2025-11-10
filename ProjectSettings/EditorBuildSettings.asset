@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Programmer/ATA/Scenes/Endless_1.unity
     guid: 50177b385bdf4634288a1b253a4502f4
+  - enabled: 1
+    path: Assets/Programmer/ATA/Scenes/Endless_2.unity
+    guid: a6812a62c2027b14694fd915ed05bbf4
   m_configObjects: {}

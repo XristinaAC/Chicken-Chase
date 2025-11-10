@@ -24,7 +24,7 @@ public class CameraManager : MonoBehaviour
         offset = transform.position - player.transform.position;
         zMove = 0;
         xMove = 4;
-        //height = transform.position.y;
+        
     }
 
     void Update()
@@ -44,16 +44,15 @@ public class CameraManager : MonoBehaviour
         }
         if(player.GetComponent<PlayerManager2>().GetTurn())
         {
-            //zMove 
-            //xMove
+            
+            
             transform.Rotate(0, -90, 0);
-            //move = 15;
-            //transform.Rotate(0, -30, 0);
+            
 
             player.GetComponent<PlayerManager2>().SetTurn();
         }
         
-           transform.position = new Vector3(player.transform.position.x + offset.x + xMove, transform.position.y, player.transform.position.z + offset.z + zMove);  
+        transform.position = new Vector3(player.transform.position.x + offset.x + xMove, transform.position.y, player.transform.position.z + offset.z + zMove);  
     }
 
     bool turn;
@@ -61,8 +60,8 @@ public class CameraManager : MonoBehaviour
     public void TurnCamera(int xM,int zM)
     {
         
-            xMove = xM;
-            zMove = zM;
+        xMove = xM;
+        zMove = zM;
             
        
     }

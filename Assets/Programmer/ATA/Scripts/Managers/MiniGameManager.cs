@@ -75,11 +75,34 @@ public class MiniGameManager : MonoBehaviour
 
     void MoveCrosshair()
     {
-        Vector2 offset = new Vector2(Mathf.Sin(Time.time * 1.7f), Mathf.Cos(Time.time * 2.1f)) * (moveSpeed * Time.deltaTime);
-        crosshair.anchoredPosition += offset;
-        crosshair.anchoredPosition = new Vector2(
-            Mathf.Clamp(crosshair.anchoredPosition.x, -movementArea.rect.width / 2, movementArea.rect.width / 2),
-            Mathf.Clamp(crosshair.anchoredPosition.y, -movementArea.rect.height / 2, movementArea.rect.height / 2)
+        if (bossTargetUI == null) return;
+
+        // Hedefin UI pozisyonu
+        Vector2 centerPos = bossTargetUI.anchoredPosition;
+
+        // Zaman bazlı açı (rotation)
+        float angle = Time.time * 1.5f;
+
+        // Yarıçap biraz değişken olsun (yaklaşıp uzaklaşma efekti)
+        float radius = 180 + Mathf.Sin(Time.time * 2.2f) * 40f; 
+        // -> ortalama 60, bazen 20 kadar yaklaşır, bazen 100 kadar uzaklaşır
+
+        // Dairesel hareket
+        float x = Mathf.Cos(angle) * radius;
+        float y = Mathf.Sin(angle * 1.2f) * radius;
+
+        // Merkeze doğru küçük rastgelelik (doğal his)
+        float noiseX = (Mathf.PerlinNoise(Time.time * 1.3f, 0f) - 0.5f) * 40f;
+        float noiseY = (Mathf.PerlinNoise(0f, Time.time * 1.1f) - 0.5f) * 40f;
+
+        // Hedef pozisyon
+        Vector2 targetPos = centerPos + new Vector2(x + noiseX, y + noiseY);
+
+        // Crosshair'ı bu pozisyona yumuşakça taşı
+        crosshair.anchoredPosition = Vector2.Lerp(
+            crosshair.anchoredPosition,
+            targetPos,
+            Time.deltaTime * 3f
         );
     }
 
