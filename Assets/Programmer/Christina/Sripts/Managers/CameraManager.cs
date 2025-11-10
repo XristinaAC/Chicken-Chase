@@ -5,13 +5,11 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CameraManager : MonoBehaviour
 {
-     private Transform player = null;
-    [SerializeField] private Transform turnPosition;
-
-    Vector3 offset = new();
+    private Transform player = null;
+    private Vector3 offset = new();
     private Vector3 refPos;
-    int zMove;
-    int xMove;
+    private int zMove;
+    private int xMove;
 
     float height;
 
@@ -48,25 +46,16 @@ public class CameraManager : MonoBehaviour
         }
         if(player.GetComponent<PlayerManager2>().GetTurn())
         {
-            
-            
             transform.Rotate(0, -90, 0);
-            
-
             player.GetComponent<PlayerManager2>().SetTurn();
         }
         
         transform.position = new Vector3(player.transform.position.x + offset.x + xMove, transform.position.y, player.transform.position.z + offset.z + zMove);  
     }
 
-    bool turn;
-
     public void TurnCamera(int xM,int zM)
     {
-        
         xMove = xM;
         zMove = zM;
-            
-       
     }
 }
