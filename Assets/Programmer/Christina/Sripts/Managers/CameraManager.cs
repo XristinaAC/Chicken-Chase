@@ -1,48 +1,69 @@
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class CameraManager : MonoBehaviour
-{  
-    private GameObject _player = null;
-    private PlayerManager2 _playerManager;
+{
+    [SerializeField] private GameObject player = null;
+    [SerializeField] private Transform turnPosition;
 
     Vector3 offset = new();
     private Vector3 refPos;
+    int zMove;
+    int xMove;
 
     private void Awake()
     {
-        
-        _player = GameObject.FindWithTag("Player");
-        if (_player != null)
-            _playerManager = _player.GetComponent<PlayerManager2>();
-        
-        transform.position = new Vector3(_player.transform.position.x + 5, transform.position.y + 0.5f, _player.transform.position.z - 10);
+        transform.position = new Vector3(player.transform.position.x + 5, transform.position.y + 0.5f, player.transform.position.z - 10);
     }
 
     float height;
 
     void Start()
     {
-        offset = transform.position - _player.transform.position;
+        offset = transform.position - player.transform.position;
+        zMove = 0;
+        xMove = 4;
         //height = transform.position.y;
     }
 
     void Update()
     {
-        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
-        
-        if(_player.transform.position.y > transform.position.y + 3)
+       
+        if(player.transform.position.y > transform.position.y + 3)
         {
-            Vector3 newPos = new Vector3(0, _player.transform.position.y + offset.y, 0);
+            Vector3 newPos = new Vector3(0, player.transform.position.y + offset.y, 0);
             transform.position = Vector3.Lerp(transform.position, newPos, 0.5f * Time.deltaTime);
             height = transform.position.y;
         }
-        else if(_player.transform.position.y < transform.position.y - 5)
+        else if(player.transform.position.y < transform.position.y - 5)
         {
-            Vector3 newPos = new Vector3(0, _player.transform.position.y - offset.y, 0);
+            Vector3 newPos = new Vector3(0, player.transform.position.y - offset.y, 0);
             transform.position = Vector3.Lerp(transform.position, newPos, 10 * Time.deltaTime);
             height = 0;
         }
-        transform.position = new Vector3(_player.transform.position.x + offset.x + 2, transform.position.y, _player.transform.position.z + offset.z);
+        if(player.GetComponent<PlayerManager2>().GetTurn())
+        {
+            //zMove 
+            //xMove
+            transform.Rotate(0, -90, 0);
+            //move = 15;
+            //transform.Rotate(0, -30, 0);
+
+            player.GetComponent<PlayerManager2>().SetTurn();
+        }
+        
+           transform.position = new Vector3(player.transform.position.x + offset.x + xMove, transform.position.y, player.transform.position.z + offset.z + zMove);  
+    }
+
+    bool turn;
+
+    public void TurnCamera(int xM,int zM)
+    {
+        
+            xMove = xM;
+            zMove = zM;
+            
+       
     }
 }
