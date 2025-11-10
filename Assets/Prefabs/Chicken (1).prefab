@@ -359,7 +359,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 8
-  jumpingSpeed: 5
   _glidingDrag: 20
   mask:
     serializedVersion: 2
@@ -369,6 +368,7 @@ MonoBehaviour:
   _jumpHeight: 2
   spawnPosition: {fileID: 0}
   chickenHeight: 0
+  _gravity: -2
 --- !u!95 &540621403269096259
 Animator:
   serializedVersion: 5
