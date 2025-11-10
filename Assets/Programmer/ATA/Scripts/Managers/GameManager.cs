@@ -28,7 +28,9 @@
             }
             else 
                 Destroy(gameObject);
-        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
 
         private void Update()
         {

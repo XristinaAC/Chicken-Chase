@@ -10,7 +10,7 @@ public class AnimationsManager : MonoBehaviour
     void Update()
     {
         
-        //if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         
         if(_player.GetComponent<PlayerManager2>().IsGrounded())
         {
@@ -25,7 +25,6 @@ public class AnimationsManager : MonoBehaviour
             }
             else
             {
-                //_chickenAnimControler.SetBool("isGliding", false);
                 _chickenAnimControler.SetBool("isJumping", true);
             }
         }
