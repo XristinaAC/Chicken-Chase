@@ -4,7 +4,6 @@ public class CanonManager : MonoBehaviour
 {
     [Header("Canon Settings")]
     [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileSpeed = 30f;
 
     private bool isActive;
@@ -13,21 +12,33 @@ public class CanonManager : MonoBehaviour
     {
         if (isActive || !other.CompareTag("Player")) return;
         isActive = true;
-        
+
         GameManager.Instance.ChangeState(GameManager.GameState.MiniGame);
         MiniGameManager.Instance.StartMiniGame(this);
     }
 
-    public void FireProjectile(Vector3 targetPos)
+    public void FireProjectile(Vector3 targetPos, GameObject projectilePrefab)
     {
+        if (projectilePrefab == null) return;
+        
+
         GameObject projObj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        Projectile proj = projObj.GetComponent<Projectile>();
-        proj.SetTarget(targetPos);
+
+        var proj = projObj.GetComponent<Projectile>();
+        if (proj != null)
+        {
+            proj.SetTarget(targetPos);
+        }
+        else
+        {
+            Rigidbody rb = projObj.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Vector3 dir = (targetPos - firePoint.position).normalized;
+                rb.velocity = dir * projectileSpeed;
+            }
+        }
     }
 
-
-    public void ResetCanon()
-    {
-        isActive = false;
-    }
+    public void ResetCanon() => isActive = false;
 }

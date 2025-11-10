@@ -1,11 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationsManager : MonoBehaviour
 {
-    [SerializeField] Animator _chickenAnimControler;
-    [SerializeField] GameObject _player;
+    private Animator _chickenAnimator;
+    private GameObject _player;
+    private PlayerManager2 _playerManager;
+
+    private void Start()
+    {
+        _player = GameObject.FindWithTag("Player");
+
+        if (_player != null)
+        {
+            _playerManager = _player.GetComponent<PlayerManager2>();
+            _chickenAnimator = _player.GetComponentInChildren<Animator>();
+        }
+    }
 
     void Update()
     {
@@ -14,19 +27,19 @@ public class AnimationsManager : MonoBehaviour
         
         if(_player.GetComponent<PlayerManager2>().IsGrounded())
         {
-            _chickenAnimControler.SetBool("isJumping", false);
-            _chickenAnimControler.SetBool("isGliding", false);
+            _chickenAnimator.SetBool("isJumping", false);
+            _chickenAnimator.SetBool("isGliding", false);
         }
         else
         {    if(_player.GetComponent<PlayerManager2>().CanGlide())
             {
-                _chickenAnimControler.SetBool("isGliding", true);
-                _chickenAnimControler.SetBool("isJumping", false);
+                _chickenAnimator.SetBool("isGliding", true);
+                _chickenAnimator.SetBool("isJumping", false);
             }
             else
             {
                 //_chickenAnimControler.SetBool("isGliding", false);
-                _chickenAnimControler.SetBool("isJumping", true);
+                _chickenAnimator.SetBool("isJumping", true);
             }
         }
     }

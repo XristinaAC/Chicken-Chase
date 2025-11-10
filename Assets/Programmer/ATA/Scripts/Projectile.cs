@@ -9,33 +9,25 @@ public class Projectile : MonoBehaviour
     [SerializeField] private GameObject hitEffect;
 
     private Vector3 _target;
-    private bool _hasTarget = false;
+    private bool _hasTarget;
 
-    private void Start()
-    {
-        Destroy(gameObject, lifeTime);
-    }
+    private void Start() => Destroy(gameObject, lifeTime);
 
     private void Update()
     {
         transform.Rotate(Vector3.forward * (rotationSpeed * Time.deltaTime), Space.Self);
-
-        
         if (!_hasTarget) return;
-        
+
         transform.position = Vector3.MoveTowards(transform.position, _target, speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, _target) < 30)
-        {
+        if (Vector3.Distance(transform.position, _target) < 30f)
             HitTarget();
-        }
     }
 
     public void SetTarget(Vector3 target)
     {
         _target = target;
         _hasTarget = true;
-        
         Vector3 dir = (_target - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(dir);
     }
@@ -43,9 +35,7 @@ public class Projectile : MonoBehaviour
     private void HitTarget()
     {
         if (hitEffect)
-        {
             Instantiate(hitEffect, transform.position, Quaternion.identity);
-        }
 
         Destroy(gameObject);
     }

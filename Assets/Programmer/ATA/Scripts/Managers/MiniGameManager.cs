@@ -1,32 +1,26 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MiniGameManager : MonoBehaviour
 {
     public static MiniGameManager Instance { get; private set; }
 
-    [Header("Crosshair UI")]
-    [SerializeField] private RectTransform crosshair;
-    [SerializeField] private RectTransform movementArea;
-    [SerializeField] private RectTransform bossTargetUI;
-    [SerializeField] private RectTransform miniGameUI;
-    [SerializeField] private float moveSpeed = 200f;
-    [SerializeField] private BossManager bossTarget;
-    
-    [Header("Timer Settings")]
-    [SerializeField] private float maxTime = 10f;
-    [SerializeField] private TMP_Text timerText;
-    private float currentTime;
-    [Space] 
-    [SerializeField] private TextMeshProUGUI hitText;
+    [SerializeField] RectTransform crosshair;
+    [SerializeField] RectTransform movementArea;
+    [SerializeField] RectTransform bossTargetUI;
+    [SerializeField] RectTransform miniGameUI;
+    [SerializeField] float moveSpeed = 200f;
+    [SerializeField] BossManager bossTarget;
+    [SerializeField] float maxTime = 10f;
+    [SerializeField] TMP_Text timerText;
+    [SerializeField] TextMeshProUGUI hitText;
 
-    private CanonManager currentCanon;
-    private bool isActive;
-    private bool hasShot;
+    float currentTime;
+    CanonManager currentCanon;
+    bool isActive, hasShot;
 
-    private void Awake()
+    void Awake()
     {
         Instance = this;
         movementArea.gameObject.SetActive(false);
@@ -34,124 +28,119 @@ public class MiniGameManager : MonoBehaviour
         hitText.gameObject.SetActive(false);
     }
 
-
-    private void Update()
+    void Update()
     {
         if (!isActive) return;
-
         MoveCrosshair();
         UpdateTimer();
-
         if (Input.GetKeyDown(KeyCode.Space) && !hasShot)
         {
             hasShot = true;
             TryShoot();
         }
     }
-    
+
     public void StartMiniGame(CanonManager canon)
     {
+        if (InventoryController.Instance == null || !InventoryController.Instance.HasProjectile())
+        {
+            ShowFeedback("No Projectiles");
+            GameManager.Instance.ChangeState(GameManager.GameState.Playing);
+            return;
+        }
         currentCanon = canon;
         isActive = true;
         hasShot = false;
         movementArea.gameObject.SetActive(true);
         miniGameUI.gameObject.SetActive(true);
-        
         currentTime = maxTime;
-        if (timerText != null)
+        if (timerText)
+        {
             timerText.gameObject.SetActive(true);
+            timerText.text = $"{currentTime:F1}s";
+        }
     }
-    
-    private void UpdateTimer()
+
+    void UpdateTimer()
     {
         currentTime -= Time.deltaTime;
-
-        if (timerText != null)
+        if (timerText)
             timerText.text = $"{currentTime:F1}s";
-
         if (currentTime <= 0f)
         {
-            Debug.Log("⏱️ Time's up! MiniGame ended.");
- 
+            ShowFeedback("Time's Up!");
             EndMiniGame();
         }
     }
 
-    public void ShowHitText()
+    void MoveCrosshair()
     {
-        StartCoroutine(ShowText());
-    }
-
-    IEnumerator ShowText()
-    {
-        hitText.gameObject.SetActive(true);
-        hitText.text = "Successfuly Shot";
-        
-        yield return new WaitForSeconds(2f);
-        
-        hitText.gameObject.SetActive(false);
-    }
-    public void CloseHitText()
-    {
-        hitText.gameObject.SetActive(false);
-        hitText.text = "Missed Shot";
-    }
-
-    private void MoveCrosshair()
-    {
-        Vector2 offset = new Vector2(
-            Mathf.Sin(Time.time * 1.7f),
-            Mathf.Cos(Time.time * 2f)
-        ) * (moveSpeed * Time.deltaTime);
-
+        Vector2 offset = new Vector2(Mathf.Sin(Time.time * 1.7f), Mathf.Cos(Time.time * 2.1f)) * (moveSpeed * Time.deltaTime);
         crosshair.anchoredPosition += offset;
-
         crosshair.anchoredPosition = new Vector2(
             Mathf.Clamp(crosshair.anchoredPosition.x, -movementArea.rect.width / 2, movementArea.rect.width / 2),
             Mathf.Clamp(crosshair.anchoredPosition.y, -movementArea.rect.height / 2, movementArea.rect.height / 2)
         );
     }
 
-    private void TryShoot()
+    void TryShoot()
     {
-
         if (RectOverlaps(crosshair, bossTargetUI))
-        {
-            bossTarget.TakeDamage(1);
-            
-            Vector3 targetWorldPos = bossTarget.transform.position;
-            currentCanon.FireProjectile(targetWorldPos);
-        }
+            FireCollectedProjectile();
         else
         {
-            CloseHitText();
+            ShowFeedback("Missed Shot!");
+            EndMiniGame();
         }
+    }
+
+    void FireCollectedProjectile()
+    {
+        var nextProjectile = InventoryController.Instance.GetNextProjectile();
+        if (nextProjectile == null)
+        {
+            ShowFeedback("No Projectiles Collected!");
+            EndMiniGame();
+            return;
+        }
+
+        Vector3 targetWorldPos = bossTarget.transform.position;
+        currentCanon.FireProjectile(targetWorldPos, nextProjectile.projectilePrefab);
+        bossTarget.TakeDamage(1);
+        ShowFeedback($"Fired {nextProjectile.itemName}!");
         EndMiniGame();
     }
-    
 
-    private bool RectOverlaps(RectTransform a, RectTransform b)
+    bool RectOverlaps(RectTransform a, RectTransform b)
     {
-        Vector3[] aCorners = new Vector3[4];
-        Vector3[] bCorners = new Vector3[4];
-        a.GetWorldCorners(aCorners);
-        b.GetWorldCorners(bCorners);
-
-        Rect aRect = new Rect(aCorners[0].x, aCorners[0].y,
-                              aCorners[2].x - aCorners[0].x, aCorners[2].y - aCorners[0].y);
-        Rect bRect = new Rect(bCorners[0].x, bCorners[0].y,
-                              bCorners[2].x - bCorners[0].x, bCorners[2].y - bCorners[0].y);
-
-        return aRect.Overlaps(bRect);
+        Vector3[] aC = new Vector3[4], bC = new Vector3[4];
+        a.GetWorldCorners(aC);
+        b.GetWorldCorners(bC);
+        Rect ra = new Rect(aC[0].x, aC[0].y, aC[2].x - aC[0].x, aC[2].y - aC[0].y);
+        Rect rb = new Rect(bC[0].x, bC[0].y, bC[2].x - bC[0].x, bC[2].y - bC[0].y);
+        return ra.Overlaps(rb);
     }
 
-    private void EndMiniGame()
+    void ShowFeedback(string message)
+    {
+        StartCoroutine(ShowFeedbackRoutine(message));
+    }
+
+    IEnumerator ShowFeedbackRoutine(string message)
+    {
+        hitText.text = message;
+        hitText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        hitText.gameObject.SetActive(false);
+    }
+
+    void EndMiniGame()
     {
         isActive = false;
         movementArea.gameObject.SetActive(false);
         miniGameUI.gameObject.SetActive(false);
-
         currentCanon.ResetCanon();
+        //InventoryController.Instance.Clear();
         GameManager.Instance.ChangeState(GameManager.GameState.Playing);
     }
 }
