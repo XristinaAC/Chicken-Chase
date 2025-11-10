@@ -61,7 +61,7 @@ public class PlayerManager2 : MonoBehaviour
     }
 
     float height;
-    float counter = 0;
+    private float counter = 0;
     private void Update()
     {
         if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
