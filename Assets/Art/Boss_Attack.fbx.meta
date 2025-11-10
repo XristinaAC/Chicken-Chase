@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a91357ebffead444db0d0ed3463b54b3
+guid: 5083e6e74d58e5b488c04f0ecaa28c97
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,69 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: metarig|metarig|metarig|metarigAction
-      takeName: metarig|metarig|metarig|metarigAction
-      internalID: -233333572884902163
+      name: NormalAttack
+      takeName: NormalAttack
+      internalID: -8407192926269945588
       firstFrame: 0
-      lastFrame: 36
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: SpecialAttack
+      takeName: SpecialAttack
+      internalID: -8006393464143487503
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: NormalAttack|NormalAttack
+      takeName: NormalAttack|NormalAttack
+      internalID: -8753220955053702031
+      firstFrame: 0
+      lastFrame: 130
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -46,6 +104,35 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: NormalAttack|SpecialAttack
+      takeName: NormalAttack|SpecialAttack
+      internalID: -5234644576413859736
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0

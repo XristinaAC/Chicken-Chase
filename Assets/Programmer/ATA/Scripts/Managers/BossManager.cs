@@ -30,7 +30,17 @@
                 Die();
         }
 
-        async void Die()
+        public void Attack()
+        {
+            
+        }
+
+        public void SpecialAttack()
+        {
+
+        }
+
+    async void Die()
         {
             await LevelManager.Instance.LoadNextLevelAsync();
         }
