@@ -37,15 +37,10 @@ public class SoundManager : MonoBehaviour
         }
         else if (Instance != this)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
 
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    private void Start()
-    {
-        SettingsManager.Instance.SetVolumes();
     }
 
     public void PlayMusic(AudioClip music)

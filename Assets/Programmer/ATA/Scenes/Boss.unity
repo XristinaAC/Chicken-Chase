@@ -3647,6 +3647,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &435139168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1801920230590083528, guid: 2021de45730e5f4439adf38a01a8f92b,
+    type: 3}
+  m_PrefabInstance: {fileID: 435139164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &435139169 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8149673820287516272, guid: 2021de45730e5f4439adf38a01a8f92b,
+    type: 3}
+  m_PrefabInstance: {fileID: 435139164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &435139170 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 865471748384166015, guid: 2021de45730e5f4439adf38a01a8f92b,
+    type: 3}
+  m_PrefabInstance: {fileID: 435139164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &456309850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8699,6 +8735,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 15215212761819406, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 15215212761819406, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
       propertyPath: m_TagString
       value: Projectile
       objectReference: {fileID: 0}
@@ -8772,6 +8813,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TomatoPickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196670222681345952, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196670222681345952, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12022,6 +12073,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 15215212761819406, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 15215212761819406, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
       propertyPath: m_TagString
       value: Projectile
       objectReference: {fileID: 0}
@@ -12090,6 +12146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TomatoPickUp (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196670222681345952, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9196670222681345952, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
@@ -12225,6 +12286,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 15215212761819406, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 15215212761819406, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
       propertyPath: m_TagString
       value: Projectile
       objectReference: {fileID: 0}
@@ -12303,6 +12369,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TomatoPickUp (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196670222681345952, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196670222681345952, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12789,6 +12865,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71e3c5ebd27c8304f9b05f317de3da82, type: 3}
+--- !u!1 &1802399404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1802399406}
+  - component: {fileID: 1802399405}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1802399405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802399404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75cde9b652d0c9e4bb0d472a1dde9c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSlider: {fileID: 435139170}
+  sfxSlider: {fileID: 435139169}
+  masterSlider: {fileID: 435139168}
+--- !u!4 &1802399406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802399404}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 94.869995, y: 3.0402033, z: 1.7314606}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1811023560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15091,6 +15214,7 @@ SceneRoots:
   - {fileID: 1562979173}
   - {fileID: 1814146532}
   - {fileID: 267953688}
+  - {fileID: 1802399406}
   - {fileID: 562303159}
   - {fileID: 918654480}
   - {fileID: 1075874174}

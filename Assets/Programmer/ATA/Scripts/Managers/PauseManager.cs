@@ -50,6 +50,7 @@ public class PauseManager : MonoBehaviour
 
     private void SetPausedState(bool pause)
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonEffect);
         if (pause)
         {
             GameManager.Instance.ChangeState(GameManager.GameState.Paused);
@@ -66,6 +67,7 @@ public class PauseManager : MonoBehaviour
 
     private void ReturnToMainMenu()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonEffect);
         Time.timeScale = 1f;
         GameManager.Instance.ChangeState(GameManager.GameState.MainMenu);
         SceneManager.LoadScene(0);
@@ -73,11 +75,13 @@ public class PauseManager : MonoBehaviour
 
     public void OpenSettingsMenu()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonEffect);
         settingsMenu.SetActive(true);
     }
 
     public void CloseSettingsMenu()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonEffect);
         settingsMenu.SetActive(false);
     }
 }

@@ -2071,7 +2071,7 @@ MonoBehaviour:
   SFXSource: {fileID: 7134205}
   audioMixer: {fileID: 24100000, guid: c0a83e18f05763941b3aa1d4726012c1, type: 2}
   backgroundMusic: {fileID: 8300000, guid: 41eee5318fe626943984fbe97642a6a9, type: 3}
-  buttonEffect: {fileID: 8300000, guid: 4e617cb53eafcb945913c57dcad66a2c, type: 3}
+  buttonEffect: {fileID: 8300000, guid: b3269e90e075dae46bf01ad64107baa3, type: 3}
 --- !u!4 &1184344664
 Transform:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class PlayerManager2 : MonoBehaviour
     private bool canGlide = false;
     private bool _isJumping = false;
     private float jumpingSpeed = 0;
-    private bool _attack;
+    private bool _attack = false;
     private bool _turn;
 
     private void Awake()
@@ -142,6 +142,7 @@ public class PlayerManager2 : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             canGlide = false;
+            _attack = false;
         }
 
         if (collision.gameObject.tag == "obstacle")
@@ -159,6 +160,8 @@ public class PlayerManager2 : MonoBehaviour
             _attack = true;
         }
     }
+
+    GameObject projectile;
 
     private void Die()
     {
@@ -195,10 +198,5 @@ public class PlayerManager2 : MonoBehaviour
     public bool GetAttack()
     {
         return _attack;
-    }
-
-    public void SetAttack()
-    {
-        _attack = false;
     }
 }

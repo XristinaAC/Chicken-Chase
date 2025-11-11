@@ -27,7 +27,7 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
-        //SetVolumes();
+        SetVolumes();
     }
 
     public void MasterSlider()

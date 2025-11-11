@@ -19,10 +19,6 @@ public class ProjectileController : MonoBehaviour
             if (proj != null)
                 proj.SetTarget(bossTarget.position);
         }
-        else
-        {
-        }
-        
         Destroy(gameObject);
     }
 }
