@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class Loader : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] Transform levelPosition;
-
-    // Start is called before the first frame update
+    [SerializeField] GameObject settingsMenu;
+ 
     void Awake()
     {
-        GameObject pre = Instantiate(player);
-        Instantiate(pre, levelPosition);
-        ////if (PlayerManager2.Instance == null)
-        ////{
-        //    Instantiate(player, levelPosition);
-        ////}
+        if (SettingsMenu.Instance == null)
+        {
+            Instantiate(settingsMenu);
+        }
     }
 }

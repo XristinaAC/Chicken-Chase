@@ -6,18 +6,28 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
+    public static SettingsManager Instance = null;
+
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider masterSlider;
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
         DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
     {
-        SetVolumes();
+        //SetVolumes();
     }
 
     public void MasterSlider()
@@ -38,7 +48,7 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
     }
 
-    void SetVolumes()
+    public void SetVolumes()
     {
         if (PlayerPrefs.HasKey("MusicVolume"))
         {

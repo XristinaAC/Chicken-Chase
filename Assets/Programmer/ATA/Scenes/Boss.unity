@@ -1624,6 +1624,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 1715968399}
   resumeButton: {fileID: 1715968398}
   mainMenuButton: {fileID: 1715968396}
+  settingsMenuButton: {fileID: 1715968400}
 --- !u!114 &197807118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1983,6 +1984,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216347227}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &217156711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 217156713}
+  - component: {fileID: 217156712}
+  m_Layer: 0
+  m_Name: Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &217156712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217156711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b256f38523ff847b712755a5fb470f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsMenu: {fileID: 465881216249852085, guid: 2021de45730e5f4439adf38a01a8f92b,
+    type: 3}
+--- !u!4 &217156713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217156711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -141.97183, y: 133.78264, z: -367.174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &219031880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11684,6 +11731,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6967663835478731170, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967663835478731170, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 197807117}
+    - target: {fileID: 6967663835478731170, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateSettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967663835478731170, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967663835478731170, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11725,6 +11797,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1715968395}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1715968400 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6967663835478731170, guid: 86e98b681300e5c4b8af4b65139d295b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1715968395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1720058631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14736,3 +14820,4 @@ SceneRoots:
   - {fileID: 1720058631}
   - {fileID: 1332527043}
   - {fileID: 1468547529}
+  - {fileID: 217156713}

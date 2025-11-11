@@ -42,7 +42,12 @@ public class SoundManager : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
     }
-    
+
+    private void Start()
+    {
+        SettingsManager.Instance.SetVolumes();
+    }
+
     public void PlayMusic(AudioClip music)
     {
         MusicSource.clip = music;
