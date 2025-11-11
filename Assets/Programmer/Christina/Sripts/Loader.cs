@@ -8,9 +8,9 @@ public class Loader : MonoBehaviour
  
     void Awake()
     {
-        if (SettingsMenu.Instance == null)
-        {
+        //if (SettingsMenu.Instance == null)
+        //{
             Instantiate(settingsMenu);
-        }
+        //}
     }
 }

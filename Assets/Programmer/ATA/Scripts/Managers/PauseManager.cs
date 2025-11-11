@@ -10,6 +10,8 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button settingsMenuButton;
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject settingsMenu;
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class PauseManager : MonoBehaviour
     {
         resumeButton?.onClick.AddListener(ResumeGame);
         mainMenuButton?.onClick.AddListener(ReturnToMainMenu);
-        //settingsMenuButton?.onClick.AddListener(ActivateSettingsMenu);
+        settingsMenuButton?.onClick.AddListener(ActivateSettingsMenu);
     }
 
     private void OnDisable()
@@ -68,11 +70,7 @@ public class PauseManager : MonoBehaviour
 
     public void ActivateSettingsMenu()
     {
-        //Debug.Log("SM");
-        if (SettingsMenu.Instance.GameObject())
-        {
-            Debug.Log("SM");
-            SettingsMenu.Instance.GameObject().SetActive(true);
-        }
+        //canvas.GetComponent<UiPanelOpener>().ShowPanel(settingsMenu);
+        settingsMenu.SetActive(true);
     }
 }

@@ -14,14 +14,9 @@ public class SettingsMenu : MonoBehaviour
         }
         else if (Instance != this)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
         
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    private void Start()
-    {
-        this.gameObject.SetActive(false);
     }
 }
