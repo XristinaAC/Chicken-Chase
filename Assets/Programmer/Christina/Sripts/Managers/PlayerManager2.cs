@@ -6,25 +6,21 @@ public class PlayerManager2 : MonoBehaviour
     public static PlayerManager2 Instance = null;
 
     [SerializeField] private float playerSpeed = 0;
-    private float jumpingSpeed = 0;
     [SerializeField] private float _glidingDrag = 10;
     [SerializeField] private LayerMask mask;
     [SerializeField] private Transform basePosition;
-    [SerializeField] private GameObject mainCamera;
     [SerializeField] private float _jumpHeight = 1;
-    [SerializeField] private Transform spawnPosition;
-    [SerializeField] private float chickenHeight;
     [SerializeField] private float _gravity = -2;
 
     private bool _jumpHighPeak = false;
-    private Vector3 _runningVelocity = Vector3.zero;
     private bool _obstacleHit = false;
     private bool _isHoldingSpace = false;
     private float _rbDrag = 1;
     private Vector3 _jumpHeightV;
-    bool canGlide = false;
+    private bool canGlide = false;
     private bool _isJumping = false;
-    private Vector3 _direction;
+    private float jumpingSpeed = 0;
+    private bool _attack;
 
     private void Awake()
     {
@@ -44,20 +40,6 @@ public class PlayerManager2 : MonoBehaviour
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _jumpHeightV = new Vector3(0, Mathf.Sqrt(1 * -2 * (Physics.gravity.y * 1)), 0);
-        chickenHeight = transform.position.y;
-        SetDirection(0);
-    }
-
-    public void SetDirection(int direction)
-    {
-        if(direction == 0)
-        {
-            _direction = new Vector3(_runningVelocity.x, 0, 0);
-        }
-        else if(direction == 1)
-        {
-            _direction = new Vector3(0, 0, _runningVelocity.x);
-        }
     }
 
     private void Update()
@@ -100,7 +82,6 @@ public class PlayerManager2 : MonoBehaviour
         if (Physics.CheckSphere(transform.position, 0.5f, mask))
         {
             isGrounded = true;
-            chickenHeight = transform.position.y;
             canGlide = false;
             _jumpHighPeak = false;
         }
@@ -114,7 +95,6 @@ public class PlayerManager2 : MonoBehaviour
 
         if (this.GetComponent<Rigidbody>().velocity.y < 0 && !_jumpHighPeak && !isGrounded && _isHoldingSpace)
         {
-            Debug.Log("Glide" + transform.position.y);
             canGlide = true;
             _jumpHighPeak = true;
         }
@@ -170,6 +150,11 @@ public class PlayerManager2 : MonoBehaviour
         }
 
         if (collision.gameObject.tag == "change scene")
+        {
+            turn = true;
+        }
+
+        if (collision.gameObject.tag == "Projectile")
         {
             turn = true;
         }

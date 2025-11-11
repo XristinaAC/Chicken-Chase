@@ -9,6 +9,7 @@ TagManager:
   - change scene
   - Boss
   - SpawnPoint
+  - Projectile
   layers:
   - Default
   - TransparentFX
