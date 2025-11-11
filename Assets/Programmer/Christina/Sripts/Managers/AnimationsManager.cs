@@ -42,5 +42,14 @@ public class AnimationsManager : MonoBehaviour
                 _chickenAnimator.SetBool("isJumping", true);
             }
         }
+
+        if (_player.GetComponent<PlayerManager2>().GetAttack())
+        {
+            _chickenAnimator.SetBool("isAttacking", true);
+        }
+        else
+        {
+            _chickenAnimator.SetBool("isAttacking", false);
+        }
     }
 }

@@ -21,6 +21,7 @@ public class PlayerManager2 : MonoBehaviour
     private bool _isJumping = false;
     private float jumpingSpeed = 0;
     private bool _attack;
+    private bool _turn;
 
     private void Awake()
     {
@@ -136,7 +137,6 @@ public class PlayerManager2 : MonoBehaviour
         Jumping();
     }
 
-    bool turn;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -151,12 +151,12 @@ public class PlayerManager2 : MonoBehaviour
 
         if (collision.gameObject.tag == "change scene")
         {
-            turn = true;
+            _turn = true;
         }
 
         if (collision.gameObject.tag == "Projectile")
         {
-            turn = true;
+            _attack = true;
         }
     }
 
@@ -184,11 +184,21 @@ public class PlayerManager2 : MonoBehaviour
 
     public void SetTurn()
     {
-        turn = false;
+        _turn = false;
     }
 
     public bool GetTurn()
     {
-        return turn;
+        return _turn;
+    }
+
+    public bool GetAttack()
+    {
+        return _attack;
+    }
+
+    public void SetAttack()
+    {
+        _attack = false;
     }
 }
