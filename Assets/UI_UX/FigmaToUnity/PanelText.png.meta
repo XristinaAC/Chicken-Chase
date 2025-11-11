@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4f1ab772f8b27924cbb6555ddc4d2a4e
+guid: b1ee167853aa5f94a9f2612722c1f3f4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 3840
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -71,7 +71,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -110,106 +110,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PauseMenu_
+      name: PanelText_0
       rect:
         serializedVersion: 2
-        x: 605
-        y: 3605
-        width: 1938
-        height: 534
+        x: 246
+        y: 3626
+        width: 2671
+        height: 645
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a265b3d0fb757d4fa5820e24c0788f5
-      internalID: 801780058
+      spriteID: 7d1b893e89888734d9b0482058b6e39d
+      internalID: 1086102599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HowToPlay_
+      name: PanelText_1
       rect:
         serializedVersion: 2
-        x: 577
-        y: 2860
-        width: 2012
-        height: 518
+        x: 195
+        y: 2959
+        width: 2787
+        height: 593
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9aaaeb124d07ad34d957ba10500c9fff
-      internalID: -1679794027
+      spriteID: a5e530e6364266c4997aa49a1b51f918
+      internalID: 1205014885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Settings_
+      name: PanelText_2
       rect:
         serializedVersion: 2
-        x: 781
-        y: 2229
-        width: 1609
-        height: 501
+        x: 17
+        y: 2258
+        width: 3151
+        height: 579
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b946cd7807b69c449e3ee2c6bf68899
-      internalID: -1140362690
+      spriteID: 6f56030be09fed94aa1665fbb140a6f9
+      internalID: -1650550455
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SoundSettings_
+      name: PanelText_3
       rect:
         serializedVersion: 2
-        x: 315
-        y: 1564
-        width: 2541
-        height: 575
+        x: 456
+        y: 1558
+        width: 2284
+        height: 565
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dd7816c377679448ac75e92bf35ce92
-      internalID: -831371605
+      spriteID: 75b7ebc9de4571346ae20390d6e7686d
+      internalID: 682848677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YouChickendOut_
+      name: PanelText_4
       rect:
         serializedVersion: 2
-        x: 145
-        y: 843
-        width: 2893
-        height: 540
+        x: 23
+        y: 764
+        width: 3132
+        height: 528
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8908cf314bde28747b5531f6392df57c
-      internalID: 1117004092
+      spriteID: f3a6c5123ca94f04088f43f226e02395
+      internalID: -714669550
       vertices: []
       indices: 
       edges: []
@@ -217,7 +217,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4d4a0505bf960874a897eb69f25cff16
+    spriteID: b0357177c1de14d4db6bcb61633b05b2
     internalID: 0
     vertices: []
     indices: 
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HowToPlay_: -1679794027
-      PauseMenu_: 801780058
-      Settings_: -1140362690
-      SoundSettings_: -831371605
-      YouChickendOut_: 1117004092
+      PanelText_0: 1086102599
+      PanelText_1: 1205014885
+      PanelText_2: -1650550455
+      PanelText_3: 682848677
+      PanelText_4: -714669550
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
