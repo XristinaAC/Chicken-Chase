@@ -10,17 +10,23 @@ public class Projectile : MonoBehaviour
 
     private Vector3 _target;
     private bool _hasTarget;
+    private Vector3 randomRotateAxis; // 🎲 rastgele dönme yönü
 
-    private void Start() => Destroy(gameObject, lifeTime);
+    private void Start()
+    {
+        randomRotateAxis = Random.onUnitSphere.normalized;
+        Destroy(gameObject, lifeTime);
+    }
 
     private void Update()
     {
-        transform.Rotate(Vector3.forward * (rotationSpeed * Time.deltaTime), Space.Self);
+        transform.Rotate(randomRotateAxis * (rotationSpeed * Time.deltaTime), Space.Self);
+
         if (!_hasTarget) return;
 
         transform.position = Vector3.MoveTowards(transform.position, _target, speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, _target) < 30f)
+        if (Vector3.Distance(transform.position, _target) < 0.5f)
             HitTarget();
     }
 
@@ -28,6 +34,7 @@ public class Projectile : MonoBehaviour
     {
         _target = target;
         _hasTarget = true;
+
         Vector3 dir = (_target - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(dir);
     }
@@ -40,15 +47,15 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.CompareTag("Boss"))
+        if (other.CompareTag("Boss"))
         {
-            var boss = collision.collider.GetComponent<BossManager>();
+            var boss = other.GetComponentInParent<BossManager>();
             if (boss != null)
                 boss.TakeDamage(1);
-        }
 
-        HitTarget();
+            HitTarget();
+        }
     }
 }

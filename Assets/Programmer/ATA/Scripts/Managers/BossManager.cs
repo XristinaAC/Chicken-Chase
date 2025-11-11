@@ -1,18 +1,19 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform bossHead;
-    [SerializeField] private Transform player;
+    private Transform player;
 
     [Header("Boss Health")]
-    [SerializeField] private float maxHealth = 4f;
+    [SerializeField] private float maxHealth = 3f;
     [SerializeField] private float deathDelay = 5f;
     [SerializeField] private GameObject deathEffect;
 
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
     private bool isDying;
 
     private void Start()
@@ -41,25 +42,20 @@ public class BossManager : MonoBehaviour
 
 
         if (currentHealth <= 0)
-            StartCoroutine(DieRoutine());
+            DieRoutine();
     }
     
-    private IEnumerator DieRoutine()
+    private async Task DieRoutine()
     {
-        if (isDying) yield break;
+        if (isDying) return;
         isDying = true;
-        
-        if (deathEffect != null)
-            Instantiate(deathEffect, bossHead ? bossHead.position : transform.position, Quaternion.identity);
 
+        if (deathEffect)
+            Instantiate(deathEffect, bossHead.position, Quaternion.identity);
 
-        yield return new WaitForSeconds(deathDelay);
-        
+        await Task.Delay((int)(deathDelay * 1000));
+
         if (LevelManager.Instance != null)
-        {
-            yield return LevelManager.Instance.LoadNextLevelAsync();
-        }
-
-        isDying = false;
+            await LevelManager.Instance.LoadNextLevelAsync();
     }
 }

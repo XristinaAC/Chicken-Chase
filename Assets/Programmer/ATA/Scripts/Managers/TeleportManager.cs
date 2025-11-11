@@ -8,12 +8,9 @@ public class TeleportManager : MonoBehaviour
 
     private int currentTargetIndex = 0;
 
-    private void Awake()
+    private void Start()
     {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        
-        if (playerObject != null) 
-            _playerTransform = playerObject.transform;
+        _playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
         
     }
 

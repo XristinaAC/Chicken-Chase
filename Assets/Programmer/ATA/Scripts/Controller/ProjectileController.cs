@@ -1,23 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    [SerializeField] private ProjectileData projectileData;
-
-    private void FixedUpdate()
-    {
-        transform.Rotate(0,45 * Time.deltaTime,0, Space.Self);
-    }
+    [SerializeField] private GameObject projectilePrefab; 
+    [SerializeField] private Transform bossTarget;        
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+        
+        if (projectilePrefab != null && bossTarget != null)
         {
-            InventoryController.Instance.AddProjectile(projectileData);
-            Destroy(gameObject);
+            Vector3 spawnPos = transform.position + (other.transform.forward * 3f);
+            GameObject newProjectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+
+
+            Projectile proj = newProjectile.GetComponent<Projectile>();
+            if (proj != null)
+                proj.SetTarget(bossTarget.position);
         }
+        else
+        {
+        }
+        
+        Destroy(gameObject);
     }
 }
