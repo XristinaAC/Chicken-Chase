@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 197807120}
   - component: {fileID: 197807119}
   - component: {fileID: 197807118}
-  - component: {fileID: 197807117}
+  - component: {fileID: 197807122}
   - component: {fileID: 197807116}
   m_Layer: 5
   m_Name: Canvas
@@ -754,21 +754,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 84245158}
   firstLevelName: Level_1
---- !u!114 &197807117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197807115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 014ca7667df149b3af8578ae6b2aff78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1715968399}
-  resumeButton: {fileID: 1715968398}
-  mainMenuButton: {fileID: 1715968396}
 --- !u!114 &197807118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -856,6 +841,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &197807122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197807115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014ca7667df149b3af8578ae6b2aff78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 1715968399}
+  resumeButton: {fileID: 1715968398}
+  mainMenuButton: {fileID: 1715968396}
 --- !u!1 &216347227
 GameObject:
   m_ObjectHideFlags: 0
@@ -4506,6 +4506,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1403555185903114570, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403555185903114570, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403555185903114570, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3249557541889940359, guid: 86e98b681300e5c4b8af4b65139d295b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4569,17 +4584,17 @@ PrefabInstance:
     - target: {fileID: 3249557541889940359, guid: 86e98b681300e5c4b8af4b65139d295b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3249557541889940359, guid: 86e98b681300e5c4b8af4b65139d295b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3249557541889940359, guid: 86e98b681300e5c4b8af4b65139d295b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3249557541889940359, guid: 86e98b681300e5c4b8af4b65139d295b,
         type: 3}
@@ -4605,6 +4620,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967663835478731170, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967663835478731170, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967663835478731170, guid: 86e98b681300e5c4b8af4b65139d295b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
