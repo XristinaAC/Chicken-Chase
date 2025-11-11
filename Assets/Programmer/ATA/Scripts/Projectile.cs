@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
 
     private Vector3 _target;
     private bool _hasTarget;
-    private Vector3 randomRotateAxis; // 🎲 rastgele dönme yönü
+    private Vector3 randomRotateAxis;
 
     private void Start()
     {
