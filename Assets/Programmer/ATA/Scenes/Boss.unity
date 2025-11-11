@@ -8759,6 +8759,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8447850721587942444, guid: 305737d5c47e4524391f14fee3422471,
         type: 3}
+    - target: {fileID: 6098199653094244153, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8396450897885347236, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8854,12 +8859,12 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.012342674
-  m_Center: {x: 0.00024227455, y: -0.0000000012776039, z: 0.01074039}
+  m_Radius: 0.012317748
+  m_Center: {x: -0.0016930727, y: 0.00016408776, z: 0.010740387}
 --- !u!1001 &1356035978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12092,6 +12097,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8447850721587942444, guid: 305737d5c47e4524391f14fee3422471,
         type: 3}
+    - target: {fileID: 6098199653094244153, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8396450897885347236, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12187,7 +12197,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -12297,12 +12307,12 @@ PrefabInstance:
     - target: {fileID: 209052964582798197, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 209052964582798197, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4738960344040078531, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
@@ -12315,6 +12325,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8447850721587942444, guid: 305737d5c47e4524391f14fee3422471,
         type: 3}
+    - target: {fileID: 6098199653094244153, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8396450897885347236, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12410,7 +12425,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

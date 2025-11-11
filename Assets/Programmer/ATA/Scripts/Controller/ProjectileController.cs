@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
@@ -8,17 +9,25 @@ public class ProjectileController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        
+        other.GetComponent<PlayerManager2>().GetComponent<Animator>().SetBool("isAttacking", true);
+
         if (projectilePrefab != null && bossTarget != null)
         {
             Vector3 spawnPos = transform.position + (other.transform.forward * 3f);
             GameObject newProjectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
 
-
             Projectile proj = newProjectile.GetComponent<Projectile>();
             if (proj != null)
                 proj.SetTarget(bossTarget.position);
         }
+        //Destroy(gameObject);
+        StartCoroutine(StopAnimation(other));
+    }
+
+    IEnumerator StopAnimation(Collider p)
+    {
+        yield return new WaitForSeconds(.1f);
+        p.GetComponent<PlayerManager2>().GetComponent<Animator>().SetBool("isAttacking", false);
         Destroy(gameObject);
     }
 }
