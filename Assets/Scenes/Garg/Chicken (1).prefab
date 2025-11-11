@@ -369,7 +369,7 @@ MonoBehaviour:
     m_Bits: 64
   basePosition: {fileID: 4339976194921104756}
   mainCamera: {fileID: 0}
-  _jumpHeight: 2
+  _jumpHeight: 3
   spawnPosition: {fileID: 0}
   chickenHeight: 0
   _gravity: -2

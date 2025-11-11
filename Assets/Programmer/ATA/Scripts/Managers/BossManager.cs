@@ -15,7 +15,7 @@ public class BossManager : MonoBehaviour
     private float currentHealth;
     private bool isDying;
 
-    private void Awake()
+    private void Start()
     {
         if (player == null)
             player = GameObject.FindWithTag("Player")?.transform;

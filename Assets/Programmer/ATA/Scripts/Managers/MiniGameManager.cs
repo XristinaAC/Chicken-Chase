@@ -20,6 +20,8 @@ public class MiniGameManager : MonoBehaviour
     CanonManager currentCanon;
     bool isActive, hasShot;
 
+	float noiseOffsetX, noiseOffsetY, angleOffset, speedMultiplier;
+
     void Awake()
     {
         Instance = this;
@@ -48,6 +50,12 @@ public class MiniGameManager : MonoBehaviour
             GameManager.Instance.ChangeState(GameManager.GameState.Playing);
             return;
         }
+
+		noiseOffsetX = Random.Range(0f, 1000f);
+    	noiseOffsetY = Random.Range(0f, 1000f);
+    	angleOffset  = Random.Range(0f, Mathf.PI * 2f);
+    	speedMultiplier = Random.Range(0.8f, 1.3f);
+
         currentCanon = canon;
         isActive = true;
         hasShot = false;
@@ -77,33 +85,29 @@ public class MiniGameManager : MonoBehaviour
     {
         if (bossTargetUI == null) return;
 
-        // Hedefin UI pozisyonu
-        Vector2 centerPos = bossTargetUI.anchoredPosition;
+    	Vector2 centerPos = bossTargetUI.anchoredPosition;
 
-        // Zaman bazlı açı (rotation)
-        float angle = Time.time * 1.5f;
+    
+    	float randomSeed = Mathf.Repeat(Time.time + noiseOffsetX, 1000f);
+    	float t = (Time.time * 1.5f + randomSeed) * speedMultiplier;
 
-        // Yarıçap biraz değişken olsun (yaklaşıp uzaklaşma efekti)
-        float radius = 180 + Mathf.Sin(Time.time * 2.2f) * 40f; 
-        // -> ortalama 60, bazen 20 kadar yaklaşır, bazen 100 kadar uzaklaşır
+    	float angle = t + angleOffset; 
+    	float radius = 240 + Mathf.Sin(t * 2.2f + noiseOffsetY) * 40f;
 
-        // Dairesel hareket
-        float x = Mathf.Cos(angle) * radius;
-        float y = Mathf.Sin(angle * 1.2f) * radius;
+    	float x = Mathf.Cos(angle) * radius;
+    	float y = Mathf.Sin(angle * 1.2f + noiseOffsetY * 0.5f) * radius;
 
-        // Merkeze doğru küçük rastgelelik (doğal his)
-        float noiseX = (Mathf.PerlinNoise(Time.time * 1.3f, 0f) - 0.5f) * 40f;
-        float noiseY = (Mathf.PerlinNoise(0f, Time.time * 1.1f) - 0.5f) * 40f;
+  
+    	float noiseX = (Mathf.PerlinNoise(Time.time * 1.3f + noiseOffsetX, Time.time * 0.7f) - 0.5f) * 40f;
+    	float noiseY = (Mathf.PerlinNoise(Time.time * 0.9f, Time.time * 1.1f + noiseOffsetY) - 0.5f) * 40f;
 
-        // Hedef pozisyon
-        Vector2 targetPos = centerPos + new Vector2(x + noiseX, y + noiseY);
+    	Vector2 targetPos = centerPos + new Vector2(x + noiseX, y + noiseY);
 
-        // Crosshair'ı bu pozisyona yumuşakça taşı
-        crosshair.anchoredPosition = Vector2.Lerp(
-            crosshair.anchoredPosition,
-            targetPos,
-            Time.deltaTime * 3f
-        );
+    	crosshair.anchoredPosition = Vector2.Lerp(
+        	crosshair.anchoredPosition,
+        	targetPos,
+        	Time.deltaTime * 3f
+    	);
     }
 
     void TryShoot()
