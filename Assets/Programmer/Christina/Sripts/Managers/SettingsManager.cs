@@ -16,6 +16,10 @@ public class SettingsManager : MonoBehaviour
 
     Slider[] sliders;
 
+    Slider master;
+    Slider sfx;
+    Slider music;
+
     private void Awake()
     {
         if (Instance == null)
@@ -31,14 +35,31 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
-        //for()
+        sliders = settingsMenu.GetComponentsInChildren<Slider>();
+
+        for(int i = 0; i < sliders.Length; i++)
+        {
+            if (sliders[i].gameObject.tag == "master")
+            {
+                master = sliders[i];
+            }
+            else if(sliders[i].gameObject.tag == "music")
+            {
+                music = sliders[i];
+            }
+            else if (sliders[i].gameObject.tag == "sfx")
+            {
+                master = sliders[i];
+            }
+        }
+
         SetVolumes();
     }
 
     public void MasterSlider()
     {
-        SoundManager.Instance.SetMasterVolume(masterSlider.value);
-        PlayerPrefs.SetFloat("MasterVolume", masterSlider.value);
+        SoundManager.Instance.SetMasterVolume(master.value);
+        PlayerPrefs.SetFloat("MasterVolume", master.value);
     }
 
     public void MusicSlider()
@@ -63,7 +84,7 @@ public class SettingsManager : MonoBehaviour
         {
             SoundManager.Instance.SetMusicVolume(musicSlider.value);
             SoundManager.Instance.SetSFXVolume(sfxSlider.value);
-            SoundManager.Instance.SetMasterVolume(masterSlider.value);
+            SoundManager.Instance.SetMasterVolume(master.value);
         }
     }
 
@@ -71,10 +92,10 @@ public class SettingsManager : MonoBehaviour
     {
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-        masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        master.value = PlayerPrefs.GetFloat("MasterVolume");
 
         SoundManager.Instance.SetMusicVolume(musicSlider.value);
         SoundManager.Instance.SetSFXVolume(sfxSlider.value);
-        SoundManager.Instance.SetMasterVolume(masterSlider.value);
+        SoundManager.Instance.SetMasterVolume(master.value);
     }
 }

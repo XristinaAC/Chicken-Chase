@@ -417,6 +417,8 @@ MonoBehaviour:
   musicSlider: {fileID: 358702641}
   sfxSlider: {fileID: 339442388}
   masterSlider: {fileID: 2052810147}
+  settingsMenu: {fileID: 465881216249852085, guid: 2021de45730e5f4439adf38a01a8f92b,
+    type: 3}
 --- !u!4 &98552287
 Transform:
   m_ObjectHideFlags: 0

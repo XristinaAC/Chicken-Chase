@@ -10,6 +10,10 @@ TagManager:
   - Boss
   - SpawnPoint
   - Projectile
+  - SettingsPanel
+  - master
+  - music
+  - sfx
   layers:
   - Default
   - TransparentFX
