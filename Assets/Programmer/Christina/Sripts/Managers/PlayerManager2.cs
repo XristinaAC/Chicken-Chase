@@ -1,3 +1,4 @@
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -76,11 +77,11 @@ public class PlayerManager2 : MonoBehaviour
         Gliding();
     }
 
+    float distance;
     void CheckingGroundDistance()
     {
-        if (Physics.CheckSphere(transform.position, 0.5f, mask))
+        if (Physics.CheckSphere(basePosition.position, 1.0f, mask))
         {
-           
             isGrounded = true;
             canGlide = false;
             _jumpHighPeak = false;
