@@ -364,8 +364,42 @@ Transform:
   m_Father: {fileID: 999470088}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 =======
+=======
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &44448050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 44448051}
+  m_Layer: 0
+  m_Name: platform_lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &44448051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44448050}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 63.55632, y: 231.25458, z: -284.32343}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 999470088}
+>>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &44448050
 GameObject:
@@ -1841,6 +1875,7 @@ MeshFilter:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &138617666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1934,6 +1969,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &137859640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1489e9a78ee39b44b8653cebcb4a241d,
@@ -1942,6 +1979,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -2086,7 +2126,11 @@ MeshFilter:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &174399944
+=======
+--- !u!1001 &170372496
+>>>>>>> Stashed changes
 =======
 --- !u!1001 &170372496
 >>>>>>> Stashed changes
@@ -2101,6 +2145,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -2167,6 +2212,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     m_TransformParent: {fileID: 999470088}
     m_Modifications:
     - target: {fileID: 111026467633657862, guid: 08a00dc2f71d61f499d3efd1c3d4ee91,
@@ -2222,6 +2269,9 @@ PrefabInstance:
     - target: {fileID: 9209918365057467470, guid: 08a00dc2f71d61f499d3efd1c3d4ee91,
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -2231,6 +2281,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -2253,12 +2304,17 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     - target: {fileID: 9209918365057467470, guid: 08a00dc2f71d61f499d3efd1c3d4ee91,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -2272,8 +2328,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_SourcePrefab: {fileID: 100100000, guid: b50340617306237428f23c019a035d6e, type: 3}
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -2293,6 +2352,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -7932,6 +7994,7 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &221167702
 GameObject:
   m_ObjectHideFlags: 0
@@ -8042,6 +8105,8 @@ MeshFilter:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &219761964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 36ca9c1b1e8209445badaecba262696e,
@@ -8056,6 +8121,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -8195,7 +8263,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -89.39
+=======
+      value: 139.06168
+>>>>>>> Stashed changes
 =======
       value: 139.06168
 >>>>>>> Stashed changes
@@ -9285,8 +9357,11 @@ BoxCollider:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &348154326
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!4 &340715530 stripped
@@ -9295,6 +9370,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 340715525}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!1001 &350294838
 >>>>>>> Stashed changes
@@ -9392,6 +9468,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 340715525}
   m_PrefabAsset: {fileID: 0}
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -9526,8 +9604,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &356635785
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!4 &354862379 stripped
@@ -9536,6 +9617,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 303281779}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!1001 &358953083
 >>>>>>> Stashed changes
@@ -9654,6 +9736,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 303281779}
   m_PrefabAsset: {fileID: 0}
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -10058,6 +10142,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -10311,6 +10398,7 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &408538264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10404,6 +10492,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &415638612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9a8db66df8252944d96c68edc7e6128a,
@@ -10412,6 +10502,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -10770,7 +10863,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -12.53
+=======
+      value: 208.59169
+>>>>>>> Stashed changes
 =======
       value: 208.59169
 >>>>>>> Stashed changes
@@ -13582,8 +13679,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &621546482
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -13597,6 +13697,9 @@ Transform:
 --- !u!1001 &623884968
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -13607,6 +13710,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -13673,6 +13777,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     m_TransformParent: {fileID: 999470088}
     m_Modifications:
     - target: {fileID: 111026467633657862, guid: 08a00dc2f71d61f499d3efd1c3d4ee91,
@@ -13728,6 +13834,9 @@ PrefabInstance:
     - target: {fileID: 9209918365057467470, guid: 08a00dc2f71d61f499d3efd1c3d4ee91,
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -13737,6 +13846,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -13759,12 +13869,17 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     - target: {fileID: 9209918365057467470, guid: 08a00dc2f71d61f499d3efd1c3d4ee91,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -13778,8 +13893,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_SourcePrefab: {fileID: 100100000, guid: b50340617306237428f23c019a035d6e, type: 3}
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -13793,6 +13911,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -14319,6 +14440,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -15239,6 +15363,7 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &725353102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15353,6 +15478,8 @@ BoxCollider:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &725706023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ecd8b1a852068e54e92eec84abf68531,
@@ -15361,6 +15488,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -15614,6 +15744,7 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &749905512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15709,6 +15840,8 @@ Transform:
   m_PrefabInstance: {fileID: 749905512}
   m_PrefabAsset: {fileID: 0}
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -15833,6 +15966,9 @@ Light:
   m_ShadowAngle: 0
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -16476,6 +16612,7 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &795713090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16569,6 +16706,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &799779331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ecd8b1a852068e54e92eec84abf68531,
@@ -16577,6 +16716,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -16988,8 +17130,11 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &870180245
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!4 &868949373 stripped
@@ -17004,6 +17149,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1784190594}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!1001 &879209466
 >>>>>>> Stashed changes
@@ -17215,6 +17361,8 @@ Transform:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &879209466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17249,7 +17397,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 0.23
+=======
+      value: 221.90443
+>>>>>>> Stashed changes
 =======
       value: 221.90443
 >>>>>>> Stashed changes
@@ -17266,7 +17418,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 10.91
+=======
+      value: -270.1356
+>>>>>>> Stashed changes
 =======
       value: -270.1356
 >>>>>>> Stashed changes
@@ -18585,6 +18741,7 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1019077934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18678,6 +18835,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1020210107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e9a54e06085f9b14eaafbce5fcdeaef7,
@@ -18686,6 +18845,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -20316,8 +20478,11 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1146155167
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!4 &1145442646 stripped
@@ -20326,6 +20491,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1731704026}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!1001 &1149203673
 >>>>>>> Stashed changes
@@ -20514,6 +20680,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &1149203673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20528,7 +20696,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -168.03
+=======
+      value: 42.33168
+>>>>>>> Stashed changes
 =======
       value: 42.33168
 >>>>>>> Stashed changes
@@ -20550,7 +20722,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -1.3
+=======
+      value: -269.88577
+>>>>>>> Stashed changes
 =======
       value: -269.88577
 >>>>>>> Stashed changes
@@ -20739,7 +20915,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 2.7152753
+=======
+      value: 6.525673
+>>>>>>> Stashed changes
 =======
       value: 6.525673
 >>>>>>> Stashed changes
@@ -20756,7 +20936,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 2.7152753
+=======
+      value: 6.525673
+>>>>>>> Stashed changes
 =======
       value: 6.525673
 >>>>>>> Stashed changes
@@ -20778,7 +20962,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 10.742237
+=======
+      value: 208.26169
+>>>>>>> Stashed changes
 =======
       value: 208.26169
 >>>>>>> Stashed changes
@@ -20795,7 +20983,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -0.337
+=======
+      value: 221.84444
+>>>>>>> Stashed changes
 =======
       value: 221.84444
 >>>>>>> Stashed changes
@@ -20812,7 +21004,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -7.5143
+=======
+      value: -270.35046
+>>>>>>> Stashed changes
 =======
       value: -270.35046
 >>>>>>> Stashed changes
@@ -20857,6 +21053,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 4.714
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: f3eb2afd4b24b2f4c8af1669b19d7044,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8391222552659086748, guid: f3eb2afd4b24b2f4c8af1669b19d7044,
         type: 3}
@@ -21544,6 +21745,7 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1200057077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21637,6 +21839,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1203016328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 51f229aeafbcc6e4f8967b621e91b636,
@@ -21651,6 +21855,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -21804,7 +22011,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -81.59
+=======
+      value: 204.78868
+>>>>>>> Stashed changes
 =======
       value: 204.78868
 >>>>>>> Stashed changes
@@ -21821,7 +22032,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 0.13
+=======
+      value: 221.77643
+>>>>>>> Stashed changes
 =======
       value: 221.77643
 >>>>>>> Stashed changes
@@ -21838,7 +22053,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 12.13
+=======
+      value: -270.83368
+>>>>>>> Stashed changes
 =======
       value: -270.83368
 >>>>>>> Stashed changes
@@ -22178,6 +22397,7 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1264173165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22271,6 +22491,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1267812318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9a8db66df8252944d96c68edc7e6128a,
@@ -22279,6 +22501,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -23305,7 +23530,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -71.7
+=======
+      value: 205.17369
+>>>>>>> Stashed changes
 =======
       value: 205.17369
 >>>>>>> Stashed changes
@@ -23322,7 +23551,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 0.853
+=======
+      value: 221.65843
+>>>>>>> Stashed changes
 =======
       value: 221.65843
 >>>>>>> Stashed changes
@@ -23339,7 +23572,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 12.48
+=======
+      value: -269.95468
+>>>>>>> Stashed changes
 =======
       value: -269.95468
 >>>>>>> Stashed changes
@@ -24173,6 +24410,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -24306,6 +24546,7 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1444798342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24404,6 +24645,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1452809094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2404224facc9cd4186daa15a6b9902a,
@@ -24412,6 +24655,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -24630,6 +24876,7 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1468810424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24723,6 +24970,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1471591760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de2a8c3cc68fbd34c96d5d06b7f315a2,
@@ -24731,6 +24980,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -25642,6 +25894,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -25863,6 +26118,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 999470088}
     m_Modifications:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -26779,6 +27037,7 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1593655937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26872,6 +27131,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1581343503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 36ca9c1b1e8209445badaecba262696e,
@@ -26892,6 +27153,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -27024,7 +27288,11 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 10.8, y: -0.38, z: -6.03}
+=======
+  m_LocalPosition: {x: 184.62169, y: 221.63443, z: -269.79578}
+>>>>>>> Stashed changes
 =======
   m_LocalPosition: {x: 184.62169, y: 221.63443, z: -269.79578}
 >>>>>>> Stashed changes
@@ -27345,8 +27613,13 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       propertyPath: m_TagString
       value: obstacle
+=======
+      propertyPath: m_StaticEditorFlags
+      value: 0
+>>>>>>> Stashed changes
 =======
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -28003,8 +28276,11 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1677091977
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!4 &1665700820 stripped
@@ -28013,6 +28289,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1772354244}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!1001 &1678243039
 >>>>>>> Stashed changes
@@ -28110,6 +28387,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1772354244}
   m_PrefabAsset: {fileID: 0}
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -28410,7 +28689,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -46.53
+=======
+      value: 173.90169
+>>>>>>> Stashed changes
 =======
       value: 173.90169
 >>>>>>> Stashed changes
@@ -28525,7 +28808,10 @@ BoxCollider:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -29943,8 +30229,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1784072688
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!4 &1776382137 stripped
@@ -29953,6 +30242,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1901943374}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!1001 &1784190594
 >>>>>>> Stashed changes
@@ -30050,6 +30340,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1901943374}
   m_PrefabAsset: {fileID: 0}
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -30187,6 +30479,7 @@ Transform:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Children:
   - {fileID: 166718209}
   - {fileID: 1571084850}
@@ -30217,6 +30510,10 @@ Transform:
   - {fileID: 1199611882}
   - {fileID: 1901769354}
   m_Father: {fileID: 0}
+=======
+  m_Children: []
+  m_Father: {fileID: 999470088}
+>>>>>>> Stashed changes
 =======
   m_Children: []
   m_Father: {fileID: 999470088}
@@ -30834,8 +31131,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &1828345656
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!4 &1825701895 stripped
@@ -30850,6 +31150,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1041820961}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!1001 &1833180956
 >>>>>>> Stashed changes
@@ -30953,6 +31254,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1041820961}
   m_PrefabAsset: {fileID: 0}
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -31249,8 +31552,13 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       propertyPath: m_TagString
       value: obstacle
+=======
+      propertyPath: m_StaticEditorFlags
+      value: 0
+>>>>>>> Stashed changes
 =======
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -32257,7 +32565,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -39.36
+=======
+      value: 212.74168
+>>>>>>> Stashed changes
 =======
       value: 212.74168
 >>>>>>> Stashed changes
@@ -32274,7 +32586,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 1.08
+=======
+      value: 222.04044
+>>>>>>> Stashed changes
 =======
       value: 222.04044
 >>>>>>> Stashed changes
@@ -32291,7 +32607,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 10.35
+=======
+      value: -270.1314
+>>>>>>> Stashed changes
 =======
       value: -270.1314
 >>>>>>> Stashed changes
@@ -32756,7 +33076,11 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 46.04
+=======
+      value: 277.1117
+>>>>>>> Stashed changes
 =======
       value: 277.1117
 >>>>>>> Stashed changes
@@ -32868,6 +33192,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.004, y: 0.004, z: 0.016419172}
   m_Center: {x: 0, y: 2.3333047e-16, z: 0.008209586}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -33052,6 +33377,8 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1963772958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 836693f8767bd794ebca78f9a9de2571,
@@ -33109,6 +33436,9 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -33985,8 +34315,13 @@ PrefabInstance:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       propertyPath: m_TagString
       value: obstacle
+=======
+      propertyPath: m_StaticEditorFlags
+      value: 0
+>>>>>>> Stashed changes
 =======
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -35008,6 +35343,7 @@ SceneRoots:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - {fileID: 705507995}
   - {fileID: 1615174694}
   - {fileID: 1763239049}
@@ -35234,6 +35570,10 @@ SceneRoots:
   - {fileID: 421531914}
   - {fileID: 408538264}
   - {fileID: 870180245}
+=======
+  - {fileID: 999470088}
+  - {fileID: 1968631166}
+>>>>>>> Stashed changes
 =======
   - {fileID: 999470088}
   - {fileID: 1968631166}
