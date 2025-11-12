@@ -1229,7 +1229,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7730280132212796716, guid: c0a83e18f05763941b3aa1d4726012c1,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -3460,6 +3460,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465881216249852085, guid: 2021de45730e5f4439adf38a01a8f92b,
+        type: 3}
+      propertyPath: m_TagString
+      value: SettingsPanel
       objectReference: {fileID: 0}
     - target: {fileID: 865471748384166015, guid: 2021de45730e5f4439adf38a01a8f92b,
         type: 3}
