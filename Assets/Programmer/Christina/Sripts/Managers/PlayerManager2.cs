@@ -77,10 +77,9 @@ public class PlayerManager2 : MonoBehaviour
         Gliding();
     }
 
-    float distance;
     void CheckingGroundDistance()
     {
-        if (Physics.CheckSphere(basePosition.position, 1.0f, mask))
+        if (Physics.CheckSphere(basePosition.position, 0.5f, mask))
         {
             isGrounded = true;
             canGlide = false;

@@ -25,6 +25,7 @@ public class SoundManager : MonoBehaviour
         glidingAudioEffect,
         landAudioEffect,
         uiHoverAudioEffect,
+        waterEffect
     }
 
     [System.Serializable]
