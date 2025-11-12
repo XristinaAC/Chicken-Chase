@@ -22,6 +22,13 @@ public class AnimationsManager : MonoBehaviour
 
     void Update()
     {
+        _player = GameObject.FindWithTag("Player");
+
+        if (_player != null)
+        {
+            _playerManager = _player.GetComponent<PlayerManager2>();
+            _chickenAnimator = _player.GetComponentInChildren<Animator>();
+        }
         if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
         
         if(_player.GetComponent<PlayerManager2>().IsGrounded())
