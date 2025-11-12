@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Garg/Garg_lvl(Kitchen).unity
     guid: fb2762ff020b4b84eb4e284b8bd813b8
+  - enabled: 1
+    path: Assets/Scenes/Garg/Garg_lvl (Shelves).unity
+    guid: 22c5b135f004b0444aa391b91475543c
   m_configObjects: {}
