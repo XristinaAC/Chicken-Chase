@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 15215212761819406}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.382, z: -0}
   m_LocalScale: {x: 46.65347, y: 46.653465, z: 42.357174}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -151,4 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abef4b3ec64043a4885c1fcd42983a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: d62794b1f9fee1841b50e1001b730b31, type: 2}
+  projectilePrefab: {fileID: 8447850721587942444, guid: 305737d5c47e4524391f14fee3422471,
+    type: 3}
+  bossTarget: {fileID: 4430807285481577193, guid: 305737d5c47e4524391f14fee3422471,
+    type: 3}
