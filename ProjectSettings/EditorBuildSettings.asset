@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Programmer/ATA/Scenes/AtaMainMenu.unity
     guid: 189d221ba2ac08246bbb063fd5b30d4b
   - enabled: 1
+    path: Assets/Programmer/ATA/Scenes/Level 1_Sasha.unity
+    guid: 4c5bc5a984ca43c4d93025fd88d85f74
+  - enabled: 1
     path: Assets/Scenes/Garg/Garg_lvl(Kitchen).unity
     guid: fb2762ff020b4b84eb4e284b8bd813b8
   - enabled: 1
