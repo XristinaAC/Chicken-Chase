@@ -13,8 +13,8 @@ public class ProjectileController : MonoBehaviour
 
         if (projectilePrefab != null && bossTarget != null)
         {
-            Vector3 spawnPos = transform.position + (other.transform.forward * 3f);
-            GameObject newProjectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+            //Vector3 spawnPos = transform.position + (other.transform.forward * 3f);
+            GameObject newProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
             Projectile proj = newProjectile.GetComponent<Projectile>();
             if (proj != null)
