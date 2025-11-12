@@ -12,6 +12,10 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider masterSlider;
 
+    [SerializeField] GameObject settingsMenu;
+
+    Slider[] sliders;
+
     private void Awake()
     {
         if (Instance == null)
@@ -27,6 +31,7 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
+        //for()
         SetVolumes();
     }
 
