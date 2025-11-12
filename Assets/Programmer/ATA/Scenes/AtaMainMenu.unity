@@ -3376,6 +3376,24 @@ MonoBehaviour:
   MusicSource: {fileID: 600681391}
   SFXSource: {fileID: 7134205}
   audioMixer: {fileID: 24100000, guid: c0a83e18f05763941b3aa1d4726012c1, type: 2}
+  music:
+  - type: 0
+    clip: {fileID: 8300000, guid: 60aad85a24680784692c096d5663dbe4, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: 88739361cc6f3654d9d8a4883a21602e, type: 3}
+  effects:
+  - type: 1
+    clip: {fileID: 8300000, guid: b3269e90e075dae46bf01ad64107baa3, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: 093a19ad93beb4e429fcef66e1b5d568, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: 4b314cd0c5a131b4b95ac46610a6ad0b, type: 3}
+  - type: 0
+    clip: {fileID: 8300000, guid: 235e027bd58c66944808cb584d1bb04a, type: 3}
+  - type: 5
+    clip: {fileID: 8300000, guid: b4818c13b6b02da4b9ecf2fb1abb20f7, type: 3}
+  - type: 4
+    clip: {fileID: 8300000, guid: 84d1c660b1b8de34b823ecd6871ae335, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 41eee5318fe626943984fbe97642a6a9, type: 3}
   buttonEffect: {fileID: 8300000, guid: b3269e90e075dae46bf01ad64107baa3, type: 3}
 --- !u!4 &1184344664
