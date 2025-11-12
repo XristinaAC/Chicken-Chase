@@ -2593,7 +2593,7 @@ PrefabInstance:
     - target: {fileID: 1801920230590083528, guid: 2021de45730e5f4439adf38a01a8f92b,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MusicSlider
+      value: MasterSlider
       objectReference: {fileID: 0}
     - target: {fileID: 2367309676737483326, guid: 2021de45730e5f4439adf38a01a8f92b,
         type: 3}
