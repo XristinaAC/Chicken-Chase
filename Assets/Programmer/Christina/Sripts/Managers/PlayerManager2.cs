@@ -149,7 +149,12 @@ public class PlayerManager2 : MonoBehaviour
                 SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.landAudioEffect);
                 itWasInTheAir = false;
             }
-            canGlide = false;
+            else
+            {
+                SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.runningAudioEffect);
+            }
+
+                canGlide = false;
             _attack = false;
         }
 
