@@ -22,6 +22,7 @@ public class PlayerManager2 : MonoBehaviour
     private float jumpingSpeed = 0;
     private bool _attack = false;
     private bool _turn;
+    bool isGrounded = false;
 
     private void Awake()
     {
@@ -29,12 +30,6 @@ public class PlayerManager2 : MonoBehaviour
         {
             Instance = this;
         }
-        else if (Instance != this)
-        {
-            //Destroy(this.gameObject);
-        }
-
-        //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -46,6 +41,7 @@ public class PlayerManager2 : MonoBehaviour
     private void Update()
     {
         if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
+        
         PlayerMovement();
         PressingJumpButton();
         GlidingActions();
@@ -74,12 +70,9 @@ public class PlayerManager2 : MonoBehaviour
         CheckingGroundDistance();
         Gliding();
     }
-    float distance;
+
     void CheckingGroundDistance()
     {
-        RaycastHit hit;
-        
-
         if (Physics.CheckSphere(transform.position, 0.5f, mask))
         {
             isGrounded = true;
@@ -88,14 +81,13 @@ public class PlayerManager2 : MonoBehaviour
         }
         else
         {
-            Physics.Raycast(transform.position, Vector3.down, out hit, 200, mask);
-            distance = Vector3.Distance(hit.point, transform.position);
             isGrounded = false;
             this.GetComponent<Rigidbody>().AddForce(new Vector3(0, _gravity, 0), ForceMode.Acceleration);
         }
 
         if (this.GetComponent<Rigidbody>().velocity.y < 0 && !_jumpHighPeak && !isGrounded && _isHoldingSpace)
         {
+            SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.glidingAudioEffect);
             canGlide = true;
             _jumpHighPeak = true;
         }
@@ -105,6 +97,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (canGlide)
         {
+            SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.glidingAudioEffect);
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
         }
     }
@@ -120,11 +113,12 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
-    bool isGrounded = false;
+   
     void Jumping()
     {
-        if (_isJumping && isGrounded == true)// && distance <= 1.0f)
+        if (_isJumping && isGrounded == true)
         {
+            SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.jumpingAudioEffect);
             jumpingSpeed = Mathf.Sqrt(2 * _jumpHeight * Mathf.Abs(_gravity));
             this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
 
@@ -161,14 +155,11 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
-    GameObject projectile;
-
     private void Die()
     {
-        
+        SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.deathAudioEffect);
         if (GameManager.Instance != null)
             GameManager.Instance.ChangeState(GameManager.GameState.GameOver);
-            
     }
     public bool CanGlide()
     {

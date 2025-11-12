@@ -7,12 +7,12 @@ public class MainMenu : MonoBehaviour
 {
     private void Awake()
     {
-        SoundManager.Instance.PlayMusic(SoundManager.Instance.backgroundMusic);
+        SoundManager.Instance.PlayMusic(SoundManager.backgroundAudio.backgroundMusic);
     }
 
     public void PlayGame()
     {
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonEffect);
+        SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.buttonAudioEffect);
         if (GameManager.Instance != null)
             GameManager.Instance.ChangeState(GameManager.GameState.Playing);
         
@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonEffect);
+        SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.buttonAudioEffect);
         Application.Quit();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,13 +8,36 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance = null;
 
-    public enum AudioTypes
+    [System.Serializable]
+    public enum backgroundAudio
     {
         backgroundMusic,
-        death,
-        buttonAudioEffects,
-        jumpingAudioEffects,
-        glidingAudioEffects,
+        levelMusic,
+        bossRoomMusic
+    }
+
+    [System.Serializable]
+    public enum effectsAudio
+    {
+        deathAudioEffect,
+        buttonAudioEffect,
+        jumpingAudioEffect,
+        glidingAudioEffect,
+        landAudioEffect,
+        uiHoverAudioEffect,
+    }
+
+    [System.Serializable]
+    public struct BackgroundMusic
+    {
+        public backgroundAudio type;
+        public AudioClip clip;
+    }
+    [System.Serializable]
+    public struct SoundEffects
+    {
+        public effectsAudio type;
+        public AudioClip clip;
     }
 
     [Header("_____________AudioSource_______________")]
@@ -25,6 +49,8 @@ public class SoundManager : MonoBehaviour
 
     [Header("_____________AudioClips_______________")]
 
+    [SerializeField] List<BackgroundMusic> music;
+    [SerializeField] public List<SoundEffects> effects;
     [SerializeField] public AudioClip backgroundMusic;
     [SerializeField] public AudioClip buttonEffect;
 
@@ -49,10 +75,34 @@ public class SoundManager : MonoBehaviour
         MusicSource.Play();
     }
 
+    public void PlayMusic(backgroundAudio musicT)
+    {
+        for(int i=0; i< music.Count; i++)
+        {
+            if(musicT == music[i].type)
+            {
+                MusicSource.clip = music[i].clip;
+                MusicSource.Play();
+            }
+        }
+    }
+
     public void PlaySFX(AudioClip sfxEffect)
     {
         SFXSource.clip = sfxEffect;
         SFXSource.Play();
+    }
+
+    public void PlaySFX(effectsAudio effectT)
+    {
+        for (int i = 0; i < effects.Count; i++)
+        {
+            if (effectT == effects[i].type)
+            {
+                SFXSource.clip = effects[i].clip;
+                SFXSource.Play();
+            }
+        }
     }
 
     public void SetMasterVolume(float volume)
