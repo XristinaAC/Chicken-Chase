@@ -105,6 +105,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void StopPlayingMusic(backgroundAudio musicT)
+    {
+        for (int i = 0; i < music.Count; i++)
+        {
+            if (musicT == music[i].type)
+            {
+                MusicSource.clip = music[i].clip;
+                MusicSource.Stop();
+            }
+        }
+    }
+
     public void SetMasterVolume(float volume)
     {
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);

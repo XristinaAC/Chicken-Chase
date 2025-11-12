@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
@@ -36,6 +37,14 @@ public class SettingsManager : MonoBehaviour
     private void Start()
     { 
         SetVolumes();
+        if(SceneManager.GetActiveScene().name == "Boss")
+        {
+            SoundManager.Instance.PlayMusic(SoundManager.backgroundAudio.bossRoomMusic);
+        }
+        else
+        {
+            SoundManager.Instance.PlayMusic(SoundManager.backgroundAudio.backgroundMusic);
+        }
     }
 
     public void MasterSlider()

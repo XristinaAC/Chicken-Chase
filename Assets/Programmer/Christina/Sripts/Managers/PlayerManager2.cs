@@ -23,6 +23,7 @@ public class PlayerManager2 : MonoBehaviour
     private bool _attack = false;
     private bool _turn;
     bool isGrounded = false;
+    bool itWasInTheAir = false;
 
     private void Awake()
     {
@@ -97,7 +98,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (canGlide)
         {
-            SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.glidingAudioEffect);
+            itWasInTheAir = true;
             this.GetComponent<Rigidbody>().drag = _glidingDrag;
         }
     }
@@ -119,9 +120,11 @@ public class PlayerManager2 : MonoBehaviour
         if (_isJumping && isGrounded == true)
         {
             SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.jumpingAudioEffect);
+
             jumpingSpeed = Mathf.Sqrt(2 * _jumpHeight * Mathf.Abs(_gravity));
             this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
 
+            itWasInTheAir = true;
             isGrounded = false;
         }
         _isJumping = false;
@@ -135,6 +138,11 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            if(itWasInTheAir)
+            {
+                SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.landAudioEffect);
+                itWasInTheAir = false;
+            }
             canGlide = false;
             _attack = false;
         }

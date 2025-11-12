@@ -1,6 +1,7 @@
 ﻿
     using System;
     using UnityEngine;
+using UnityEngine.SceneManagement;
 
     public class GameManager : MonoBehaviour
     {
@@ -61,4 +62,13 @@
                     break;
             }
         }
+
+    private void CheckLevel()
+    {
+        if (SceneManager.GetActiveScene().name == "Boss")
+        {
+            SoundManager.Instance.StopPlayingMusic(SoundManager.backgroundAudio.backgroundMusic);
+            SoundManager.Instance.PlayMusic(SoundManager.backgroundAudio.bossRoomMusic);
+        }
     }
+}

@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private void Awake()
-    {
-        SoundManager.Instance.PlayMusic(SoundManager.backgroundAudio.backgroundMusic);
-    }
-
     public void PlayGame()
     {
         SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.buttonAudioEffect);

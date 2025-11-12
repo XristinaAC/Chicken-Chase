@@ -85,7 +85,5 @@ public class LevelManager : MonoBehaviour
         _lastLoadedScene = nextScene;
 
         await LoadLevelAsync(nextScene);
-        
-        
     }
 }
