@@ -2739,7 +2739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &648361216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8208,10 +8208,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\nAli Riza Kitapci\r\n\nAkashat Mishra\r\n\n\nPaulo Henrique Sallusti\n\n\n\n\nMurat
     Tunc\n\n\nGargeya Deshmukh\r\n\nAlexandra Goncharova\r\n\n\nNazanin Fayazmanesh\n\n\nNermin
-    Fikic\r\n\nMatilda Eriksson\r\n\nMusse Dolk\r\n\n\n\nChristina Papadodimitraki\n\n\nAtailay
-    Sahin\n\n\n\nKaan Kayra Sabanci\n\n\nOvun Kaan Cabak\r\n\nPaulo Henrique Sallusti\r\n\n\n\nAli
-    Riza Kitapci\n\n\nSezgin \u201CDoruk\u201D Sert\r\n\nKaan Salman\r\n\n\nKaan
-    Salman\r"
+    Fikic\r\n\nMatilda Eriksson\r\n\nMusse Dolk\r\n\n\n\nAtailay Sahin\n\n\nChristina
+    Papadodimitraki\n\n\n\nKaan Kayra Sabanci\n\n\nOvun Kaan Cabak\r\n\nPaulo Henrique
+    Sallusti\r\n\n\n\nAli Riza Kitapci\n\n\nSezgin \u201CDoruk\u201D Sert\r\n\nKaan
+    Salman\r\n\n\nKaan Salman\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
