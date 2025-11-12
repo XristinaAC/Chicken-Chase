@@ -11,6 +11,7 @@ public class PlayerManager2 : MonoBehaviour
     [SerializeField] private Transform basePosition;
     [SerializeField] private float _jumpHeight = 1;
     [SerializeField] private float _gravity = -2;
+    [SerializeField] ParticleSystem runningEffect;
 
     private bool _jumpHighPeak = false;
     private bool _obstacleHit = false;
@@ -24,6 +25,7 @@ public class PlayerManager2 : MonoBehaviour
     private bool _turn;
     bool isGrounded = false;
     bool itWasInTheAir = false;
+    ParticleSystem _running;
 
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _jumpHeightV = new Vector3(0, Mathf.Sqrt(1 * -2 * (Physics.gravity.y * 1)), 0);
+        _running = Instantiate(runningEffect, this.transform.position, Quaternion.identity);
     }
 
     private void Update()
@@ -47,6 +50,7 @@ public class PlayerManager2 : MonoBehaviour
         PressingJumpButton();
         GlidingActions();
         EndingGliding();
+        _running.Play();
     }
 
     void PlayerMovement()
@@ -76,6 +80,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (Physics.CheckSphere(transform.position, 0.5f, mask))
         {
+           
             isGrounded = true;
             canGlide = false;
             _jumpHighPeak = false;
@@ -120,6 +125,7 @@ public class PlayerManager2 : MonoBehaviour
         if (_isJumping && isGrounded == true)
         {
             SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.jumpingAudioEffect);
+            _running.Stop();
 
             jumpingSpeed = Mathf.Sqrt(2 * _jumpHeight * Mathf.Abs(_gravity));
             this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
@@ -138,7 +144,7 @@ public class PlayerManager2 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            if(itWasInTheAir)
+            if (itWasInTheAir)
             {
                 SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.landAudioEffect);
                 itWasInTheAir = false;
@@ -169,6 +175,7 @@ public class PlayerManager2 : MonoBehaviour
         if (GameManager.Instance != null)
             GameManager.Instance.ChangeState(GameManager.GameState.GameOver);
     }
+
     public bool CanGlide()
     {
         return canGlide;
