@@ -60,8 +60,6 @@ public class PlayerManager2 : MonoBehaviour
         }
     }
 
-    float height;
-    private float counter = 0;
     private void Update()
     {
         if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
@@ -85,7 +83,6 @@ public class PlayerManager2 : MonoBehaviour
         {
             _isHoldingSpace = true;
             _isJumping = true;
-            counter = Time.time;
         }
     }
 
@@ -159,6 +156,7 @@ public class PlayerManager2 : MonoBehaviour
         Jumping();
     }
 
+    bool turn;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -173,12 +171,13 @@ public class PlayerManager2 : MonoBehaviour
 
         if (collision.gameObject.tag == "change scene")
         {
-            transform.Rotate(0, -45, 0);
+            turn = true;
         }
     }
 
     private void Die()
     {
+        
         if (GameManager.Instance != null)
             GameManager.Instance.ChangeState(GameManager.GameState.GameOver);
             
@@ -196,5 +195,15 @@ public class PlayerManager2 : MonoBehaviour
     public bool CanJump()
     {
         return _isJumping;
+    }
+
+    public void SetTurn()
+    {
+        turn = false;
+    }
+
+    public bool GetTurn()
+    {
+        return turn;
     }
 }
