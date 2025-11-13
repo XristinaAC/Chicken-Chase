@@ -26,6 +26,7 @@ public class SoundManager : MonoBehaviour
         landAudioEffect,
         uiHoverAudioEffect,
         runningAudioEffect,
+        metalAudioEffect,
         waterEffect
     }
 
@@ -65,9 +66,8 @@ public class SoundManager : MonoBehaviour
         }
         else if (Instance != this)
         {
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
-
         DontDestroyOnLoad(this.gameObject);
     }
 

@@ -15575,6 +15575,12 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6442159441584684159, guid: 90cf38723cb5e5d49876e6274ce86ed2,
+        type: 3}
+      propertyPath: smokeEffect
+      value: 
+      objectReference: {fileID: 7268154397835953191, guid: 1455a9623391f3c44a50c042703df16f,
+        type: 3}
     - target: {fileID: 9211943373680988418, guid: 90cf38723cb5e5d49876e6274ce86ed2,
         type: 3}
       propertyPath: m_LocalPosition.x

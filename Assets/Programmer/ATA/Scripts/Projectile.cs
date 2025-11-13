@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float rotationSpeed = 30f;
     [SerializeField] private float lifeTime = 5f;
     [SerializeField] private GameObject hitEffect;
+    //[SerializeField] ParticleSystem smokeEffect;
 
     private Vector3 _target;
     private bool _hasTarget;
@@ -51,10 +52,13 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Boss"))
         {
+            //ParticleSystem smoke = Instantiate(smokeEffect, this.transform.position, Quaternion.identity);
+            //smoke.Play();
             var boss = other.GetComponentInParent<BossManager>();
             if (boss != null)
                 boss.TakeDamage(1);
 
+            //Destroy(smoke, 0.5f);
             HitTarget();
         }
     }

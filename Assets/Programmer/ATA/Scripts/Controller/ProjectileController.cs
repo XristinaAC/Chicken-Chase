@@ -20,7 +20,6 @@ public class ProjectileController : MonoBehaviour
             if (proj != null)
                 proj.SetTarget(bossTarget.position);
         }
-        //Destroy(gameObject);
         StartCoroutine(StopAnimation(other));
     }
 

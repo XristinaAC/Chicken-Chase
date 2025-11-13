@@ -137,6 +137,8 @@ MonoBehaviour:
   lifeTime: 25
   hitEffect: {fileID: 5135130699379716885, guid: 9f44bf0f3fe3fab4c8f28239bec943c7,
     type: 3}
+  runningEffect: {fileID: 5496993177288061387, guid: ac002f3bb98e9bb4bae25b6cc5d04e7a,
+    type: 3}
 --- !u!135 &1561423550847398717
 SphereCollider:
   m_ObjectHideFlags: 0
