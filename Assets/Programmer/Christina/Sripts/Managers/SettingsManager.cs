@@ -12,8 +12,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider masterSlider;
-
-    [SerializeField] GameObject settingsMenu;
+    [SerializeField] private Slider backgroundSFXSlider;
 
     Slider[] sliders;
 
@@ -48,6 +47,8 @@ public class SettingsManager : MonoBehaviour
         else
         {
             SoundManager.Instance.PlayMusic(SoundManager.backgroundAudio.levelMusic);
+            SoundManager.Instance.PlayBackgroundSFX(SoundManager.effectsAudio.waterEffect);
+            SoundManager.Instance.PlayBackgroundSFX(SoundManager.effectsAudio.sizzlingPan);
         }
     }
 
@@ -69,6 +70,12 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
     }
 
+    public void BackgroundSFXSlider()
+    {
+        SoundManager.Instance.SetBackgroundSFXVolume(backgroundSFXSlider.value);
+        PlayerPrefs.SetFloat("BackgroundSFX", backgroundSFXSlider.value);
+    }
+
     public void SetVolumes()
     {
         if (PlayerPrefs.HasKey("MusicVolume"))
@@ -80,6 +87,7 @@ public class SettingsManager : MonoBehaviour
             SoundManager.Instance.SetMusicVolume(musicSlider.value);
             SoundManager.Instance.SetSFXVolume(sfxSlider.value);
             SoundManager.Instance.SetMasterVolume(masterSlider.value);
+            SoundManager.Instance.SetBackgroundSFXVolume(backgroundSFXSlider.value);
         }
     }
 
@@ -88,9 +96,11 @@ public class SettingsManager : MonoBehaviour
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
         masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        backgroundSFXSlider.value = PlayerPrefs.GetFloat("BackgroundSFX");
 
         SoundManager.Instance.SetMusicVolume(musicSlider.value);
         SoundManager.Instance.SetSFXVolume(sfxSlider.value);
         SoundManager.Instance.SetMasterVolume(masterSlider.value);
+        SoundManager.Instance.SetBackgroundSFXVolume(backgroundSFXSlider.value);
     }
 }

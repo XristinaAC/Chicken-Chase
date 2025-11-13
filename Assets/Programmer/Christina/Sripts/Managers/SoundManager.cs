@@ -27,6 +27,7 @@ public class SoundManager : MonoBehaviour
         uiHoverAudioEffect,
         runningAudioEffect,
         metalAudioEffect,
+        sizzlingPan,
         waterEffect
     }
 
@@ -47,6 +48,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioSource MusicSource;
     [SerializeField] private AudioSource SFXSource;
+    [SerializeField] private AudioSource BackgroundSFXSource;
     [SerializeField] private AudioMixer audioMixer;
 
 
@@ -107,6 +109,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayBackgroundSFX(effectsAudio effectT)
+    {
+        for (int i = 0; i < effects.Count; i++)
+        {
+            if (effectT == effects[i].type)
+            {
+                BackgroundSFXSource.clip = effects[i].clip;
+                BackgroundSFXSource.Play();
+            }
+        }
+    }
+
     public void StopPlayingMusic(backgroundAudio musicT)
     {
         for (int i = 0; i < music.Count; i++)
@@ -132,5 +146,10 @@ public class SoundManager : MonoBehaviour
     public void SetSFXVolume(float volume)
     {
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetBackgroundSFXVolume(float volume)
+    {
+        audioMixer.SetFloat("BackgroundSFX", Mathf.Log10(volume) * 20);
     }
 }

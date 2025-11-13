@@ -557,8 +557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b256f38523ff847b712755a5fb470f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  levelPosition: {fileID: 297476626}
 --- !u!4 &36997554 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1ede0c240543ece4e8bcd23c514a1134,
@@ -6858,6 +6856,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2124504196}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &334461820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5340012756584456935, guid: 2021de45730e5f4439adf38a01a8f92b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1172211647}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &343867838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18636,6 +18646,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5340012756584456935, guid: 2021de45730e5f4439adf38a01a8f92b,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1510369383}
+    - target: {fileID: 5340012756584456935, guid: 2021de45730e5f4439adf38a01a8f92b,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackgroundSFXSlider
+      objectReference: {fileID: 0}
     - target: {fileID: 5817799586913497391, guid: 2021de45730e5f4439adf38a01a8f92b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -19026,7 +19046,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195911904}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dd3541dd591a9f549b1f3fb6a6e60f4a, type: 3}
@@ -24815,7 +24835,7 @@ MonoBehaviour:
   musicSlider: {fileID: 1172211650}
   sfxSlider: {fileID: 1172211649}
   masterSlider: {fileID: 1172211648}
-  settingsMenu: {fileID: 0}
+  backgroundSFXSlider: {fileID: 334461820}
 --- !u!1 &1514172532
 GameObject:
   m_ObjectHideFlags: 0
@@ -25901,7 +25921,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597877019}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 55cd1dda39986994bbf9a26bd9189fa5, type: 3}
