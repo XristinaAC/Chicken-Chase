@@ -21,12 +21,15 @@ public class PlayerSpawnManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    GameObject _oldPlayer;
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         var oldPlayer = GameObject.FindWithTag("Player");
-        if (oldPlayer != null)
-            Destroy(oldPlayer);
-        
+        _oldPlayer = GameObject.FindWithTag("Player");
+        if (_oldPlayer != null)
+            currentPlayer = _oldPlayer;
+            //Destroy(oldPlayer);
+
         var spawnPoint = GameObject.FindWithTag("SpawnPoint");
         Vector3 spawnPos = Vector3.zero;
         Quaternion spawnRot = Quaternion.identity;
