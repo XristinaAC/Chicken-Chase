@@ -21,6 +21,11 @@ using UnityEngine.SceneManagement;
 
         private void Awake()
         {
+           
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 120;
+            
+            
             if (Instance == null)
             {
                 Instance = this;
@@ -30,8 +35,7 @@ using UnityEngine.SceneManagement;
             else 
                 Destroy(gameObject);
 
-        DontDestroyOnLoad(this.gameObject);
-    }
+        }
 
         private void Update()
         {
