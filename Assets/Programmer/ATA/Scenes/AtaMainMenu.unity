@@ -2818,8 +2818,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endlessLevelNames:
-  - Endless_1
-  - Endless_2
+  - Endless1
+  - Endless2
+  - Endless3
 --- !u!4 &806754603
 Transform:
   m_ObjectHideFlags: 0
