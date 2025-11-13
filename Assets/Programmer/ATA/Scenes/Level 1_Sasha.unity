@@ -11710,6 +11710,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: service_car (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8761027509025237556, guid: 58ef0249e35f51f408d3397946bc03cf,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15555,6 +15560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: service_car (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761027509025237556, guid: 58ef0249e35f51f408d3397946bc03cf,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23775,7 +23785,7 @@ PrefabInstance:
     - target: {fileID: 2486397814269302277, guid: 58ef0249e35f51f408d3397946bc03cf,
         type: 3}
       propertyPath: m_TagString
-      value: obstacle
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8277260652413694094, guid: 58ef0249e35f51f408d3397946bc03cf,
         type: 3}
@@ -23846,6 +23856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: service_car
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761027509025237556, guid: 58ef0249e35f51f408d3397946bc03cf,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
