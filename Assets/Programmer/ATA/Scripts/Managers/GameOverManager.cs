@@ -33,9 +33,10 @@ public class GameOverManager : MonoBehaviour
         gameOverPanel.SetActive(state == GameManager.GameState.GameOver);
     }
 
-    public void ReturnToMenu()
+    public async void ReturnToMenu()
     {
-        SceneManager.LoadScene(0);
+        LevelManager.Instance.ResetGameState(); 
+        await LevelManager.Instance.LoadLevelAsync("AtaMainMenu");
         GameManager.Instance.ChangeState(GameManager.GameState.MainMenu);
     }
     public async void RestartLevel()
