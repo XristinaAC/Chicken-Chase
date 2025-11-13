@@ -23,6 +23,12 @@ public class ProjectileController : MonoBehaviour
         StartCoroutine(StopAnimation(other));
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        other.GetComponent<PlayerManager2>().GetComponent<Animator>().SetBool("isAttacking", true);
+    }
+
     IEnumerator StopAnimation(Collider p)
     {
         yield return new WaitForSeconds(.1f);

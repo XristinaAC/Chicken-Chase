@@ -864,6 +864,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TomatoPickUp (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9196670222681345952, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7518,6 +7523,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TomatoPickUp (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9196670222681345952, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8333,6 +8343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TomatoPickUp (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196670222681345952, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18376,6 +18391,11 @@ PrefabInstance:
       propertyPath: bossTarget
       value: 
       objectReference: {fileID: 3167552234306189425}
+    - target: {fileID: 6098199653094244153, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8396450897885347236, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18430,6 +18450,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TomatoPickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196670222681345952, guid: 9cd2852857a0c914d8cbc44dc4e6ba2b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

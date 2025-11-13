@@ -46,6 +46,9 @@ public class AnimationsManager : MonoBehaviour
             }
         }
 
-        chickenAnimator.SetBool("isAttacking", playerManager.GetAttack());
+        //if(playerManager.GetAttack())
+        //{
+        //    chickenAnimator.SetBool("isAttacking", true);
+        //}
     }
 }

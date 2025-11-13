@@ -169,10 +169,7 @@ public class PlayerManager2 : MonoBehaviour
 
         if (collision.gameObject.tag == "obstacle")
         {
-            if(collision.gameObject.layer == metalMask)
-            {
-                SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.metalAudioEffect);
-            }
+            SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.deathAudioEffect);
             Die();
         }
 
@@ -180,16 +177,10 @@ public class PlayerManager2 : MonoBehaviour
         {
             _turn = true;
         }
-
-        if (collision.gameObject.tag == "Projectile")
-        {
-            _attack = true;
-        }
     }
 
     private void Die()
     {
-        SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.deathAudioEffect);
         if (GameManager.Instance != null)
             GameManager.Instance.ChangeState(GameManager.GameState.GameOver);
     }
