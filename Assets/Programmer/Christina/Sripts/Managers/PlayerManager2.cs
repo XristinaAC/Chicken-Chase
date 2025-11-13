@@ -169,7 +169,6 @@ public class PlayerManager2 : MonoBehaviour
 
         if (collision.gameObject.tag == "obstacle")
         {
-            SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.deathAudioEffect);
             Die();
         }
 

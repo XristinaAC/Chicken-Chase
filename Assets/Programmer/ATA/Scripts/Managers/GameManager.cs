@@ -62,6 +62,7 @@ using UnityEngine.SceneManagement;
 
                 case GameState.Paused:
                 case GameState.GameOver:
+                    SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.deathAudioEffect);
                     TimerManager.Instance.StopTimer();
                     break;
             }
