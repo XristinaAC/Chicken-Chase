@@ -21,13 +21,17 @@ public class PlayerSpawnManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    GameObject _oldPlayer;
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Eski player varsa sahneden temizle
-        var oldPlayer = GameObject.FindWithTag("Player");
-        if (oldPlayer != null)
+        //var oldPlayer = GameObject.FindWithTag("Player");
+        _oldPlayer = GameObject.FindWithTag("Player");
+        if (_oldPlayer != null)
         {
-            Destroy(oldPlayer);
+            currentPlayer = _oldPlayer;
+            //Destroy(oldPlayer);
+            return;
         }
 
         // SpawnPoint bul
