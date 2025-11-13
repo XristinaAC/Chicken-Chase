@@ -31,7 +31,7 @@ public class ProjectileController : MonoBehaviour
 
     IEnumerator StopAnimation(Collider p)
     {
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.5f);
         p.GetComponent<PlayerManager2>().GetComponent<Animator>().SetBool("isAttacking", false);
         Destroy(gameObject);
     }
