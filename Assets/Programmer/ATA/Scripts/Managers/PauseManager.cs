@@ -68,7 +68,7 @@ public class PauseManager : MonoBehaviour
     private void ReturnToMainMenu()
     {
         SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonEffect);
-        Time.timeScale = 1f;
+        LevelManager.Instance?.ResetGameState();
         GameManager.Instance.ChangeState(GameManager.GameState.MainMenu);
         SceneManager.LoadScene(0);
     }

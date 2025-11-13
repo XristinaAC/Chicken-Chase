@@ -86,4 +86,14 @@ public class LevelManager : MonoBehaviour
 
         await LoadLevelAsync(nextScene);
     }
+    
+    public void ResetGameState()
+    {
+        _lastLoadedScene = null;
+        if (TimerManager.Instance != null)
+            TimerManager.Instance.ResetTimer();
+
+    
+        GameManager.Instance.ChangeState(GameManager.GameState.MainMenu);
+    }
 }

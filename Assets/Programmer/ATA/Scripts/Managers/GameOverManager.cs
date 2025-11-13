@@ -48,7 +48,7 @@ public class GameOverManager : MonoBehaviour
         {
             SceneManager.LoadScene(firstLevelName); 
         }
-
+        LevelManager.Instance?.ResetGameState();
         TimerManager.Instance?.ResetTimer();
         GameManager.Instance?.ChangeState(GameManager.GameState.Playing);
     }
