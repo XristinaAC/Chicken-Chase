@@ -255,8 +255,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   basePosition: {fileID: 5063790617582894650}
-  _jumpHeight: 4.5
-  _gravity: -3
+  _jumpHeight: 2
+  _gravity: -2
   runningEffect: {fileID: 2791973779594234128}
 --- !u!54 &1349436968879940959
 Rigidbody:

@@ -136,7 +136,7 @@ public class PlayerManager2 : MonoBehaviour
         {
             SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.jumpingAudioEffect);
 
-            jumpingSpeed = Mathf.Sqrt(2 * _jumpHeight * Mathf.Abs(1));
+            jumpingSpeed = Mathf.Sqrt(2 * _jumpHeight * Mathf.Abs(_gravity));
             this.GetComponent<Rigidbody>().AddForce(_jumpHeightV * jumpingSpeed, ForceMode.Impulse);
 
             itWasInTheAir = true;
