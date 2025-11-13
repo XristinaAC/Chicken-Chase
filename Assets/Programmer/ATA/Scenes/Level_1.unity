@@ -27312,7 +27312,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   basePosition: {fileID: 1385897530}
-  _jumpHeight: 1
   _gravity: -2
   runningEffect: {fileID: 0}
 --- !u!114 &1655666761
