@@ -87,13 +87,11 @@ public class LevelManager : MonoBehaviour
         await LoadLevelAsync(nextScene);
     }
     
-    public void ResetGameState()
+    public async void ResetGameState()
     {
+        TimerManager.Instance?.ResetTimer();
         _lastLoadedScene = null;
-        if (TimerManager.Instance != null)
-            TimerManager.Instance.ResetTimer();
-
-    
         GameManager.Instance.ChangeState(GameManager.GameState.MainMenu);
+        await LoadLevelAsync("AtaMainMenu");
     }
 }

@@ -40,15 +40,8 @@ public class GameOverManager : MonoBehaviour
     }
     public async void RestartLevel()
     {
-        if (LevelManager.Instance != null)
-        {
-            await LevelManager.Instance.LoadLevelAsync(SceneManager.GetActiveScene().name);
-        }
-        else
-        {
-            SceneManager.LoadScene(firstLevelName); 
-        }
-        LevelManager.Instance?.ResetGameState();
+        string currentScene = SceneManager.GetActiveScene().name;
+        await LevelManager.Instance.LoadLevelAsync(currentScene);
         TimerManager.Instance?.ResetTimer();
         GameManager.Instance?.ChangeState(GameManager.GameState.Playing);
     }
