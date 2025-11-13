@@ -41,9 +41,13 @@ public class SettingsManager : MonoBehaviour
         {
             SoundManager.Instance.PlayMusic(SoundManager.backgroundAudio.bossRoomMusic);
         }
-        else
+        else if(SceneManager.GetActiveScene().name == "AtaMainMenu")
         {
             SoundManager.Instance.PlayMusic(SoundManager.backgroundAudio.backgroundMusic);
+        }
+        else
+        {
+            SoundManager.Instance.PlayMusic(SoundManager.backgroundAudio.levelMusic);
         }
     }
 

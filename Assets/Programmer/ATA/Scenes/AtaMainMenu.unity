@@ -3436,9 +3436,11 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: c0a83e18f05763941b3aa1d4726012c1, type: 2}
   music:
   - type: 0
-    clip: {fileID: 8300000, guid: 60aad85a24680784692c096d5663dbe4, type: 3}
+    clip: {fileID: 8300000, guid: 15273d44e22780b4d8eb936647859a1e, type: 3}
   - type: 2
     clip: {fileID: 8300000, guid: 88739361cc6f3654d9d8a4883a21602e, type: 3}
+  - type: 1
+    clip: {fileID: 8300000, guid: 60aad85a24680784692c096d5663dbe4, type: 3}
   effects:
   - type: 1
     clip: {fileID: 8300000, guid: b3269e90e075dae46bf01ad64107baa3, type: 3}
