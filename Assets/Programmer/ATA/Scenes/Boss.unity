@@ -6787,6 +6787,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590469003805531033, guid: 388e6fba02750d4429dd75eb33d18caf,
         type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 590469003805531033, guid: 388e6fba02750d4429dd75eb33d18caf,
+        type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 2
       objectReference: {fileID: 0}
@@ -7967,6 +7972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 590469003805531033, guid: 388e6fba02750d4429dd75eb33d18caf,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 2133573390936514473, guid: 388e6fba02750d4429dd75eb33d18caf,
         type: 3}
@@ -10364,7 +10374,7 @@ GameObject:
   - component: {fileID: 1466846812}
   m_Layer: 0
   m_Name: Cube (6)
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
