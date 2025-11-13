@@ -1289,7 +1289,7 @@ PrefabInstance:
     - target: {fileID: 567515152683775275, guid: 6c1821006dbd09941b7a48a747a280ae,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 567515152683775275, guid: 6c1821006dbd09941b7a48a747a280ae,
         type: 3}
@@ -1571,6 +1571,16 @@ PrefabInstance:
     - target: {fileID: 5984214514168769208, guid: 2021de45730e5f4439adf38a01a8f92b,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400582059246449397, guid: 2021de45730e5f4439adf38a01a8f92b,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400582059246449397, guid: 2021de45730e5f4439adf38a01a8f92b,
+        type: 3}
+      propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7769210036111858202, guid: 2021de45730e5f4439adf38a01a8f92b,
@@ -1991,7 +2001,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2.5599656, y: -262.002}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 95, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &648361217
 MonoBehaviour:
@@ -2272,7 +2282,7 @@ MonoBehaviour:
 
 
 
-    Lead Artis
+    Lead Artist
 
 
 
@@ -2524,7 +2534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: -2.654}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -237.7, y: 97}
+  m_AnchoredPosition: {x: -242, y: 99}
   m_SizeDelta: {x: 51.6618, y: 40.0268}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &745596539
@@ -3416,7 +3426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.333}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -241.40706, y: 110.90084}
+  m_AnchoredPosition: {x: -247, y: 110}
   m_SizeDelta: {x: 77.0494, y: 62.104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1110278720
@@ -4054,7 +4064,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2, y: 23}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 95, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278093048
 MonoBehaviour:
@@ -5151,7 +5161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 807ad423524f4344d814c38d94fc2823, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f15ee3b1027ff541ae547a03a9e5872, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5524,7 +5534,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.9999996, y: -72.00202}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 95, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1682412516
 MonoBehaviour:
@@ -6394,9 +6404,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6756,10 +6766,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\nAli Riza Kitapci\r\n\nAkashat Mishra\r\n\n\nPaulo Henrique Sallusti\n\n\n\n\nMurat
     Tunc\n\n\nGargeya Deshmukh\r\n\nAlexandra Goncharova\r\n\n\nNazanin Fayazmanesh\n\n\nNermin
-    Fikic\r\n\nMatilda Eriksson\r\n\nMusse Dolk\r\n\n\n\nAtailay Sahin\n\n\nChristina
-    Papadodimitraki\n\n\n\nKaan Kayra Sabanci\n\n\nOvun Kaan Cabak\r\n\nPaulo Henrique
-    Sallusti\r\n\n\n\nAli Riza Kitapci\n\n\nSezgin \u201CDoruk\u201D Sert\r\n\nKaan
-    Salman\r\n\n\nKaan Salman\r"
+    Fikic\r\n\nMatilda Eriksson\r\n\nMusse Dolk\r\n\n\n\nChristina Papadodimitraki\n\n\nAtailay
+    Sahin\n\n\n\nKaan Kayra Sabanci\n\n\nOvun Kaan Cabak\r\n\nPaulo Henrique Sallusti\r\n\n\n\nAli
+    Riza Kitapci\n\n\nSezgin \u201CDoruk\u201D Sert\r\n\nKaan Salman\r\n\n\nKaan
+    Salman\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
