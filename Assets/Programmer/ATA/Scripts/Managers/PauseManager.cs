@@ -65,13 +65,11 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    private async void ReturnToMainMenu()
+    private void ReturnToMainMenu()
     {
         SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonEffect);
-        Time.timeScale = 1f;
-        LevelManager.Instance.ResetGameState();
-        await LevelManager.Instance.LoadLevelAsync("AtaMainMenu");
         GameManager.Instance.ChangeState(GameManager.GameState.MainMenu);
+        SceneManager.LoadScene(0);
     }
 
     public void OpenSettingsMenu()

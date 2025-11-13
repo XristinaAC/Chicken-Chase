@@ -34,8 +34,6 @@ using UnityEngine.SceneManagement;
             }
             else 
                 Destroy(gameObject);
-            
-            DontDestroyOnLoad(this.gameObject);
 
         }
 

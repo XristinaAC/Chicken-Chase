@@ -33,16 +33,21 @@ public class GameOverManager : MonoBehaviour
         gameOverPanel.SetActive(state == GameManager.GameState.GameOver);
     }
 
-    public async void ReturnToMenu()
+    public void ReturnToMenu()
     {
-        LevelManager.Instance.ResetGameState(); 
-        await LevelManager.Instance.LoadLevelAsync("AtaMainMenu");
+        SceneManager.LoadScene(0);
         GameManager.Instance.ChangeState(GameManager.GameState.MainMenu);
     }
     public async void RestartLevel()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
-        await LevelManager.Instance.LoadLevelAsync(currentScene);
+        if (LevelManager.Instance != null)
+        {
+            await LevelManager.Instance.LoadLevelAsync(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            SceneManager.LoadScene(firstLevelName); 
+        }
         TimerManager.Instance?.ResetTimer();
         GameManager.Instance?.ChangeState(GameManager.GameState.Playing);
     }
