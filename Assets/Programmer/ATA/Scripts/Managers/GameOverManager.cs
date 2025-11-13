@@ -49,7 +49,7 @@ public class GameOverManager : MonoBehaviour
             SceneManager.LoadScene(firstLevelName); 
         }
 
-        //TimerManager.Instance?.ResetTimer();
+        TimerManager.Instance?.ResetTimer();
         GameManager.Instance?.ChangeState(GameManager.GameState.Playing);
     }
 }

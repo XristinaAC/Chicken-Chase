@@ -1,61 +1,51 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationsManager : MonoBehaviour
 {
-    private Animator _chickenAnimator;
-    private GameObject _player;
-    private PlayerManager2 _playerManager;
+    Animator chickenAnimator;
+    PlayerManager2 playerManager;
 
-    private void Start()
+    void Start()
     {
-        _player = GameObject.FindWithTag("Player");
-
-        if (_player != null)
+        var player = GameObject.FindWithTag("Player");
+        if (player != null)
         {
-            _playerManager = _player.GetComponent<PlayerManager2>();
-            _chickenAnimator = _player.GetComponentInChildren<Animator>();
+            playerManager = player.GetComponent<PlayerManager2>();
+            chickenAnimator = player.GetComponentInChildren<Animator>();
         }
     }
 
     void Update()
     {
-        _player = GameObject.FindWithTag("Player");
+        if (playerManager == null || chickenAnimator == null) return;
 
-        if (_player != null)
+        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing)
         {
-            _playerManager = _player.GetComponent<PlayerManager2>();
-            _chickenAnimator = _player.GetComponentInChildren<Animator>();
+            chickenAnimator.speed = 0f; 
+            return;
         }
-        if (GameManager.Instance.CurrentState != GameManager.GameState.Playing) return;
-        
-        if(_player.GetComponent<PlayerManager2>().IsGrounded())
+
+        chickenAnimator.speed = 1f; 
+
+        if (playerManager.IsGrounded())
         {
-            _chickenAnimator.SetBool("isJumping", false);
-            _chickenAnimator.SetBool("isGliding", false);
+            chickenAnimator.SetBool("isJumping", false);
+            chickenAnimator.SetBool("isGliding", false);
         }
         else
-        {    if(_player.GetComponent<PlayerManager2>().CanGlide())
+        {
+            if (playerManager.CanGlide())
             {
-                _chickenAnimator.SetBool("isGliding", true);
-                _chickenAnimator.SetBool("isJumping", false);
+                chickenAnimator.SetBool("isGliding", true);
+                chickenAnimator.SetBool("isJumping", false);
             }
             else
             {
-                //_chickenAnimControler.SetBool("isGliding", false);
-                _chickenAnimator.SetBool("isJumping", true);
+                chickenAnimator.SetBool("isGliding", false);
+                chickenAnimator.SetBool("isJumping", true);
             }
         }
 
-        if (_player.GetComponent<PlayerManager2>().GetAttack())
-        {
-            _chickenAnimator.SetBool("isAttacking", true);
-        }
-        else
-        {
-           // _chickenAnimator.SetBool("isAttacking", false);
-        }
+        chickenAnimator.SetBool("isAttacking", playerManager.GetAttack());
     }
 }
