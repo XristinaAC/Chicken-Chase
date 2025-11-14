@@ -40,6 +40,7 @@ using UnityEngine.SceneManagement;
         private void Update()
         {
             Debug.Log("GameManager is " + CurrentState);
+            Debug.Log("Timescale = " + Time.timeScale);
         }
 
         public void ChangeState(GameState state)

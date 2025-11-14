@@ -40,6 +40,8 @@ public class GameOverManager : MonoBehaviour
     }
     public async void RestartLevel()
     {
+        Time.timeScale = 1f; 
+
         if (LevelManager.Instance != null)
         {
             await LevelManager.Instance.LoadLevelAsync(SceneManager.GetActiveScene().name);
@@ -48,6 +50,7 @@ public class GameOverManager : MonoBehaviour
         {
             SceneManager.LoadScene(firstLevelName); 
         }
+
         TimerManager.Instance?.ResetTimer();
         GameManager.Instance?.ChangeState(GameManager.GameState.Playing);
     }

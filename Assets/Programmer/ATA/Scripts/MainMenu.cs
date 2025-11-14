@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
+        Time.timeScale = 1f;
         SoundManager.Instance.PlaySFX(SoundManager.effectsAudio.buttonAudioEffect);
         if (GameManager.Instance != null)
             GameManager.Instance.ChangeState(GameManager.GameState.Playing);

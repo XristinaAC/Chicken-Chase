@@ -10,9 +10,10 @@ public class BossManager : MonoBehaviour
 
     [Header("Boss Health")]
     [SerializeField] private float maxHealth = 3f;
-    [SerializeField] private float deathDelay = 5f;
+    [SerializeField] private float deathDelay = 4.5f;
     [SerializeField] private GameObject deathEffect;
-    [SerializeField] ParticleSystem smokeEffect;
+    [SerializeField] private GameObject smokeEffect;
+  
 
     [SerializeField] private float currentHealth;
     private bool isDying;
@@ -40,6 +41,7 @@ public class BossManager : MonoBehaviour
         if (isDying) return;
 
         currentHealth -= damage;
+        TriggerHitSmoke();
 
 
         if (currentHealth <= 0)
@@ -50,9 +52,6 @@ public class BossManager : MonoBehaviour
     {
         if (isDying) return;
         isDying = true;
-        ParticleSystem smoke = Instantiate(smokeEffect, this.transform.position, Quaternion.identity);
-        smoke.Play();
-        Destroy(smoke, 0.5f);
 
         if (deathEffect)
             Instantiate(deathEffect, bossHead.position, Quaternion.identity);
@@ -61,5 +60,13 @@ public class BossManager : MonoBehaviour
 
         if (LevelManager.Instance != null)
             await LevelManager.Instance.LoadNextLevelAsync();
+    }
+    
+    private void TriggerHitSmoke()
+    {
+        
+
+        GameObject smoke = Instantiate(smokeEffect, bossHead.position, Quaternion.identity);
+        Destroy(smoke, 6f);
     }
 }

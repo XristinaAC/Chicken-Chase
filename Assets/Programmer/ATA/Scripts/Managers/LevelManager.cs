@@ -48,7 +48,7 @@ public class LevelManager : MonoBehaviour
         asyncLoad.allowSceneActivation = true;
 
         OnLevelLoadComplete?.Invoke();
-        await Task.Yield();
+        Time.timeScale = 1f;
     }
 
     public async Task LoadNextLevelAsync()
