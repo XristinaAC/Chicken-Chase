@@ -29,11 +29,24 @@ public class PlayerSpawnManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    GameObject _oldPlayer;
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+<<<<<<< HEAD
         // 1) Menü sahnesinde Player spawn ETME
         if (scene.buildIndex == 0)
             return;
+=======
+        var oldPlayer = GameObject.FindWithTag("Player");
+        _oldPlayer = GameObject.FindWithTag("Player");
+        if (_oldPlayer != null)
+            currentPlayer = _oldPlayer;
+            //Destroy(oldPlayer);
+
+        var spawnPoint = GameObject.FindWithTag("SpawnPoint");
+        Vector3 spawnPos = Vector3.zero;
+        Quaternion spawnRot = Quaternion.identity;
+>>>>>>> 267401acb0b4badab5498e75df317feddadfbabc
 
         // 2) Eğer zaten player varsa tekrar spawn etme
         if (currentPlayer != null)
