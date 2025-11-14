@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 public class PlayerSpawnManager : MonoBehaviour
 {
     public static PlayerSpawnManager Instance;
+
     [SerializeField] private GameObject playerPrefab;
-    private GameObject currentPlayer;
+    private GameObject playerInstance;
 
     private void Awake()
     {
@@ -29,58 +30,33 @@ public class PlayerSpawnManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    GameObject _oldPlayer;
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-<<<<<<< HEAD
-        // 1) Menü sahnesinde Player spawn ETME
         if (scene.buildIndex == 0)
-            return;
-=======
-        var oldPlayer = GameObject.FindWithTag("Player");
-        _oldPlayer = GameObject.FindWithTag("Player");
-        if (_oldPlayer != null)
-            currentPlayer = _oldPlayer;
-            //Destroy(oldPlayer);
+            return; 
 
-        var spawnPoint = GameObject.FindWithTag("SpawnPoint");
-        Vector3 spawnPos = Vector3.zero;
-        Quaternion spawnRot = Quaternion.identity;
->>>>>>> 267401acb0b4badab5498e75df317feddadfbabc
-
-        // 2) Eğer zaten player varsa tekrar spawn etme
-        if (currentPlayer != null)
-        {
-            MovePlayerToSpawnPoint();
-            return;
-        }
-
-        // 3) Sahne ilk kez açılıyorsa yeni player oluştur
-        SpawnNewPlayer();
+        SpawnOrMovePlayer();
     }
 
-    private void SpawnNewPlayer()
+    private void SpawnOrMovePlayer()
     {
-        Transform spawn = GameObject.FindWithTag("SpawnPoint")?.transform;
+        Transform spawnPoint = GameObject.FindWithTag("SpawnPoint")?.transform;
 
-        if (spawn == null)
+        if (spawnPoint == null)
         {
             Debug.LogWarning("SpawnPoint bulunamadı!");
-            spawn = new GameObject("SpawnPoint").transform;
+            return;
         }
+        
+        if (playerInstance == null)
+        {
+            playerInstance = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+            return;
+        }
+        
+        playerInstance.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
 
-        currentPlayer = Instantiate(playerPrefab, spawn.position, spawn.rotation);
-    }
-
-    private void MovePlayerToSpawnPoint()
-    {
-        Transform spawn = GameObject.FindWithTag("SpawnPoint")?.transform;
-        if (spawn == null) return;
-
-        currentPlayer.transform.SetPositionAndRotation(spawn.position, spawn.rotation);
-
-        // rigidbody varsa sıfırla
-        if (currentPlayer.TryGetComponent<Rigidbody>(out var rb))
+        if (playerInstance.TryGetComponent<Rigidbody>(out var rb))
             rb.velocity = Vector3.zero;
     }
 }
