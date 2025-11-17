@@ -53,6 +53,7 @@ public class CameraManager : MonoBehaviour
         transform.position = new Vector3(player.transform.position.x + offset.x + xMove, transform.position.y, player.transform.position.z + offset.z + zMove);  
     }
 
+    //Called in the Teleport Controller
     public void TurnCamera(int xM,int zM)
     {
         xMove = xM;

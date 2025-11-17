@@ -14,10 +14,8 @@
             {
                 if (manager != null)
                 {
-                
                     mainCamera.GetComponent<CameraManager>().TurnCamera(xMove, zMove);
                     manager.TeleportToNextPoint();
-
                 }
             }
         }
