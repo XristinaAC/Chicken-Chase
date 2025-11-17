@@ -28,28 +28,8 @@ public class PlayerManager2 : MonoBehaviour
     bool isGrounded = false;
     bool itWasInTheAir = false;
 
-    private void Awake()
-    {
-        //if (Instance == null)
-        //{
-        //    Instance = this;
-        //}
-        //else
-        //{
-        //    Destroy(this.gameObject);
-        //}
-    }
-
     private void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
         _rbDrag = this.GetComponent<Rigidbody>().drag;
         _jumpHeightV = new Vector3(0, Mathf.Sqrt(1 * -2 * (Physics.gravity.y * 1)), 0);
     }
